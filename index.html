@@ -14,38 +14,22 @@ body{
     overflow-x:hidden;
 }
 
-/* ANIMATED BACKGROUND */
-.bg{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:radial-gradient(circle at 20% 20%, #ff0033 0%, transparent 30%),
-               radial-gradient(circle at 80% 80%, #1a1a1a 0%, transparent 40%);
-    animation:move 10s infinite alternate;
-    z-index:-1;
-}
-
-@keyframes move{
-    from{transform:scale(1)}
-    to{transform:scale(1.2)}
-}
-
 /* HEADER */
 header{
     display:flex;
     justify-content:space-between;
     padding:20px 60px;
+    background:rgba(0,0,0,0.85);
+    border-bottom:1px solid #222;
     position:sticky;
     top:0;
-    background:rgba(0,0,0,0.8);
-    border-bottom:1px solid #222;
     z-index:100;
 }
 
 .logo{
+    color:#ff0033;
     font-weight:bold;
     font-size:22px;
-    color:#ff0033;
 }
 
 nav a{
@@ -53,7 +37,6 @@ nav a{
     color:#aaa;
     text-decoration:none;
 }
-
 nav a:hover{color:#ff0033}
 
 /* HERO */
@@ -64,23 +47,24 @@ nav a:hover{color:#ff0033}
     justify-content:center;
     align-items:center;
     text-align:center;
+    padding:0 20px;
 }
 
 .hero h1{
-    font-size:60px;
+    font-size:58px;
+    max-width:900px;
 }
 
-.hero span{
-    color:#ff0033;
-}
+.hero span{color:#ff0033}
 
 .hero p{
     color:#aaa;
+    margin-top:10px;
 }
 
 /* BUTTON */
 .btn{
-    margin-top:20px;
+    margin-top:25px;
     padding:14px 35px;
     background:#ff0033;
     border:none;
@@ -95,83 +79,81 @@ nav a:hover{color:#ff0033}
     box-shadow:0 0 20px #ff0033;
 }
 
+/* LAYER SYSTEM (IMPORTANT UPGRADE) */
+.layer{
+    padding:140px 60px; /* BIG GAP BETWEEN SECTIONS */
+}
+
 /* TRUST BAR */
 .trust{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    padding:40px;
+    gap:40px;
+    background:#0a0a0a;
+    padding:60px;
     border-top:1px solid #222;
     border-bottom:1px solid #222;
-    background:#050505;
 }
 
 .trust div{
-    margin:10px 25px;
     color:#aaa;
+    font-size:14px;
 }
 
-/* FLOATING STATS */
-.stats{
+/* WHY SECTION */
+.grid{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    padding:60px;
+    gap:30px;
 }
 
-.stat{
-    width:200px;
-    margin:15px;
-    padding:20px;
+.box{
+    width:240px;
+    padding:25px;
     background:#0f0f0f;
     border:1px solid #222;
-    border-radius:12px;
-    text-align:center;
-    animation:float 4s ease-in-out infinite;
+    border-radius:10px;
+    transition:0.3s;
 }
 
-@keyframes float{
-    0%{transform:translateY(0)}
-    50%{transform:translateY(-10px)}
-    100%{transform:translateY(0)}
+.box:hover{
+    transform:translateY(-10px);
+    border-color:#ff0033;
 }
 
 /* ACCOUNTS */
-.accounts{
-    padding:80px 40px;
-    text-align:center;
-}
-
 .cards{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
+    gap:30px;
 }
 
 .card{
     width:260px;
-    margin:20px;
     padding:25px;
-    border-radius:12px;
     background:#0d0d0d;
     border:1px solid #222;
+    border-radius:12px;
     transition:0.3s;
 }
 
 .card:hover{
     transform:translateY(-10px);
     border-color:#ff0033;
-    box-shadow:0 0 20px rgba(255,0,0,0.2);
 }
 
-/* CHART */
-.chart{
-    padding:60px;
+/* SECTION TITLE */
+.title{
+    text-align:center;
+    margin-bottom:60px;
 }
 
 /* FOOTER */
 footer{
-    padding:40px;
+    padding:60px;
     text-align:center;
     color:#666;
     border-top:1px solid #222;
@@ -181,255 +163,75 @@ footer{
 
 <body>
 
-<div class="bg"></div>
-
 <header>
 <div class="logo">BluePeak Markets</div>
 <nav>
 <a href="#home">Home</a>
-<a href="#stats">Why Us</a>
+<a href="#trust">Trust</a>
+<a href="#why">Why</a>
 <a href="#accounts">Accounts</a>
-<a href="#market">Markets</a>
 </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="home">
-<h1>Trade Global Markets with <span>Institutional Power</span></h1>
-<p>Raw spreads • Deep liquidity • Ultra-fast execution</p>
-
-<button class="btn">Open Account (Coming Soon)</button>
+<h1>Trade Global Markets with <span>Institutional Precision</span></h1>
+<p>Raw spreads • Fast execution • Deep liquidity access</p>
+<button class="btn">Get Notified</button>
 </section>
 
-<!-- TRUST BAR -->
-<section class="trust">
+<!-- TRUST (LAYER 2) -->
+<section class="layer" id="trust">
+
+<div class="title">
+<h2>Institutional Trading Conditions</h2>
+</div>
+
+<div class="trust">
 <div>⚡ 0.0 Spread Access</div>
 <div>💰 Deep Liquidity</div>
 <div>📊 ECN Execution</div>
 <div>🔐 Secure Funds</div>
+</div>
+
 </section>
 
-<!-- FLOATING STATS -->
-<section class="stats" id="stats">
-<div class="stat">5000+ Traders</div>
-<div class="stat">$20B+ Volume</div>
-<div class="stat">40ms Execution</div>
-<div class="stat">24/5 Markets</div>
+<!-- WHY (LAYER 3) -->
+<section class="layer" id="why">
+
+<div class="title">
+<h2>Why BluePeak Markets</h2>
+</div>
+
+<div class="grid">
+<div class="box">Ultra-fast execution engine</div>
+<div class="box">Global liquidity providers</div>
+<div class="box">Institutional trading environment</div>
+<div class="box">Advanced risk infrastructure</div>
+</div>
+
 </section>
 
-<!-- ACCOUNTS -->
-<section class="accounts" id="accounts">
+<!-- ACCOUNTS (LAYER 4) -->
+<section class="layer" id="accounts">
+
+<div class="title">
 <h2>Account Types</h2>
+</div>
 
 <div class="cards">
-<div class="card">Micro Account<br><button class="btn">Select</button></div>
-<div class="card">Standard Account<br><button class="btn">Select</button></div>
-<div class="card">Synthetic Account<br><button class="btn">Select</button></div>
-<div class="card">$100 Bonus Account<br><button class="btn">Select</button></div>
+<div class="card">Micro Account</div>
+<div class="card">Standard Account</div>
+<div class="card">Synthetic Account</div>
+<div class="card">$100 Bonus Account</div>
 </div>
-</section>
-
-<!-- MARKET -->
-<section class="chart" id="market">
-<h2 style="text-align:center;">Live Market Data</h2>
-
-<iframe
-src="https://s.tradingview.com/widgetembed/?symbol=FX:EURUSD&theme=dark"
-width="100%" height="450">
-</iframe>
 
 </section>
 
 <!-- FOOTER -->
 <footer>
-© 2026 BluePeak Markets | Institutional Trading Platform
+© 2026 BluePeak Markets | Institutional Trading Platform | South Africa 🇿🇦
 </footer>
-
-</body>
-</html>    color:#aaa;
-    cursor:pointer;
-    text-decoration:none;
-}
-
-nav a:hover{color:#ff0033}
-
-/* HERO */
-.hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    background:radial-gradient(circle at top,#111,#000);
-}
-
-.hero h1{
-    font-size:60px;
-}
-
-.hero span{color:#ff0033}
-
-/* BUTTON */
-.btn{
-    margin-top:20px;
-    padding:14px 35px;
-    background:#ff0033;
-    border:none;
-    color:white;
-    border-radius:8px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px #ff0033;
-}
-
-/* SWIPE CAROUSEL */
-.swipe-container{
-    display:flex;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    gap:20px;
-    padding:60px;
-}
-
-.swipe-container::-webkit-scrollbar{
-    display:none;
-}
-
-.card{
-    min-width:280px;
-    scroll-snap-align:center;
-    background:linear-gradient(145deg,#111,#000);
-    border:1px solid rgba(255,0,0,0.2);
-    border-radius:15px;
-    padding:25px;
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 30px rgba(255,0,0,0.3);
-}
-
-/* SECTION TITLE */
-.section{
-    text-align:center;
-    padding:40px;
-}
-
-/* TRADINGVIEW */
-.chart{
-    padding:60px;
-}
-
-/* POPUP */
-#popup{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:black;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    z-index:999;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="logo">BluePeak Markets</div>
-<nav>
-<a href="#home">Home</a>
-<a href="#accounts">Accounts</a>
-<a href="#chart">Markets</a>
-</nav>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="home">
-<h1>Institutional <span>Trading Platform</span></h1>
-<p>Black & Red Elite Market Infrastructure</p>
-
-<button class="btn" onclick="openPopup()">Open Account</button>
-</section>
-
-<!-- ACCOUNTS SWIPE -->
-<section class="section" id="accounts">
-<h2>Account Types (Swipe →)</h2>
-
-<div class="swipe-container">
-
-<div class="card">
-<h3>Micro</h3>
-<p>Low capital entry trading</p>
-<button class="btn" onclick="openPopup()">Select</button>
-</div>
-
-<div class="card">
-<h3>Standard</h3>
-<p>Balanced execution & spreads</p>
-<button class="btn" onclick="openPopup()">Select</button>
-</div>
-
-<div class="card">
-<h3>Synthetic</h3>
-<p>Advanced market simulation</p>
-<button class="btn" onclick="openPopup()">Select</button>
-</div>
-
-<div class="card">
-<h3>Bonus $100</h3>
-<p>Promotional trading credit</p>
-<button class="btn" onclick="openPopup()">Claim</button>
-</div>
-
-<div class="card">
-<h3>R500 Welcome</h3>
-<p>Entry-level funded access</p>
-<button class="btn" onclick="openPopup()">Activate</button>
-</div>
-
-</div>
-</section>
-
-<!-- TRADINGVIEW -->
-<section class="chart" id="chart">
-<h2 style="text-align:center;">Live Market Chart</h2>
-
-<iframe
-src="https://s.tradingview.com/widgetembed/?symbol=NASDAQ:NDX&theme=dark"
-width="100%" height="450"></iframe>
-
-</section>
-
-<!-- POPUP -->
-<div id="popup">
-<div>
-<h1>🚀 Coming Soon</h1>
-<p>BluePeak Markets is still in pre-launch phase.</p>
-<br>
-<button class="btn" onclick="closePopup()">Close</button>
-</div>
-</div>
-
-<script>
-function openPopup(){
-    document.getElementById("popup").style.display="flex";
-}
-
-function closePopup(){
-    document.getElementById("popup").style.display="none";
-}
-</script>
 
 </body>
 </html>
