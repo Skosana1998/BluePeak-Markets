@@ -8,36 +8,52 @@
 <style>
 body{
     margin:0;
-    font-family:Arial;
+    font-family:Arial, sans-serif;
     background:#000;
-    color:white;
+    color:#fff;
     overflow-x:hidden;
+}
+
+/* SOFT BACKGROUND GLOW */
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,0,51,0.12), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.04), transparent 50%);
+    z-index:-1;
 }
 
 /* HEADER */
 header{
     display:flex;
     justify-content:space-between;
-    padding:20px 60px;
-    background:rgba(0,0,0,0.85);
-    border-bottom:1px solid #222;
+    padding:22px 70px;
     position:sticky;
     top:0;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.05);
     z-index:100;
 }
 
 .logo{
     color:#ff0033;
-    font-weight:bold;
-    font-size:22px;
+    font-weight:600;
+    letter-spacing:1px;
 }
 
 nav a{
-    margin:0 12px;
+    margin:0 14px;
     color:#aaa;
     text-decoration:none;
+    font-size:14px;
 }
-nav a:hover{color:#ff0033}
+
+nav a:hover{
+    color:#fff;
+}
 
 /* HERO */
 .hero{
@@ -51,76 +67,100 @@ nav a:hover{color:#ff0033}
 }
 
 .hero h1{
-    font-size:58px;
+    font-size:54px;
+    font-weight:500;
     max-width:900px;
+    line-height:1.2;
 }
 
 .hero span{color:#ff0033}
 
 .hero p{
+    margin-top:15px;
     color:#aaa;
-    margin-top:10px;
+    font-size:15px;
 }
 
 /* BUTTON */
 .btn{
-    margin-top:25px;
-    padding:14px 35px;
-    background:#ff0033;
-    border:none;
+    margin-top:28px;
+    padding:13px 34px;
+    background:rgba(255,0,51,0.9);
+    border:1px solid rgba(255,0,51,0.3);
     color:white;
-    border-radius:8px;
+    border-radius:10px;
     cursor:pointer;
-    transition:0.3s;
+    transition:0.4s;
+    font-size:14px;
 }
 
 .btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px #ff0033;
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(255,0,51,0.15);
 }
 
-/* LAYER SYSTEM (IMPORTANT UPGRADE) */
-.layer{
-    padding:140px 60px; /* BIG GAP BETWEEN SECTIONS */
+/* SECTIONS (LUXURY SPACING) */
+.section{
+    padding:160px 70px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
 }
 
-/* TRUST BAR */
+.section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* TITLE */
+.title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.title h2{
+    font-weight:500;
+    letter-spacing:1px;
+}
+
+/* TRUST */
 .trust{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:40px;
-    background:#0a0a0a;
-    padding:60px;
-    border-top:1px solid #222;
-    border-bottom:1px solid #222;
+    gap:50px;
 }
 
 .trust div{
     color:#aaa;
     font-size:14px;
+    padding:10px 20px;
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:12px;
+    background:rgba(255,255,255,0.02);
 }
 
-/* WHY SECTION */
+/* WHY */
 .grid{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:30px;
+    gap:35px;
 }
 
 .box{
     width:240px;
-    padding:25px;
-    background:#0f0f0f;
-    border:1px solid #222;
-    border-radius:10px;
-    transition:0.3s;
+    padding:28px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:14px;
+    color:#bbb;
+    transition:0.4s;
 }
 
 .box:hover{
-    transform:translateY(-10px);
-    border-color:#ff0033;
+    transform:translateY(-6px);
+    border-color:rgba(255,0,51,0.4);
 }
 
 /* ACCOUNTS */
@@ -128,40 +168,37 @@ nav a:hover{color:#ff0033}
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:30px;
+    gap:35px;
 }
 
 .card{
     width:260px;
-    padding:25px;
-    background:#0d0d0d;
-    border:1px solid #222;
-    border-radius:12px;
-    transition:0.3s;
+    padding:28px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:14px;
+    transition:0.4s;
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    border-color:#ff0033;
-}
-
-/* SECTION TITLE */
-.title{
-    text-align:center;
-    margin-bottom:60px;
+    transform:translateY(-8px);
+    border-color:rgba(255,0,51,0.4);
 }
 
 /* FOOTER */
 footer{
-    padding:60px;
+    padding:80px;
     text-align:center;
     color:#666;
-    border-top:1px solid #222;
+    border-top:1px solid rgba(255,255,255,0.05);
+    font-size:13px;
 }
 </style>
 </head>
 
 <body>
+
+<div class="bg"></div>
 
 <header>
 <div class="logo">BluePeak Markets</div>
@@ -176,48 +213,37 @@ footer{
 <!-- HERO -->
 <section class="hero" id="home">
 <h1>Trade Global Markets with <span>Institutional Precision</span></h1>
-<p>Raw spreads • Fast execution • Deep liquidity access</p>
+<p>Raw spreads • Deep liquidity • Ultra-fast execution environment</p>
 <button class="btn">Get Notified</button>
 </section>
 
-<!-- TRUST (LAYER 2) -->
-<section class="layer" id="trust">
-
-<div class="title">
-<h2>Institutional Trading Conditions</h2>
-</div>
+<!-- TRUST -->
+<section class="section" id="trust">
+<div class="title"><h2>Institutional Trading Conditions</h2></div>
 
 <div class="trust">
 <div>⚡ 0.0 Spread Access</div>
 <div>💰 Deep Liquidity</div>
 <div>📊 ECN Execution</div>
-<div>🔐 Secure Funds</div>
+<div>🔐 Secure Infrastructure</div>
 </div>
-
 </section>
 
-<!-- WHY (LAYER 3) -->
-<section class="layer" id="why">
-
-<div class="title">
-<h2>Why BluePeak Markets</h2>
-</div>
+<!-- WHY -->
+<section class="section" id="why">
+<div class="title"><h2>Why BluePeak Markets</h2></div>
 
 <div class="grid">
-<div class="box">Ultra-fast execution engine</div>
-<div class="box">Global liquidity providers</div>
-<div class="box">Institutional trading environment</div>
-<div class="box">Advanced risk infrastructure</div>
+<div class="box">Advanced execution systems</div>
+<div class="box">Global liquidity network</div>
+<div class="box">Institutional-grade environment</div>
+<div class="box">Professional risk framework</div>
 </div>
-
 </section>
 
-<!-- ACCOUNTS (LAYER 4) -->
-<section class="layer" id="accounts">
-
-<div class="title">
-<h2>Account Types</h2>
-</div>
+<!-- ACCOUNTS -->
+<section class="section" id="accounts">
+<div class="title"><h2>Account Types</h2></div>
 
 <div class="cards">
 <div class="card">Micro Account</div>
@@ -225,13 +251,29 @@ footer{
 <div class="card">Synthetic Account</div>
 <div class="card">$100 Bonus Account</div>
 </div>
-
 </section>
 
 <!-- FOOTER -->
 <footer>
 © 2026 BluePeak Markets | Institutional Trading Platform | South Africa 🇿🇦
 </footer>
+
+<script>
+// SCROLL REVEAL (LUXURY FEEL)
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+    sections.forEach(sec => {
+        const top = window.scrollY;
+        const offset = sec.offsetTop - 500;
+        const height = sec.offsetHeight;
+
+        if(top > offset && top < offset + height){
+            sec.classList.add('show');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
