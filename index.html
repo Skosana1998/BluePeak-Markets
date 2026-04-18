@@ -1,1 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BluePeak Markets</title>
 
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #050816;
+    color: white;
+}
+
+/* NAV */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: #000;
+}
+
+nav a {
+    margin: 0 10px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+nav a:hover { color: #00aaff; }
+
+/* PAGES */
+.page { display: none; padding: 60px 20px; text-align: center; }
+.active { display: block; }
+
+/* BUTTON */
+.btn {
+    padding: 12px 30px;
+    background: #00aaff;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #0c1022;
+    margin: 15px;
+    padding: 25px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+/* TABLE */
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid #333;
+    padding: 10px;
+}
+
+/* DASHBOARD */
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.box {
+    background: #0c1022;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+/* COMING SOON */
+#coming {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:black;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div><b>BluePeak Markets</b></div>
+
+<nav>
+<a onclick="showPage('home')">Home</a>
+<a onclick="showPage('accounts')">Accounts</a>
+<a onclick="showPage('platforms')">Platforms</a>
+<a onclick="showPage('spreads')">Spreads</a>
+<a onclick="showPage('dashboard')">Dashboard</a>
+<a onclick="comingSoon()">Open Account</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<div id="home" class="page active">
+<h1>Trade Global Markets</h1>
+<p>Founded in South Africa 🇿🇦 | Built for Elite Traders</p>
+
+<div id="countdown"></div>
+
+<br><br>
+<button class="btn" onclick="comingSoon()">Open Account</button>
+</div>
+
+<!-- ACCOUNTS -->
+<div id="accounts" class="page">
+<h1>Account Types</h1>
+
+<div class="cards">
+<div class="card">
+<h3>Standard</h3>
+<p>No commission</p>
+<button class="btn" onclick="comingSoon()">Open</button>
+</div>
+
+<div class="card">
+<h3>Raw Spread</h3>
+<p>Ultra tight spreads</p>
+<button class="btn" onclick="comingSoon()">Open</button>
+</div>
+
+<div class="card">
+<h3>VIP</h3>
+<p>Premium traders</p>
+<button class="btn" onclick="comingSoon()">Open</button>
+</div>
+</div>
+</div>
+
+<!-- PLATFORMS -->
+<div id="platforms" class="page">
+<h1>Platforms</h1>
+<p>MT5 | Web Trader | Mobile</p>
+
+<br>
+<button class="btn" onclick="comingSoon()">Start Trading</button>
+</div>
+
+<!-- SPREADS -->
+<div id="spreads" class="page">
+<h1>Spreads</h1>
+
+<table>
+<tr><th>Pair</th><th>Spread</th></tr>
+<tr><td>EURUSD</td><td>0.1</td></tr>
+<tr><td>GBPUSD</td><td>0.3</td></tr>
+<tr><td>XAUUSD</td><td>0.5</td></tr>
+</table>
+
+<br>
+<button class="btn" onclick="comingSoon()">Open Account</button>
+</div>
+
+<!-- DASHBOARD PREVIEW -->
+<div id="dashboard" class="page">
+<h1>Client Dashboard (Preview)</h1>
+
+<div class="dashboard">
+
+<div class="box">
+<h3>Balance</h3>
+<p>$0.00</p>
+</div>
+
+<div class="box">
+<h3>Equity</h3>
+<p>$0.00</p>
+</div>
+
+<div class="box">
+<h3>Open Trades</h3>
+<p>0</p>
+</div>
+
+<div class="box">
+<h3>Profit</h3>
+<p>$0.00</p>
+</div>
+
+</div>
+
+<br>
+<button class="btn" onclick="comingSoon()">Login</button>
+</div>
+
+<!-- COMING SOON SCREEN -->
+<div id="coming">
+<div>
+<h1>🚀 Coming Soon</h1>
+<p>BluePeak Markets is preparing for launch.</p>
+<p>Please be patient.</p>
+<br>
+<button class="btn" onclick="closeComing()">Back</button>
+</div>
+</div>
+
+<script>
+function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(page).classList.add('active');
+}
+
+function comingSoon() {
+    document.getElementById("coming").style.display = "flex";
+}
+
+function closeComing() {
+    document.getElementById("coming").style.display = "none";
+}
+
+/* COUNTDOWN */
+let countDownDate = new Date();
+countDownDate.setMonth(countDownDate.getMonth() + 6);
+
+setInterval(function() {
+    let now = new Date().getTime();
+    let distance = countDownDate - now;
+
+    let days = Math.floor(distance / (1000*60*60*24));
+    let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+    let seconds = Math.floor((distance%(1000*60))/1000);
+
+    document.getElementById("countdown").innerHTML =
+    "Grand Opening In: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+}, 1000);
+</script>
+
+</body>
+</html>
