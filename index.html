@@ -14,6 +14,22 @@ body{
     overflow-x:hidden;
 }
 
+/* ANIMATED BACKGROUND */
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle at 20% 20%, #ff0033 0%, transparent 30%),
+               radial-gradient(circle at 80% 80%, #1a1a1a 0%, transparent 40%);
+    animation:move 10s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes move{
+    from{transform:scale(1)}
+    to{transform:scale(1.2)}
+}
+
 /* HEADER */
 header{
     display:flex;
@@ -22,19 +38,215 @@ header{
     position:sticky;
     top:0;
     background:rgba(0,0,0,0.8);
-    border-bottom:1px solid rgba(255,0,0,0.3);
+    border-bottom:1px solid #222;
     z-index:100;
 }
 
 .logo{
-    color:#ff0033;
     font-weight:bold;
     font-size:22px;
+    color:#ff0033;
 }
 
 nav a{
     margin:0 12px;
     color:#aaa;
+    text-decoration:none;
+}
+
+nav a:hover{color:#ff0033}
+
+/* HERO */
+.hero{
+    height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:60px;
+}
+
+.hero span{
+    color:#ff0033;
+}
+
+.hero p{
+    color:#aaa;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:20px;
+    padding:14px 35px;
+    background:#ff0033;
+    border:none;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #ff0033;
+}
+
+/* TRUST BAR */
+.trust{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    padding:40px;
+    border-top:1px solid #222;
+    border-bottom:1px solid #222;
+    background:#050505;
+}
+
+.trust div{
+    margin:10px 25px;
+    color:#aaa;
+}
+
+/* FLOATING STATS */
+.stats{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    padding:60px;
+}
+
+.stat{
+    width:200px;
+    margin:15px;
+    padding:20px;
+    background:#0f0f0f;
+    border:1px solid #222;
+    border-radius:12px;
+    text-align:center;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+    100%{transform:translateY(0)}
+}
+
+/* ACCOUNTS */
+.accounts{
+    padding:80px 40px;
+    text-align:center;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:260px;
+    margin:20px;
+    padding:25px;
+    border-radius:12px;
+    background:#0d0d0d;
+    border:1px solid #222;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#ff0033;
+    box-shadow:0 0 20px rgba(255,0,0,0.2);
+}
+
+/* CHART */
+.chart{
+    padding:60px;
+}
+
+/* FOOTER */
+footer{
+    padding:40px;
+    text-align:center;
+    color:#666;
+    border-top:1px solid #222;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header>
+<div class="logo">BluePeak Markets</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#stats">Why Us</a>
+<a href="#accounts">Accounts</a>
+<a href="#market">Markets</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<h1>Trade Global Markets with <span>Institutional Power</span></h1>
+<p>Raw spreads • Deep liquidity • Ultra-fast execution</p>
+
+<button class="btn">Open Account (Coming Soon)</button>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust">
+<div>⚡ 0.0 Spread Access</div>
+<div>💰 Deep Liquidity</div>
+<div>📊 ECN Execution</div>
+<div>🔐 Secure Funds</div>
+</section>
+
+<!-- FLOATING STATS -->
+<section class="stats" id="stats">
+<div class="stat">5000+ Traders</div>
+<div class="stat">$20B+ Volume</div>
+<div class="stat">40ms Execution</div>
+<div class="stat">24/5 Markets</div>
+</section>
+
+<!-- ACCOUNTS -->
+<section class="accounts" id="accounts">
+<h2>Account Types</h2>
+
+<div class="cards">
+<div class="card">Micro Account<br><button class="btn">Select</button></div>
+<div class="card">Standard Account<br><button class="btn">Select</button></div>
+<div class="card">Synthetic Account<br><button class="btn">Select</button></div>
+<div class="card">$100 Bonus Account<br><button class="btn">Select</button></div>
+</div>
+</section>
+
+<!-- MARKET -->
+<section class="chart" id="market">
+<h2 style="text-align:center;">Live Market Data</h2>
+
+<iframe
+src="https://s.tradingview.com/widgetembed/?symbol=FX:EURUSD&theme=dark"
+width="100%" height="450">
+</iframe>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+© 2026 BluePeak Markets | Institutional Trading Platform
+</footer>
+
+</body>
+</html>    color:#aaa;
     cursor:pointer;
     text-decoration:none;
 }
