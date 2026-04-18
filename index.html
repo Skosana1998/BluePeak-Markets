@@ -41,6 +41,7 @@ nav a:hover { color: #00aaff; }
     color: white;
     text-decoration: none;
     cursor: pointer;
+    border: none;
 }
 
 /* CARDS */
@@ -71,7 +72,7 @@ td, th {
 /* DASHBOARD */
 .dashboard {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -80,10 +81,18 @@ td, th {
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
-    width: 250px;
+    width: 220px;
 }
 
-/* COMING SOON */
+/* INPUT */
+input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* COMING SOON OVERLAY */
 #coming {
     position: fixed;
     top:0;
@@ -95,6 +104,7 @@ td, th {
     justify-content:center;
     align-items:center;
     text-align:center;
+    z-index: 1000;
 }
 </style>
 </head>
@@ -119,10 +129,27 @@ td, th {
 <h1>Trade Global Markets</h1>
 <p>Founded in South Africa 🇿🇦 | Built for Elite Traders</p>
 
-<div id="countdown"></div>
+<h3 id="countdown"></h3>
 
 <br><br>
-<button class="btn" onclick="comingSoon()">Open Account</button>
+
+<h2>Join Early Access</h2>
+<input type="email" id="email" placeholder="Enter your email">
+<br><br>
+<button class="btn" onclick="joinWaitlist()">Join Waitlist</button>
+
+<br><br>
+
+<a class="btn" href="https://wa.me/27636136117" target="_blank">
+Chat on WhatsApp
+</a>
+
+<br><br>
+
+<h3>⚡ Limited VIP Access</h3>
+<p>Get signals & private tools before launch.</p>
+<button class="btn" onclick="comingSoon()">Get VIP Access</button>
+
 </div>
 
 <!-- ACCOUNTS -->
@@ -152,7 +179,7 @@ td, th {
 
 <!-- PLATFORMS -->
 <div id="platforms" class="page">
-<h1>Platforms</h1>
+<h1>Trading Platforms</h1>
 <p>MT5 | Web Trader | Mobile</p>
 
 <br>
@@ -161,7 +188,7 @@ td, th {
 
 <!-- SPREADS -->
 <div id="spreads" class="page">
-<h1>Spreads</h1>
+<h1>Live Spreads</h1>
 
 <table>
 <tr><th>Pair</th><th>Spread</th></tr>
@@ -174,39 +201,22 @@ td, th {
 <button class="btn" onclick="comingSoon()">Open Account</button>
 </div>
 
-<!-- DASHBOARD PREVIEW -->
+<!-- DASHBOARD -->
 <div id="dashboard" class="page">
 <h1>Client Dashboard (Preview)</h1>
 
 <div class="dashboard">
-
-<div class="box">
-<h3>Balance</h3>
-<p>$0.00</p>
-</div>
-
-<div class="box">
-<h3>Equity</h3>
-<p>$0.00</p>
-</div>
-
-<div class="box">
-<h3>Open Trades</h3>
-<p>0</p>
-</div>
-
-<div class="box">
-<h3>Profit</h3>
-<p>$0.00</p>
-</div>
-
+<div class="box"><h3>Balance</h3><p>$0.00</p></div>
+<div class="box"><h3>Equity</h3><p>$0.00</p></div>
+<div class="box"><h3>Trades</h3><p>0</p></div>
+<div class="box"><h3>Profit</h3><p>$0.00</p></div>
 </div>
 
 <br>
 <button class="btn" onclick="comingSoon()">Login</button>
 </div>
 
-<!-- COMING SOON SCREEN -->
+<!-- COMING SOON -->
 <div id="coming">
 <div>
 <h1>🚀 Coming Soon</h1>
@@ -218,17 +228,36 @@ td, th {
 </div>
 
 <script>
+
+/* PAGE SWITCH */
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(page).classList.add('active');
 }
 
+/* COMING SOON */
 function comingSoon() {
     document.getElementById("coming").style.display = "flex";
 }
 
 function closeComing() {
     document.getElementById("coming").style.display = "none";
+}
+
+/* WAITLIST */
+function joinWaitlist() {
+    let email = document.getElementById("email").value;
+
+    if(email === "") {
+        alert("Enter your email");
+        return;
+    }
+
+    alert("You're on the VIP waitlist 🔥");
+
+    let emails = JSON.parse(localStorage.getItem("emails") || "[]");
+    emails.push(email);
+    localStorage.setItem("emails", JSON.stringify(emails));
 }
 
 /* COUNTDOWN */
@@ -248,7 +277,8 @@ setInterval(function() {
     "Grand Opening In: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
 
 }, 1000);
+
 </script>
 
 </body>
-</html>
+    </html>
