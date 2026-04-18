@@ -14,15 +14,15 @@ body{
     overflow-x:hidden;
 }
 
-/* TOP BAR */
+/* HEADER */
 header{
     display:flex;
     justify-content:space-between;
     padding:20px 60px;
-    background:rgba(0,0,0,0.8);
-    border-bottom:1px solid rgba(255,0,0,0.3);
     position:sticky;
     top:0;
+    background:rgba(0,0,0,0.8);
+    border-bottom:1px solid rgba(255,0,0,0.3);
     z-index:100;
 }
 
@@ -54,23 +54,16 @@ nav a:hover{color:#ff0033}
 
 .hero h1{
     font-size:60px;
-    color:#fff;
 }
 
-.hero span{
-    color:#ff0033;
-}
-
-.hero p{
-    color:#aaa;
-}
+.hero span{color:#ff0033}
 
 /* BUTTON */
 .btn{
     margin-top:20px;
     padding:14px 35px;
-    border:none;
     background:#ff0033;
+    border:none;
     color:white;
     border-radius:8px;
     cursor:pointer;
@@ -82,52 +75,46 @@ nav a:hover{color:#ff0033}
     box-shadow:0 0 20px #ff0033;
 }
 
-/* SECTIONS */
-.section{
-    padding:100px 60px;
-    text-align:center;
+/* SWIPE CAROUSEL */
+.swipe-container{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:20px;
+    padding:60px;
 }
 
-/* CARDS 3D STYLE */
-.cards{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
+.swipe-container::-webkit-scrollbar{
+    display:none;
 }
 
 .card{
-    width:260px;
-    margin:20px;
-    padding:25px;
-    border-radius:15px;
+    min-width:280px;
+    scroll-snap-align:center;
     background:linear-gradient(145deg,#111,#000);
     border:1px solid rgba(255,0,0,0.2);
-    box-shadow:0 0 25px rgba(255,0,0,0.1);
+    border-radius:15px;
+    padding:25px;
     transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-12px) scale(1.02);
-    box-shadow:0 0 30px rgba(255,0,0,0.4);
+    transform:scale(1.05);
+    box-shadow:0 0 30px rgba(255,0,0,0.3);
 }
 
-/* INFO BOX */
-.info{
-    max-width:900px;
-    margin:auto;
-    color:#bbb;
-    line-height:1.6;
-}
-
-/* FOOTER */
-footer{
-    padding:40px;
+/* SECTION TITLE */
+.section{
     text-align:center;
-    color:#666;
-    border-top:1px solid rgba(255,0,0,0.2);
+    padding:40px;
 }
 
-/* OVERLAY */
+/* TRADINGVIEW */
+.chart{
+    padding:60px;
+}
+
+/* POPUP */
 #popup{
     position:fixed;
     top:0;
@@ -151,102 +138,72 @@ footer{
 <nav>
 <a href="#home">Home</a>
 <a href="#accounts">Accounts</a>
-<a href="#company">Company</a>
-<a href="#legal">Legal</a>
+<a href="#chart">Markets</a>
 </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="home">
-<h1>Trade With <span>Confidence</span></h1>
-<p>Black & Red Institutional Trading Platform</p>
+<h1>Institutional <span>Trading Platform</span></h1>
+<p>Black & Red Elite Market Infrastructure</p>
+
 <button class="btn" onclick="openPopup()">Open Account</button>
 </section>
 
-<!-- ACCOUNTS -->
+<!-- ACCOUNTS SWIPE -->
 <section class="section" id="accounts">
-<h2>Account Types</h2>
+<h2>Account Types (Swipe →)</h2>
 
-<div class="cards">
+<div class="swipe-container">
 
 <div class="card">
-<h3>Micro Account</h3>
-<p>Low capital trading access</p>
+<h3>Micro</h3>
+<p>Low capital entry trading</p>
 <button class="btn" onclick="openPopup()">Select</button>
 </div>
 
 <div class="card">
-<h3>Standard Account</h3>
-<p>Balanced trading conditions</p>
+<h3>Standard</h3>
+<p>Balanced execution & spreads</p>
 <button class="btn" onclick="openPopup()">Select</button>
 </div>
 
 <div class="card">
-<h3>Synthetic Account</h3>
+<h3>Synthetic</h3>
 <p>Advanced market simulation</p>
 <button class="btn" onclick="openPopup()">Select</button>
 </div>
 
 <div class="card">
-<h3>$100 Bonus Account</h3>
-<p>Start trading with bonus credit</p>
+<h3>Bonus $100</h3>
+<p>Promotional trading credit</p>
 <button class="btn" onclick="openPopup()">Claim</button>
 </div>
 
 <div class="card">
-<h3>R500 Welcome Account</h3>
-<p>Entry-level funded account</p>
+<h3>R500 Welcome</h3>
+<p>Entry-level funded access</p>
 <button class="btn" onclick="openPopup()">Activate</button>
 </div>
 
 </div>
 </section>
 
-<!-- COMPANY INFO -->
-<section class="section" id="company">
-<h2>Company Information</h2>
+<!-- TRADINGVIEW -->
+<section class="chart" id="chart">
+<h2 style="text-align:center;">Live Market Chart</h2>
 
-<div class="info">
-<p><b>BluePeak Markets</b> was founded in <b>January</b> as a next-generation trading brand focused on providing institutional-style market access to retail traders.</p>
+<iframe
+src="https://s.tradingview.com/widgetembed/?symbol=NASDAQ:NDX&theme=dark"
+width="100%" height="450"></iframe>
 
-<br>
-
-<p>We aim to deliver fast execution, deep liquidity access, and advanced trading environments for global traders.</p>
-
-<br>
-
-<p><b>Headquarters:</b> South Africa 🇿🇦</p>
-</div>
 </section>
-
-<!-- LEGAL -->
-<section class="section" id="legal">
-<h2>Legal & Risk</h2>
-
-<div class="info">
-
-<h3>Terms & Conditions</h3>
-<p>By using BluePeak Markets services, you agree to follow all trading rules and platform policies. Trading involves risk and is subject to market volatility.</p>
-
-<br>
-
-<h3>Risk Disclaimer</h3>
-<p>Trading Forex and CFDs carries a high level of risk and may not be suitable for all investors. You may lose all of your invested capital. Only trade with money you can afford to lose.</p>
-
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-© 2026 BluePeak Markets | All Rights Reserved
-</footer>
 
 <!-- POPUP -->
 <div id="popup">
 <div>
 <h1>🚀 Coming Soon</h1>
-<p>Account registration is not yet active.</p>
-<p>Please be patient while we finalize the platform.</p>
+<p>BluePeak Markets is still in pre-launch phase.</p>
 <br>
 <button class="btn" onclick="closePopup()">Close</button>
 </div>
