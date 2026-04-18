@@ -6,95 +6,130 @@
 <title>BluePeak Markets</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #050816;
-    color: white;
+body{
+    margin:0;
+    font-family:Arial;
+    background:#000;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* NAV */
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    background: #000;
+/* TOP BAR */
+header{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 60px;
+    background:rgba(0,0,0,0.8);
+    border-bottom:1px solid rgba(255,0,0,0.3);
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
-nav a {
-    margin: 0 10px;
-    color: #aaa;
-    cursor: pointer;
+.logo{
+    color:#ff0033;
+    font-weight:bold;
+    font-size:22px;
 }
 
-nav a:hover { color: #00aaff; }
+nav a{
+    margin:0 12px;
+    color:#aaa;
+    cursor:pointer;
+    text-decoration:none;
+}
 
-/* PAGES */
-.page { display: none; padding: 60px 20px; text-align: center; }
-.active { display: block; }
+nav a:hover{color:#ff0033}
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:radial-gradient(circle at top,#111,#000);
+}
+
+.hero h1{
+    font-size:60px;
+    color:#fff;
+}
+
+.hero span{
+    color:#ff0033;
+}
+
+.hero p{
+    color:#aaa;
+}
 
 /* BUTTON */
-.btn {
-    padding: 12px 30px;
-    background: #00aaff;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
+.btn{
+    margin-top:20px;
+    padding:14px 35px;
+    border:none;
+    background:#ff0033;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-/* CARDS */
-.cards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #ff0033;
 }
 
-.card {
-    background: #0c1022;
-    margin: 15px;
-    padding: 25px;
-    border-radius: 10px;
-    width: 250px;
+/* SECTIONS */
+.section{
+    padding:100px 60px;
+    text-align:center;
 }
 
-/* TABLE */
-table {
-    margin: auto;
-    border-collapse: collapse;
-}
-td, th {
-    border: 1px solid #333;
-    padding: 10px;
+/* CARDS 3D STYLE */
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
-/* DASHBOARD */
-.dashboard {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.card{
+    width:260px;
+    margin:20px;
+    padding:25px;
+    border-radius:15px;
+    background:linear-gradient(145deg,#111,#000);
+    border:1px solid rgba(255,0,0,0.2);
+    box-shadow:0 0 25px rgba(255,0,0,0.1);
+    transition:0.3s;
 }
 
-.box {
-    background: #0c1022;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 10px;
-    width: 220px;
+.card:hover{
+    transform:translateY(-12px) scale(1.02);
+    box-shadow:0 0 30px rgba(255,0,0,0.4);
 }
 
-/* INPUT */
-input {
-    padding: 10px;
-    width: 250px;
-    border-radius: 5px;
-    border: none;
+/* INFO BOX */
+.info{
+    max-width:900px;
+    margin:auto;
+    color:#bbb;
+    line-height:1.6;
 }
 
-/* COMING SOON OVERLAY */
-#coming {
-    position: fixed;
+/* FOOTER */
+footer{
+    padding:40px;
+    text-align:center;
+    color:#666;
+    border-top:1px solid rgba(255,0,0,0.2);
+}
+
+/* OVERLAY */
+#popup{
+    position:fixed;
     top:0;
     left:0;
     width:100%;
@@ -104,7 +139,7 @@ input {
     justify-content:center;
     align-items:center;
     text-align:center;
-    z-index: 1000;
+    z-index:999;
 }
 </style>
 </head>
@@ -112,173 +147,120 @@ input {
 <body>
 
 <header>
-<div><b>BluePeak Markets</b></div>
-
+<div class="logo">BluePeak Markets</div>
 <nav>
-<a onclick="showPage('home')">Home</a>
-<a onclick="showPage('accounts')">Accounts</a>
-<a onclick="showPage('platforms')">Platforms</a>
-<a onclick="showPage('spreads')">Spreads</a>
-<a onclick="showPage('dashboard')">Dashboard</a>
-<a onclick="comingSoon()">Open Account</a>
+<a href="#home">Home</a>
+<a href="#accounts">Accounts</a>
+<a href="#company">Company</a>
+<a href="#legal">Legal</a>
 </nav>
 </header>
 
-<!-- HOME -->
-<div id="home" class="page active">
-<h1>Trade Global Markets</h1>
-<p>Founded in South Africa 🇿🇦 | Built for Elite Traders</p>
-
-<h3 id="countdown"></h3>
-
-<br><br>
-
-<h2>Join Early Access</h2>
-<input type="email" id="email" placeholder="Enter your email">
-<br><br>
-<button class="btn" onclick="joinWaitlist()">Join Waitlist</button>
-
-<br><br>
-
-<a class="btn" href="https://wa.me/27636136117" target="_blank">
-Chat on WhatsApp
-</a>
-
-<br><br>
-
-<h3>⚡ Limited VIP Access</h3>
-<p>Get signals & private tools before launch.</p>
-<button class="btn" onclick="comingSoon()">Get VIP Access</button>
-
-</div>
+<!-- HERO -->
+<section class="hero" id="home">
+<h1>Trade With <span>Confidence</span></h1>
+<p>Black & Red Institutional Trading Platform</p>
+<button class="btn" onclick="openPopup()">Open Account</button>
+</section>
 
 <!-- ACCOUNTS -->
-<div id="accounts" class="page">
-<h1>Account Types</h1>
+<section class="section" id="accounts">
+<h2>Account Types</h2>
 
 <div class="cards">
-<div class="card">
-<h3>Standard</h3>
-<p>No commission</p>
-<button class="btn" onclick="comingSoon()">Open</button>
-</div>
 
 <div class="card">
-<h3>Raw Spread</h3>
-<p>Ultra tight spreads</p>
-<button class="btn" onclick="comingSoon()">Open</button>
+<h3>Micro Account</h3>
+<p>Low capital trading access</p>
+<button class="btn" onclick="openPopup()">Select</button>
 </div>
 
 <div class="card">
-<h3>VIP</h3>
-<p>Premium traders</p>
-<button class="btn" onclick="comingSoon()">Open</button>
-</div>
-</div>
+<h3>Standard Account</h3>
+<p>Balanced trading conditions</p>
+<button class="btn" onclick="openPopup()">Select</button>
 </div>
 
-<!-- PLATFORMS -->
-<div id="platforms" class="page">
-<h1>Trading Platforms</h1>
-<p>MT5 | Web Trader | Mobile</p>
+<div class="card">
+<h3>Synthetic Account</h3>
+<p>Advanced market simulation</p>
+<button class="btn" onclick="openPopup()">Select</button>
+</div>
+
+<div class="card">
+<h3>$100 Bonus Account</h3>
+<p>Start trading with bonus credit</p>
+<button class="btn" onclick="openPopup()">Claim</button>
+</div>
+
+<div class="card">
+<h3>R500 Welcome Account</h3>
+<p>Entry-level funded account</p>
+<button class="btn" onclick="openPopup()">Activate</button>
+</div>
+
+</div>
+</section>
+
+<!-- COMPANY INFO -->
+<section class="section" id="company">
+<h2>Company Information</h2>
+
+<div class="info">
+<p><b>BluePeak Markets</b> was founded in <b>January</b> as a next-generation trading brand focused on providing institutional-style market access to retail traders.</p>
 
 <br>
-<button class="btn" onclick="comingSoon()">Start Trading</button>
-</div>
 
-<!-- SPREADS -->
-<div id="spreads" class="page">
-<h1>Live Spreads</h1>
-
-<table>
-<tr><th>Pair</th><th>Spread</th></tr>
-<tr><td>EURUSD</td><td>0.1</td></tr>
-<tr><td>GBPUSD</td><td>0.3</td></tr>
-<tr><td>XAUUSD</td><td>0.5</td></tr>
-</table>
+<p>We aim to deliver fast execution, deep liquidity access, and advanced trading environments for global traders.</p>
 
 <br>
-<button class="btn" onclick="comingSoon()">Open Account</button>
-</div>
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="page">
-<h1>Client Dashboard (Preview)</h1>
-
-<div class="dashboard">
-<div class="box"><h3>Balance</h3><p>$0.00</p></div>
-<div class="box"><h3>Equity</h3><p>$0.00</p></div>
-<div class="box"><h3>Trades</h3><p>0</p></div>
-<div class="box"><h3>Profit</h3><p>$0.00</p></div>
+<p><b>Headquarters:</b> South Africa 🇿🇦</p>
 </div>
+</section>
+
+<!-- LEGAL -->
+<section class="section" id="legal">
+<h2>Legal & Risk</h2>
+
+<div class="info">
+
+<h3>Terms & Conditions</h3>
+<p>By using BluePeak Markets services, you agree to follow all trading rules and platform policies. Trading involves risk and is subject to market volatility.</p>
 
 <br>
-<button class="btn" onclick="comingSoon()">Login</button>
-</div>
 
-<!-- COMING SOON -->
-<div id="coming">
+<h3>Risk Disclaimer</h3>
+<p>Trading Forex and CFDs carries a high level of risk and may not be suitable for all investors. You may lose all of your invested capital. Only trade with money you can afford to lose.</p>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+© 2026 BluePeak Markets | All Rights Reserved
+</footer>
+
+<!-- POPUP -->
+<div id="popup">
 <div>
 <h1>🚀 Coming Soon</h1>
-<p>BluePeak Markets is preparing for launch.</p>
-<p>Please be patient.</p>
+<p>Account registration is not yet active.</p>
+<p>Please be patient while we finalize the platform.</p>
 <br>
-<button class="btn" onclick="closeComing()">Back</button>
+<button class="btn" onclick="closePopup()">Close</button>
 </div>
 </div>
 
 <script>
-
-/* PAGE SWITCH */
-function showPage(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(page).classList.add('active');
+function openPopup(){
+    document.getElementById("popup").style.display="flex";
 }
 
-/* COMING SOON */
-function comingSoon() {
-    document.getElementById("coming").style.display = "flex";
+function closePopup(){
+    document.getElementById("popup").style.display="none";
 }
-
-function closeComing() {
-    document.getElementById("coming").style.display = "none";
-}
-
-/* WAITLIST */
-function joinWaitlist() {
-    let email = document.getElementById("email").value;
-
-    if(email === "") {
-        alert("Enter your email");
-        return;
-    }
-
-    alert("You're on the VIP waitlist 🔥");
-
-    let emails = JSON.parse(localStorage.getItem("emails") || "[]");
-    emails.push(email);
-    localStorage.setItem("emails", JSON.stringify(emails));
-}
-
-/* COUNTDOWN */
-let countDownDate = new Date();
-countDownDate.setMonth(countDownDate.getMonth() + 6);
-
-setInterval(function() {
-    let now = new Date().getTime();
-    let distance = countDownDate - now;
-
-    let days = Math.floor(distance / (1000*60*60*24));
-    let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-    let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-    let seconds = Math.floor((distance%(1000*60))/1000);
-
-    document.getElementById("countdown").innerHTML =
-    "Grand Opening In: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-
-}, 1000);
-
 </script>
 
 </body>
-    </html>
+</html>
