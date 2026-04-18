@@ -8,56 +8,63 @@
 <style>
 body{
     margin:0;
-    font-family:Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     background:#000;
     color:#fff;
     overflow-x:hidden;
 }
 
-/* SOFT BACKGROUND GLOW */
+/* ===== CINEMATIC BACKGROUND ===== */
 .bg{
     position:fixed;
-    width:100%;
-    height:100%;
+    inset:0;
     background:
-    radial-gradient(circle at 20% 20%, rgba(255,0,51,0.12), transparent 40%),
-    radial-gradient(circle at 80% 60%, rgba(255,255,255,0.04), transparent 50%);
-    z-index:-1;
+    radial-gradient(circle at 15% 20%, rgba(255,0,51,0.10), transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255,0,51,0.05), transparent 60%);
+    filter:blur(0px);
+    z-index:-2;
+    animation:slowMove 18s ease-in-out infinite alternate;
 }
 
-/* HEADER */
+@keyframes slowMove{
+    0%{transform:scale(1) translateY(0)}
+    100%{transform:scale(1.1) translateY(-20px)}
+}
+
+/* ===== TOP BAR ===== */
 header{
     display:flex;
     justify-content:space-between;
-    padding:22px 70px;
+    padding:22px 80px;
     position:sticky;
     top:0;
-    background:rgba(0,0,0,0.7);
-    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(14px);
     border-bottom:1px solid rgba(255,255,255,0.05);
     z-index:100;
 }
 
 .logo{
-    color:#ff0033;
     font-weight:600;
     letter-spacing:1px;
+    color:#ff0033;
 }
 
 nav a{
     margin:0 14px;
     color:#aaa;
     text-decoration:none;
-    font-size:14px;
+    font-size:13px;
 }
 
 nav a:hover{
     color:#fff;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
-    height:90vh;
+    height:92vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -67,41 +74,55 @@ nav a:hover{
 }
 
 .hero h1{
-    font-size:54px;
+    font-size:56px;
     font-weight:500;
-    max-width:900px;
+    max-width:950px;
     line-height:1.2;
 }
 
 .hero span{color:#ff0033}
 
 .hero p{
-    margin-top:15px;
+    margin-top:18px;
     color:#aaa;
     font-size:15px;
+    max-width:600px;
 }
 
-/* BUTTON */
+/* ===== CTA ===== */
 .btn{
-    margin-top:28px;
-    padding:13px 34px;
-    background:rgba(255,0,51,0.9);
-    border:1px solid rgba(255,0,51,0.3);
-    color:white;
-    border-radius:10px;
+    margin-top:30px;
+    padding:14px 38px;
+    border-radius:12px;
+    border:1px solid rgba(255,0,51,0.25);
+    background:rgba(255,0,51,0.85);
+    color:#fff;
     cursor:pointer;
-    transition:0.4s;
+    transition:0.35s;
     font-size:14px;
 }
 
 .btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 10px 25px rgba(255,0,51,0.15);
+    box-shadow:0 20px 40px rgba(255,0,51,0.15);
 }
 
-/* SECTIONS (LUXURY SPACING) */
+/* ===== FLOATING TICKER ===== */
+.ticker{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    padding:18px;
+    background:rgba(255,255,255,0.02);
+    border-top:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    color:#888;
+    font-size:12px;
+}
+
+/* ===== SECTIONS ===== */
 .section{
-    padding:160px 70px;
+    padding:180px 90px;
     opacity:0;
     transform:translateY(40px);
     transition:1s ease;
@@ -112,10 +133,9 @@ nav a:hover{
     transform:translateY(0);
 }
 
-/* TITLE */
 .title{
     text-align:center;
-    margin-bottom:70px;
+    margin-bottom:80px;
 }
 
 .title h2{
@@ -123,7 +143,7 @@ nav a:hover{
     letter-spacing:1px;
 }
 
-/* TRUST */
+/* ===== TRUST CARDS ===== */
 .trust{
     display:flex;
     justify-content:center;
@@ -132,15 +152,15 @@ nav a:hover{
 }
 
 .trust div{
-    color:#aaa;
-    font-size:14px;
-    padding:10px 20px;
-    border:1px solid rgba(255,255,255,0.05);
-    border-radius:12px;
+    padding:16px 26px;
+    border-radius:14px;
     background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.06);
+    color:#aaa;
+    font-size:13px;
 }
 
-/* WHY */
+/* ===== WHY GRID ===== */
 .grid{
     display:flex;
     justify-content:center;
@@ -149,21 +169,21 @@ nav a:hover{
 }
 
 .box{
-    width:240px;
-    padding:28px;
+    width:250px;
+    padding:30px;
     background:rgba(255,255,255,0.02);
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:14px;
+    border-radius:16px;
     color:#bbb;
     transition:0.4s;
 }
 
 .box:hover{
-    transform:translateY(-6px);
-    border-color:rgba(255,0,51,0.4);
+    transform:translateY(-8px);
+    border-color:rgba(255,0,51,0.35);
 }
 
-/* ACCOUNTS */
+/* ===== ACCOUNTS ===== */
 .cards{
     display:flex;
     justify-content:center;
@@ -172,22 +192,22 @@ nav a:hover{
 }
 
 .card{
-    width:260px;
-    padding:28px;
+    width:270px;
+    padding:30px;
     background:rgba(255,255,255,0.02);
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:14px;
+    border-radius:16px;
     transition:0.4s;
 }
 
 .card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(255,0,51,0.4);
+    transform:translateY(-10px);
+    border-color:rgba(255,0,51,0.35);
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
-    padding:80px;
+    padding:90px;
     text-align:center;
     color:#666;
     border-top:1px solid rgba(255,255,255,0.05);
@@ -212,20 +232,28 @@ footer{
 
 <!-- HERO -->
 <section class="hero" id="home">
-<h1>Trade Global Markets with <span>Institutional Precision</span></h1>
-<p>Raw spreads • Deep liquidity • Ultra-fast execution environment</p>
+<h1>Institutional Trading. <span>Refined for Precision.</span></h1>
+<p>BluePeak Markets delivers deep liquidity access, ultra-fast execution, and a modern trading environment built for global markets.</p>
 <button class="btn">Get Notified</button>
 </section>
+
+<!-- TICKER -->
+<div class="ticker">
+<span>EURUSD 1.08 ▲</span>
+<span>XAUUSD 2340 ▲</span>
+<span>NAS100 18500 ▲</span>
+<span>GBPJPY 190.12 ▼</span>
+</div>
 
 <!-- TRUST -->
 <section class="section" id="trust">
 <div class="title"><h2>Institutional Trading Conditions</h2></div>
 
 <div class="trust">
-<div>⚡ 0.0 Spread Access</div>
-<div>💰 Deep Liquidity</div>
-<div>📊 ECN Execution</div>
-<div>🔐 Secure Infrastructure</div>
+<div>0.0 Spread Environment</div>
+<div>Deep Liquidity Access</div>
+<div>ECN Execution Model</div>
+<div>Secure Client Infrastructure</div>
 </div>
 </section>
 
@@ -234,16 +262,16 @@ footer{
 <div class="title"><h2>Why BluePeak Markets</h2></div>
 
 <div class="grid">
-<div class="box">Advanced execution systems</div>
-<div class="box">Global liquidity network</div>
-<div class="box">Institutional-grade environment</div>
-<div class="box">Professional risk framework</div>
+<div class="box">Institutional-grade execution systems</div>
+<div class="box">Global liquidity network access</div>
+<div class="box">Advanced trading infrastructure</div>
+<div class="box">Risk-managed environment</div>
 </div>
 </section>
 
 <!-- ACCOUNTS -->
 <section class="section" id="accounts">
-<div class="title"><h2>Account Types</h2></div>
+<div class="title"><h2>Account Architecture</h2></div>
 
 <div class="cards">
 <div class="card">Micro Account</div>
@@ -255,23 +283,22 @@ footer{
 
 <!-- FOOTER -->
 <footer>
-© 2026 BluePeak Markets | Institutional Trading Platform | South Africa 🇿🇦
+© 2026 BluePeak Markets | Institutional Trading Infrastructure | South Africa 🇿🇦
 </footer>
 
 <script>
-// SCROLL REVEAL (LUXURY FEEL)
-const sections = document.querySelectorAll('.section');
+const sections=document.querySelectorAll('.section');
 
-window.addEventListener('scroll', () => {
-    sections.forEach(sec => {
-        const top = window.scrollY;
-        const offset = sec.offsetTop - 500;
-        const height = sec.offsetHeight;
+window.addEventListener('scroll',()=>{
+sections.forEach(sec=>{
+const top=window.scrollY;
+const offset=sec.offsetTop-600;
+const height=sec.offsetHeight;
 
-        if(top > offset && top < offset + height){
-            sec.classList.add('show');
-        }
-    });
+if(top>offset && top<offset+height){
+sec.classList.add('show');
+}
+});
 });
 </script>
 
