@@ -8,47 +8,39 @@
 <style>
 body{
     margin:0;
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family:"Segoe UI", Arial, sans-serif;
     background:#000;
     color:#fff;
     overflow-x:hidden;
 }
 
-/* ===== CINEMATIC BACKGROUND ===== */
+/* BACKGROUND DEPTH */
 .bg{
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at 15% 20%, rgba(255,0,51,0.10), transparent 35%),
-    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(255,0,51,0.05), transparent 60%);
-    filter:blur(0px);
+    radial-gradient(circle at 20% 20%, rgba(255,0,51,0.12), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 50%);
     z-index:-2;
-    animation:slowMove 18s ease-in-out infinite alternate;
 }
 
-@keyframes slowMove{
-    0%{transform:scale(1) translateY(0)}
-    100%{transform:scale(1.1) translateY(-20px)}
-}
-
-/* ===== TOP BAR ===== */
+/* HEADER */
 header{
     display:flex;
     justify-content:space-between;
-    padding:22px 80px;
+    padding:18px 90px;
     position:sticky;
     top:0;
     background:rgba(0,0,0,0.65);
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(16px);
     border-bottom:1px solid rgba(255,255,255,0.05);
     z-index:100;
 }
 
 .logo{
+    color:#ff0033;
     font-weight:600;
     letter-spacing:1px;
-    color:#ff0033;
 }
 
 nav a{
@@ -58,11 +50,9 @@ nav a{
     font-size:13px;
 }
 
-nav a:hover{
-    color:#fff;
-}
+nav a:hover{color:#fff}
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
     height:92vh;
     display:flex;
@@ -74,26 +64,26 @@ nav a:hover{
 }
 
 .hero h1{
-    font-size:56px;
+    font-size:60px;
+    max-width:1000px;
     font-weight:500;
-    max-width:950px;
-    line-height:1.2;
+    line-height:1.15;
 }
 
 .hero span{color:#ff0033}
 
 .hero p{
-    margin-top:18px;
+    margin-top:16px;
     color:#aaa;
-    font-size:15px;
-    max-width:600px;
+    max-width:650px;
+    font-size:14px;
 }
 
-/* ===== CTA ===== */
+/* CTA */
 .btn{
-    margin-top:30px;
-    padding:14px 38px;
-    border-radius:12px;
+    margin-top:28px;
+    padding:14px 40px;
+    border-radius:14px;
     border:1px solid rgba(255,0,51,0.25);
     background:rgba(255,0,51,0.85);
     color:#fff;
@@ -103,26 +93,26 @@ nav a:hover{
 }
 
 .btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 20px 40px rgba(255,0,51,0.15);
+    transform:translateY(-3px);
+    box-shadow:0 25px 50px rgba(255,0,51,0.15);
 }
 
-/* ===== FLOATING TICKER ===== */
+/* MARKET TICKER */
 .ticker{
     display:flex;
     justify-content:center;
-    gap:30px;
-    padding:18px;
-    background:rgba(255,255,255,0.02);
+    gap:40px;
+    padding:14px;
+    font-size:12px;
+    color:#888;
     border-top:1px solid rgba(255,255,255,0.05);
     border-bottom:1px solid rgba(255,255,255,0.05);
-    color:#888;
-    font-size:12px;
+    background:rgba(255,255,255,0.02);
 }
 
-/* ===== SECTIONS ===== */
+/* SECTION SYSTEM */
 .section{
-    padding:180px 90px;
+    padding:140px 90px;
     opacity:0;
     transform:translateY(40px);
     transition:1s ease;
@@ -135,45 +125,45 @@ nav a:hover{
 
 .title{
     text-align:center;
-    margin-bottom:80px;
+    margin-bottom:60px;
 }
 
 .title h2{
     font-weight:500;
-    letter-spacing:1px;
+    letter-spacing:0.5px;
 }
 
-/* ===== TRUST CARDS ===== */
+/* TRUST */
 .trust{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:50px;
+    gap:22px;
 }
 
 .trust div{
-    padding:16px 26px;
-    border-radius:14px;
+    padding:14px 22px;
+    border-radius:12px;
     background:rgba(255,255,255,0.02);
     border:1px solid rgba(255,255,255,0.06);
     color:#aaa;
     font-size:13px;
 }
 
-/* ===== WHY GRID ===== */
+/* WHY GRID */
 .grid{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:35px;
+    gap:22px;
 }
 
 .box{
     width:250px;
-    padding:30px;
+    padding:26px;
+    border-radius:14px;
     background:rgba(255,255,255,0.02);
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:16px;
     color:#bbb;
     transition:0.4s;
 }
@@ -183,20 +173,20 @@ nav a:hover{
     border-color:rgba(255,0,51,0.35);
 }
 
-/* ===== ACCOUNTS ===== */
+/* ACCOUNTS */
 .cards{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:35px;
+    gap:22px;
 }
 
 .card{
-    width:270px;
-    padding:30px;
+    width:260px;
+    padding:28px;
+    border-radius:14px;
     background:rgba(255,255,255,0.02);
     border:1px solid rgba(255,255,255,0.06);
-    border-radius:16px;
     transition:0.4s;
 }
 
@@ -205,13 +195,13 @@ nav a:hover{
     border-color:rgba(255,0,51,0.35);
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
-    padding:90px;
+    padding:70px;
     text-align:center;
     color:#666;
     border-top:1px solid rgba(255,255,255,0.05);
-    font-size:13px;
+    font-size:12px;
 }
 </style>
 </head>
@@ -232,17 +222,17 @@ footer{
 
 <!-- HERO -->
 <section class="hero" id="home">
-<h1>Institutional Trading. <span>Refined for Precision.</span></h1>
-<p>BluePeak Markets delivers deep liquidity access, ultra-fast execution, and a modern trading environment built for global markets.</p>
+<h1>Global Markets. <span>Institutional Precision.</span></h1>
+<p>Deep liquidity access, ultra-fast execution, and a refined trading infrastructure built for professional traders worldwide.</p>
 <button class="btn">Get Notified</button>
 </section>
 
 <!-- TICKER -->
 <div class="ticker">
-<span>EURUSD 1.08 ▲</span>
-<span>XAUUSD 2340 ▲</span>
-<span>NAS100 18500 ▲</span>
-<span>GBPJPY 190.12 ▼</span>
+<span>EURUSD 1.083 ▲</span>
+<span>XAUUSD 2342 ▲</span>
+<span>NAS100 18520 ▲</span>
+<span>GBPJPY 190.10 ▼</span>
 </div>
 
 <!-- TRUST -->
@@ -253,7 +243,7 @@ footer{
 <div>0.0 Spread Environment</div>
 <div>Deep Liquidity Access</div>
 <div>ECN Execution Model</div>
-<div>Secure Client Infrastructure</div>
+<div>Secure Fund Architecture</div>
 </div>
 </section>
 
@@ -262,8 +252,8 @@ footer{
 <div class="title"><h2>Why BluePeak Markets</h2></div>
 
 <div class="grid">
-<div class="box">Institutional-grade execution systems</div>
-<div class="box">Global liquidity network access</div>
+<div class="box">Institutional execution systems</div>
+<div class="box">Global liquidity providers</div>
 <div class="box">Advanced trading infrastructure</div>
 <div class="box">Risk-managed environment</div>
 </div>
@@ -271,7 +261,7 @@ footer{
 
 <!-- ACCOUNTS -->
 <section class="section" id="accounts">
-<div class="title"><h2>Account Architecture</h2></div>
+<div class="title"><h2>Account Structure</h2></div>
 
 <div class="cards">
 <div class="card">Micro Account</div>
