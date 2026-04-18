@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BluePeak Markets</title>
+<title>BluePeak Markets | Investor Platform</title>
 
 <style>
 body{
@@ -14,26 +14,26 @@ body{
     overflow-x:hidden;
 }
 
-/* BACKGROUND DEPTH */
+/* ===== BACKGROUND (SUBTLE INSTITUTIONAL DEPTH) ===== */
 .bg{
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at 20% 20%, rgba(255,0,51,0.12), transparent 45%),
-    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.04), transparent 50%);
+    radial-gradient(circle at 15% 20%, rgba(255,0,51,0.08), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.03), transparent 50%);
     z-index:-2;
 }
 
-/* HEADER */
+/* ===== HEADER (INVESTOR STYLE) ===== */
 header{
     display:flex;
     justify-content:space-between;
     padding:18px 90px;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.05);
     position:sticky;
     top:0;
-    background:rgba(0,0,0,0.65);
-    backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(255,255,255,0.05);
     z-index:100;
 }
 
@@ -44,7 +44,7 @@ header{
 }
 
 nav a{
-    margin:0 14px;
+    margin:0 12px;
     color:#aaa;
     text-decoration:none;
     font-size:13px;
@@ -52,7 +52,7 @@ nav a{
 
 nav a:hover{color:#fff}
 
-/* HERO */
+/* ===== HERO (INVESTOR POSITIONING) ===== */
 .hero{
     height:92vh;
     display:flex;
@@ -64,10 +64,10 @@ nav a:hover{color:#fff}
 }
 
 .hero h1{
-    font-size:60px;
+    font-size:58px;
     max-width:1000px;
     font-weight:500;
-    line-height:1.15;
+    line-height:1.2;
 }
 
 .hero span{color:#ff0033}
@@ -75,7 +75,7 @@ nav a:hover{color:#fff}
 .hero p{
     margin-top:16px;
     color:#aaa;
-    max-width:650px;
+    max-width:700px;
     font-size:14px;
 }
 
@@ -83,12 +83,12 @@ nav a:hover{color:#fff}
 .btn{
     margin-top:28px;
     padding:14px 40px;
-    border-radius:14px;
-    border:1px solid rgba(255,0,51,0.25);
+    border-radius:12px;
     background:rgba(255,0,51,0.85);
+    border:1px solid rgba(255,0,51,0.25);
     color:#fff;
     cursor:pointer;
-    transition:0.35s;
+    transition:0.3s;
     font-size:14px;
 }
 
@@ -97,35 +97,43 @@ nav a:hover{color:#fff}
     box-shadow:0 25px 50px rgba(255,0,51,0.15);
 }
 
-/* MARKET TICKER */
-.ticker{
+/* ===== KPI BAR (INVESTOR METRICS) ===== */
+.kpis{
     display:flex;
     justify-content:center;
+    flex-wrap:wrap;
     gap:40px;
-    padding:14px;
-    font-size:12px;
-    color:#888;
+    padding:25px;
     border-top:1px solid rgba(255,255,255,0.05);
     border-bottom:1px solid rgba(255,255,255,0.05);
     background:rgba(255,255,255,0.02);
 }
 
-/* SECTION SYSTEM */
+.kpi{
+    text-align:center;
+}
+
+.kpi h3{
+    margin:0;
+    color:#fff;
+    font-size:18px;
+}
+
+.kpi p{
+    margin:4px 0 0 0;
+    color:#888;
+    font-size:12px;
+}
+
+/* ===== SECTIONS ===== */
 .section{
-    padding:140px 90px;
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s ease;
+    padding:120px 90px;
 }
 
-.section.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
+/* TITLE */
 .title{
     text-align:center;
-    margin-bottom:60px;
+    margin-bottom:50px;
 }
 
 .title h2{
@@ -133,16 +141,16 @@ nav a:hover{color:#fff}
     letter-spacing:0.5px;
 }
 
-/* TRUST */
+/* ===== TRUST / COMPLIANCE ===== */
 .trust{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:22px;
+    gap:20px;
 }
 
 .trust div{
-    padding:14px 22px;
+    padding:14px 20px;
     border-radius:12px;
     background:rgba(255,255,255,0.02);
     border:1px solid rgba(255,255,255,0.06);
@@ -150,35 +158,12 @@ nav a:hover{color:#fff}
     font-size:13px;
 }
 
-/* WHY GRID */
-.grid{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:22px;
-}
-
-.box{
-    width:250px;
-    padding:26px;
-    border-radius:14px;
-    background:rgba(255,255,255,0.02);
-    border:1px solid rgba(255,255,255,0.06);
-    color:#bbb;
-    transition:0.4s;
-}
-
-.box:hover{
-    transform:translateY(-8px);
-    border-color:rgba(255,0,51,0.35);
-}
-
-/* ACCOUNTS */
+/* ===== PRODUCT LAYERS (ACCOUNTS) ===== */
 .cards{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:22px;
+    gap:20px;
 }
 
 .card{
@@ -187,17 +172,17 @@ nav a:hover{color:#fff}
     border-radius:14px;
     background:rgba(255,255,255,0.02);
     border:1px solid rgba(255,255,255,0.06);
-    transition:0.4s;
+    transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-10px);
+    transform:translateY(-8px);
     border-color:rgba(255,0,51,0.35);
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
-    padding:70px;
+    padding:80px;
     text-align:center;
     color:#666;
     border-top:1px solid rgba(255,255,255,0.05);
@@ -213,84 +198,71 @@ footer{
 <header>
 <div class="logo">BluePeak Markets</div>
 <nav>
-<a href="#home">Home</a>
-<a href="#trust">Trust</a>
-<a href="#why">Why</a>
-<a href="#accounts">Accounts</a>
+<a href="#home">Overview</a>
+<a href="#kpi">Metrics</a>
+<a href="#trust">Compliance</a>
+<a href="#products">Accounts</a>
 </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="home">
-<h1>Global Markets. <span>Institutional Precision.</span></h1>
-<p>Deep liquidity access, ultra-fast execution, and a refined trading infrastructure built for professional traders worldwide.</p>
-<button class="btn">Get Notified</button>
+<h1>Institutional Fintech Infrastructure for <span>Global Market Access</span></h1>
+<p>BluePeak Markets is building a next-generation trading infrastructure focused on liquidity access, execution efficiency, and scalable financial systems.</p>
+<button class="btn">Request Early Access</button>
 </section>
 
-<!-- TICKER -->
-<div class="ticker">
-<span>EURUSD 1.083 ▲</span>
-<span>XAUUSD 2342 ▲</span>
-<span>NAS100 18520 ▲</span>
-<span>GBPJPY 190.10 ▼</span>
+<!-- KPI (INVESTOR METRICS) -->
+<div class="kpis" id="kpi">
+<div class="kpi">
+<h3>99.9%</h3>
+<p>Uptime Infrastructure</p>
+</div>
+
+<div class="kpi">
+<h3>40ms</h3>
+<p>Execution Layer</p>
+</div>
+
+<div class="kpi">
+<h3>Global</h3>
+<p>Liquidity Coverage</p>
+</div>
+
+<div class="kpi">
+<h3>ECN</h3>
+<p>Execution Model</p>
+</div>
 </div>
 
 <!-- TRUST -->
 <section class="section" id="trust">
-<div class="title"><h2>Institutional Trading Conditions</h2></div>
+<div class="title"><h2>Compliance & Infrastructure Standards</h2></div>
 
 <div class="trust">
-<div>0.0 Spread Environment</div>
-<div>Deep Liquidity Access</div>
-<div>ECN Execution Model</div>
-<div>Secure Fund Architecture</div>
+<div>Secure Client Fund Architecture</div>
+<div>Institutional Risk Framework</div>
+<div>Liquidity Aggregation Layer</div>
+<div>Execution Transparency Model</div>
 </div>
 </section>
 
-<!-- WHY -->
-<section class="section" id="why">
-<div class="title"><h2>Why BluePeak Markets</h2></div>
-
-<div class="grid">
-<div class="box">Institutional execution systems</div>
-<div class="box">Global liquidity providers</div>
-<div class="box">Advanced trading infrastructure</div>
-<div class="box">Risk-managed environment</div>
-</div>
-</section>
-
-<!-- ACCOUNTS -->
-<section class="section" id="accounts">
-<div class="title"><h2>Account Structure</h2></div>
+<!-- PRODUCTS -->
+<section class="section" id="products">
+<div class="title"><h2>Account Infrastructure</h2></div>
 
 <div class="cards">
-<div class="card">Micro Account</div>
-<div class="card">Standard Account</div>
-<div class="card">Synthetic Account</div>
-<div class="card">$100 Bonus Account</div>
+<div class="card">Micro Account Layer</div>
+<div class="card">Standard Execution Layer</div>
+<div class="card">Synthetic Market Layer</div>
+<div class="card">Capital Bonus Layer</div>
 </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-© 2026 BluePeak Markets | Institutional Trading Infrastructure | South Africa 🇿🇦
+© 2026 BluePeak Markets | Investor Infrastructure Platform | South Africa 🇿🇦
 </footer>
-
-<script>
-const sections=document.querySelectorAll('.section');
-
-window.addEventListener('scroll',()=>{
-sections.forEach(sec=>{
-const top=window.scrollY;
-const offset=sec.offsetTop-600;
-const height=sec.offsetHeight;
-
-if(top>offset && top<offset+height){
-sec.classList.add('show');
-}
-});
-});
-</script>
 
 </body>
 </html>
