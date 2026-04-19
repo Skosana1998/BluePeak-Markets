@@ -8,74 +8,75 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #070b1a;
-  color: #fff;
+  color: white;
 }
 
-/* HEADER */
 header {
   text-align: center;
   padding: 15px;
   background: linear-gradient(90deg, #004cff, #00c3ff);
   font-weight: bold;
-  font-size: 20px;
 }
 
-/* GRID */
+/* SECTION */
 .container {
-  padding: 15px;
+  padding: 12px;
 }
 
 h3 {
-  margin: 10px 0;
   color: #00c3ff;
+  margin: 10px 0;
 }
 
-/* SMALL CARDS */
+/* SMALL GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
+/* CARD */
 .card {
   background: #111a33;
   padding: 10px;
   border-radius: 10px;
   text-align: center;
+  font-size: 13px;
   cursor: pointer;
   border: 1px solid #1f2b55;
-  font-size: 13px;
   transition: 0.2s;
 }
 
-.card:hover {
+/* ACTIVE STATE (IMPORTANT FIX) */
+.active {
+  background: #003cff !important;
+  border: 1px solid #00c3ff;
   transform: scale(1.03);
+}
+
+.card:hover {
   border-color: #00c3ff;
 }
 
-.selected {
-  background: #003cff;
-}
-
-/* TAG */
+/* POPULAR TAG */
 .popular {
   background: gold;
   color: black;
   font-size: 10px;
   padding: 2px 5px;
   border-radius: 5px;
-  display: inline-block;
   margin-top: 5px;
+  display: inline-block;
 }
 
 /* RULE BOX */
 .rules {
-  margin-top: 10px;
   background: #0d1630;
   padding: 10px;
   border-radius: 10px;
+  margin-top: 10px;
   font-size: 12px;
   line-height: 1.5;
 }
@@ -90,18 +91,17 @@ h3 {
   color: black;
   font-weight: bold;
   border-radius: 8px;
-  cursor: pointer;
 }
 
 /* POPUP */
 .popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
   display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.8);
   align-items: center;
   justify-content: center;
 }
@@ -110,8 +110,8 @@ h3 {
   background: #111a33;
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
   width: 80%;
+  text-align: center;
 }
 
 input {
@@ -135,45 +135,37 @@ input {
 
 <div class="container">
 
-<!-- STEP TYPE -->
-<h3>Model Type</h3>
+<!-- MODEL -->
+<h3>Account Model</h3>
 <div class="grid">
-  <div class="card" onclick="selectModel('1 Step')">1 Step</div>
-  <div class="card" onclick="selectModel('2 Step')">2 Step</div>
-  <div class="card" onclick="selectModel('Instant')">Instant</div>
+  <div class="card" onclick="select(this,'model','1 Step')">1 Step</div>
+  <div class="card" onclick="select(this,'model','2 Step')">2 Step</div>
+  <div class="card" onclick="select(this,'model','Instant')">Instant</div>
 </div>
 
 <!-- PLATFORM -->
 <h3>Platform</h3>
 <div class="grid">
-  <div class="card" onclick="selectPlatform('MT4')">MetaTrader 4</div>
-  <div class="card" onclick="selectPlatform('MT5')">
+  <div class="card" onclick="select(this,'platform','MT4')">MetaTrader 4</div>
+  <div class="card" onclick="select(this,'platform','MT5')">
     MetaTrader 5
     <div class="popular">Most Popular</div>
   </div>
 </div>
 
-<!-- ACCOUNT SIZE -->
-<h3>Account Size</h3>
+<!-- CHALLENGES (RESTORED CONTENT) -->
+<h3>Challenge Sizes</h3>
 <div class="grid">
-
-  <div class="card" onclick="selectAccount('5K')">R5,000</div>
-
-  <div class="card" onclick="selectAccount('25K')">R25,000</div>
-
-  <div class="card" onclick="selectAccount('50K')">R50,000</div>
-
-  <div class="card" onclick="selectAccount('100K')">
+  <div class="card" onclick="select(this,'account','5K')">R5,000</div>
+  <div class="card" onclick="select(this,'account','25K')">R25,000</div>
+  <div class="card" onclick="select(this,'account','50K')">R50,000</div>
+  <div class="card" onclick="select(this,'account','100K')">
     R100,000
     <div class="popular">Most Popular</div>
   </div>
-
-  <div class="card" onclick="selectAccount('200K')">R200,000</div>
-
-  <div class="card" onclick="selectAccount('500K')">R500,000</div>
-
-  <div class="card" onclick="selectAccount('1M')">R1,000,000</div>
-
+  <div class="card" onclick="select(this,'account','200K')">R200,000</div>
+  <div class="card" onclick="select(this,'account','500K')">R500,000</div>
+  <div class="card" onclick="select(this,'account','1M')">R1,000,000</div>
 </div>
 
 <!-- RULES -->
@@ -188,123 +180,91 @@ Select options to view rules...
 <!-- POPUP -->
 <div class="popup" id="popup">
   <div class="popup-box">
-    <h3>🚀 Coming Soon</h3>
-    <p>This platform is not launched yet.</p>
-
+    <h3>Coming Soon 🚀</h3>
+    <p>Not launched yet</p>
     <p class="small">Get notified when we go live</p>
-
-    <input type="text" placeholder="Enter Email / WhatsApp">
+    <input type="text" placeholder="Email / WhatsApp">
     <button class="btn">Get Notified</button>
-
-    <button class="btn" style="background:red;margin-top:10px;" onclick="closePopup()">
-      Close
-    </button>
+    <button class="btn" style="background:red" onclick="closePopup()">Close</button>
   </div>
 </div>
 
 <script>
 
-let model = "";
-let platform = "";
-let account = "";
+let selected = {
+  model: "",
+  platform: "",
+  account: ""
+};
 
-setTimeout(() => {
-  document.getElementById("popup").style.display = "flex";
-}, 3000);
+/* FIXED SELECTION SYSTEM (STAYS HIGHLIGHTED) */
+function select(el, type, value){
 
-/* SELECTION */
-function selectModel(v){
-  model = v;
-  updateRules();
-}
+  selected[type] = value;
 
-function selectPlatform(v){
-  platform = v;
-  updateRules();
-}
+  document.querySelectorAll(`[data-type='${type}']`).forEach(e=>{
+    e.classList.remove("active");
+  });
 
-function selectAccount(v){
-  account = v;
+  el.classList.add("active");
+  el.setAttribute("data-type", type);
+
   updateRules();
 }
 
 /* RULE ENGINE */
 function updateRules(){
 
-let rules = "";
+let r = "";
 
-if(model === "1 Step"){
-rules = `
-<b>1 Step Model</b><br>
-Phase 1 Target: 10%<br>
-Max Daily Loss: 4%<br>
-Leverage: 1:500<br>
-Profit Split: up to 80%<br>
-Daily Payouts: Yes
-`;
+if(selected.model === "1 Step"){
+r += "1 Step Model<br>Target: 10%<br>Max Daily Loss: 4%<br>Profit Split: up to 80%<br>";
 }
 
-if(model === "2 Step"){
-rules = `
-<b>2 Step Model</b><br>
-Phase 1 Target: 10%<br>
-Phase 2 Target: 4%<br>
-Max Daily Loss: 5%<br>
-Leverage: 1:500<br>
-Profit Split: 85% - 90%<br>
-Daily Payouts: Yes
-`;
+if(selected.model === "2 Step"){
+r += "2 Step Model<br>Phase 1: 10%<br>Phase 2: 4%<brMax Daily Loss: 5%<br>Profit Split: 85-90%<br>";
 }
 
-if(model === "Instant"){
-rules = `
-<b>Instant Account</b><br>
-Max Daily Loss: 3%<br>
-Leverage: 1:500<br>
-Profit Split: 75%<br>
-Daily Payouts: Yes
-`;
+if(selected.model === "Instant"){
+r += "Instant Account<br>Max Loss: 3%<br>Profit Split: 75%<br>";
 }
 
-if(platform){
-rules += `<br><br><b>Platform:</b> ${platform}`;
+if(selected.platform){
+r += "<br>Platform: " + selected.platform;
 }
 
-if(account){
-rules += `<br><b>Account:</b> ${account}`;
+if(selected.account){
+r += "<br>Account: " + selected.account;
 }
 
-document.getElementById("rulesBox").innerHTML = rules;
-
+document.getElementById("rulesBox").innerHTML = r || "Select options to view rules...";
 }
 
-/* FINAL STEP (PRICE REVEAL) */
+/* FINAL PRICE REVEAL */
 function finalStep(){
 
-if(!model || !platform || !account){
-alert("Select all options first");
-return;
-}
-
-/* hidden pricing logic */
 let price = "";
 
-if(account === "5K") price = "R350";
-if(account === "25K") price = "R500";
-if(account === "50K") price = "R750";
-if(account === "100K") price = "R1100";
-if(account === "200K") price = "R2000";
-if(account === "500K") price = "R5400";
-if(account === "1M") price = "R65000";
-
-document.getElementById("rulesBox").innerHTML += `
-<br><br><b>FINAL PRICE:</b> ${price}
-`;
-
+switch(selected.account){
+case "5K": price="R350"; break;
+case "25K": price="R500"; break;
+case "50K": price="R750"; break;
+case "100K": price="R1100"; break;
+case "200K": price="R2000"; break;
+case "500K": price="R5400"; break;
+case "1M": price="R65000"; break;
 }
 
+document.getElementById("rulesBox").innerHTML += "<br><br><b>Price:</b> " + price;
+}
+
+/* POPUP */
+setTimeout(()=>{
+document.getElementById("popup").style.display="flex";
+},3000);
+
 function closePopup(){
-document.getElementById("popup").style.display = "none";
+document.getElementById("popup").style.display="none";
 }
 
 </script>
