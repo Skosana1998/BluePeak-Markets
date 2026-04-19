@@ -1,211 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BluePeak Markets | Prop Firm</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BluePeak Markets | Premium Prop Firm</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#050b1a;
-  --blue:#3aa0ff;
-  --cyan:#37d6ff;
-  --text:#eaf2ff;
-  --muted:#9fb6d1;
+  --bg:#050714;
   --card:rgba(255,255,255,0.05);
   --stroke:rgba(255,255,255,0.08);
+  --text:#ffffff;
+  --muted:#a9b4d0;
+  --blue:#3b82f6;
+  --blue2:#1d4ed8;
+  --gold:#f5c542;
+  --green:#2ef7a3;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}
 body{
-  margin:0;
-  font-family:Inter;
-  background: radial-gradient(circle at top,#0a1c3a,#050b1a);
+  background:radial-gradient(circle at top,#0a1030,#050714);
   color:var(--text);
+  overflow-x:hidden;
 }
 
 .container{width:min(1200px,92%);margin:auto}
 
+/* HEADER */
 header{
-  position:sticky;top:0;
-  background:rgba(5,11,26,0.8);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--stroke);
-}
-
-.nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 0;
+  padding:18px 0;
 }
-
 .logo{
   font-family:Orbitron;
+  font-weight:900;
   color:var(--blue);
-  font-weight:800;
+  letter-spacing:2px;
 }
-
+nav a{
+  color:var(--muted);
+  margin:0 12px;
+  text-decoration:none;
+  font-size:14px;
+}
+nav a:hover{color:#fff}
 .btn{
   padding:12px 18px;
   border-radius:12px;
-  font-weight:800;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;
+  font-weight:700;
   text-decoration:none;
-  display:inline-block;
 }
 
-.btn-blue{
-  background:linear-gradient(135deg,var(--blue),var(--cyan));
-  color:#001022;
-}
-
+/* HERO */
 .hero{
-  text-align:center;
-  padding:80px 0;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
+  padding:60px 0;
 }
-
 h1{
   font-family:Orbitron;
   font-size:52px;
-  margin:0;
+  line-height:1.1;
 }
-
 .highlight{
-  background:linear-gradient(90deg,var(--blue),var(--cyan));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:var(--blue);
 }
-
-p{
-  color:var(--muted);
-  max-width:720px;
-  margin:20px auto;
-  line-height:1.6;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:18px;
-  margin-top:40px;
-}
+p{color:var(--muted);line-height:1.7;margin-top:14px}
 
 .card{
   background:var(--card);
   border:1px solid var(--stroke);
+  border-radius:20px;
   padding:20px;
-  border-radius:16px;
 }
 
-footer{
-  text-align:center;
-  padding:40px;
-  color:var(--muted);
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+/* PRICING */
+.price{
+  font-size:28px;
+  font-weight:900;
+  color:var(--gold);
 }
 
 /* POPUP */
-#popup{
+.popup{
   position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.75);
+  bottom:20px;
+  right:20px;
+  width:320px;
+  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 0 25px rgba(59,130,246,0.5);
   display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
+  z-index:999;
+}
+.popup h3{font-size:16px;margin-bottom:8px}
+.popup button{
+  margin-top:10px;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
 }
 
-.popup-box{
-  width:min(420px,90%);
-  background:linear-gradient(135deg,#0b1a33,#081225);
-  border:1px solid rgba(58,160,255,0.4);
-  border-radius:20px;
-  padding:24px;
-  text-align:center;
-  box-shadow:0 0 40px rgba(58,160,255,0.25);
-}
-
-.popup-box h2{
-  font-family:Orbitron;
+/* TAGS */
+.tag{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(59,130,246,0.15);
   color:var(--blue);
+  font-size:12px;
   margin-bottom:10px;
+}
+
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
+.grid{grid-template-columns:1fr}
+nav{display:none}
 }
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <header>
-  <div class="container nav">
-    <div class="logo">BLUEPEAK MARKETS</div>
-    <a class="btn btn-blue" href="#">Join Challenge</a>
-  </div>
+  <div class="logo">BLUEPEAK MARKETS</div>
+  <nav>
+    <a href="#accounts">Accounts</a>
+    <a href="#rules">Rules</a>
+    <a href="#how">How It Works</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn" href="#">Get Notified</a>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <h1>Trade With <span class="highlight">BluePeak</span></h1>
-    <p>Modern prop firm built for funded traders, structured growth and performance scaling.</p>
+  <div>
+    <div class="tag">PREMIUM PROP FIRM • NOT LAUNCHED YET</div>
+
+    <h1>
+      Trade The <span class="highlight">BluePeak Challenge</span><br>
+      Like A Pro
+    </h1>
+
+    <p>
+      Access funded accounts from $5K up to $1M.
+      Designed for serious traders. Instant accounts available with profit splits up to 75%.
+    </p>
+
+    <p style="margin-top:18px;color:#fff;">
+      ✔ One Step Accounts: <b>80% Profit Split</b><br>
+      ✔ Two Step Accounts: <b>85% – 90% Profit Split</b><br>
+      ✔ Instant Accounts: <b>Up to 75% Profit Split</b>
+    </p>
+
+    <div style="margin-top:20px">
+      <a class="btn" href="#">Get Notified (Not Launched)</a>
+    </div>
   </div>
 
-  <div class="container grid">
+  <div class="card">
+    <h3>Account Levels</h3>
+    <p>$5K • $25K • $50K • $200K • $500K • $1M</p>
 
-    <div class="card">
-      <h3>Instant Funding</h3>
-      <p>Up to 75% profit split. No challenge required. Trade instantly.</p>
-    </div>
+    <hr style="border:1px solid rgba(255,255,255,0.1);margin:14px 0">
 
-    <div class="card">
-      <h3>One Step Challenge</h3>
-      <p>80% profit split. Fast evaluation path to funded capital.</p>
-    </div>
-
-    <div class="card">
-      <h3>Two Step Challenge</h3>
-      <p>85% – 90% profit split. Full evaluation structure.</p>
-    </div>
-
-    <div class="card">
-      <h3>Account Sizes</h3>
-      <p>5K • 25K • 50K • 200K • 500K • 1M funding levels available.</p>
-    </div>
-
+    <p><b>Instant Accounts:</b> Up to 75% split</p>
+    <p><b>One Step:</b> 80% split</p>
+    <p><b>Two Step:</b> 85% – 90% split</p>
   </div>
 </section>
 
-<footer>
-  © 2026 BluePeak Markets. All Rights Reserved.
-</footer>
+<!-- ACCOUNTS -->
+<section id="accounts">
+<h2>Account Challenges</h2>
+<div class="grid" style="margin-top:20px">
+
+<div class="card">
+<h3>$5K Challenge</h3>
+<p>Entry level funded challenge</p>
+<div class="price">$49</div>
+</div>
+
+<div class="card">
+<h3>$50K Challenge</h3>
+<p>🔥 Includes FREE bonus promo</p>
+<div class="price">$299</div>
+</div>
+
+<div class="card">
+<h3>$1M Challenge</h3>
+<p>Elite trader level account</p>
+<div class="price">$999</div>
+</div>
+
+</div>
+</section>
+
+<!-- RULES -->
+<section id="rules" style="margin-top:60px">
+<h2>Profit Structure</h2>
+<div class="grid" style="margin-top:20px">
+
+<div class="card">
+<h3>Instant Accounts</h3>
+<p>Up to 75% profit split with direct access</p>
+</div>
+
+<div class="card">
+<h3>One Step</h3>
+<p>80% profit split with simplified evaluation</p>
+</div>
+
+<div class="card">
+<h3>Two Step</h3>
+<p>85% – 90% profit split for advanced traders</p>
+</div>
+
+</div>
+</section>
+
+</div>
 
 <!-- POPUP -->
-<div id="popup">
-  <div class="popup-box">
-    <h2>LIMITED OFFER</h2>
-    <h3>Buy ANY Account & Get FREE 50K Challenge</h3>
-    <p style="color:#9fb6d1;">
-      Early launch bonus for new traders. Claim before it ends.
-    </p>
-
-    <div style="margin-top:15px; display:flex; gap:10px; justify-content:center;">
-      <a href="#" class="btn btn-blue">Claim Now</a>
-      <button onclick="closePopup()" class="btn" style="background:transparent;color:white;border:1px solid #333;">Close</button>
-    </div>
-  </div>
+<div class="popup" id="popup">
+  <h3>🔥 SPECIAL OFFER</h3>
+  <p>Buy ANY challenge and get FREE $50K challenge access for launch promo!</p>
+  <button onclick="document.getElementById('popup').style.display='none'">
+    Claim Offer
+  </button>
 </div>
 
 <script>
-let popup = document.getElementById("popup");
-
-function showPopup(){
-  popup.style.display = "flex";
-}
-
-function closePopup(){
-  popup.style.display = "none";
-}
-
-setTimeout(showPopup, 3000);
+setTimeout(()=>{
+  document.getElementById("popup").style.display="block";
+},3000);
 </script>
 
 </body>
