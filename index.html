@@ -3,95 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BluePeak Markets | Launch</title>
+<title>BluePeak Markets | Institutional Trading Platform</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body{
     margin:0;
-    font-family:Arial;
+    font-family:'Inter', sans-serif;
     background:#000;
     color:#fff;
-    text-align:center;
 }
 
-/* BACKGROUND ANIMATION */
+/* BACKGROUND */
 .bg{
     position:fixed;
-    width:100%;
-    height:100%;
+    inset:0;
     background:
-    radial-gradient(circle at 20% 20%, rgba(255,0,80,0.2), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,0,80,0.1), transparent 50%);
-    animation:move 8s infinite alternate;
+    radial-gradient(circle at 20% 20%, rgba(255,0,80,0.18), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,0,80,0.08), transparent 50%);
     z-index:-1;
 }
 
-@keyframes move{
-    from{transform:translateY(0)}
-    to{transform:translateY(-40px)}
+/* HEADER */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 80px;
+    background:#000;
+    border-bottom:1px solid #1a1a1a;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-weight:600;
+    color:#ff0033;
+    letter-spacing:1px;
+}
+
+nav a{
+    margin:0 14px;
+    font-size:13px;
+    color:#aaa;
+    text-decoration:none;
+}
+
+nav a:hover{color:#fff}
+
+/* PAYMENT STRIP */
+.payments{
+    width:100%;
+    overflow:hidden;
+    background:#050505;
+    border-top:1px solid #111;
+    border-bottom:1px solid #111;
+}
+
+.track{
+    display:flex;
+    gap:40px;
+    padding:12px 0;
+    animation:scroll 20s linear infinite;
+}
+
+.payments:hover .track{
+    animation-play-state:paused;
+}
+
+.pay{
+    padding:8px 18px;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:8px;
+    background:rgba(255,255,255,0.03);
+    color:#bbb;
+    font-size:13px;
+    white-space:nowrap;
+}
+
+@keyframes scroll{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
 }
 
 /* HERO */
 .hero{
-    padding:120px 20px;
+    padding:130px 20px 60px;
+    text-align:center;
 }
 
 .hero h1{
-    font-size:60px;
+    font-size:52px;
+    font-weight:600;
+}
+
+.hero h2{
+    font-size:18px;
+    color:#aaa;
+    font-weight:400;
+    margin-top:10px;
 }
 
 .hero span{color:#ff0033}
 
-/* BADGE */
-.badge{
-    display:inline-block;
-    margin-top:10px;
-    padding:6px 12px;
-    background:#ff0033;
-    border-radius:6px;
-    font-size:12px;
+.hero p{
+    max-width:650px;
+    margin:20px auto;
+    color:#888;
+    font-size:14px;
+    line-height:1.6;
 }
 
-/* BUTTON */
 .btn{
     margin-top:20px;
-    padding:14px 35px;
+    padding:14px 32px;
     background:#ff0033;
     border:none;
     border-radius:10px;
+    color:#fff;
     cursor:pointer;
-}
-
-.whatsapp{
-    background:#25D366;
-}
-
-/* COUNTDOWN */
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    margin-top:40px;
-}
-
-.time{
-    background:rgba(255,255,255,0.05);
-    padding:20px;
-    border-radius:10px;
 }
 
 /* LIVE COUNTER */
 .live{
-    margin-top:20px;
-    color:#aaa;
+    margin-top:25px;
+    color:#888;
+    font-size:14px;
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    padding:40px 20px;
+    border-top:1px solid #111;
+    border-bottom:1px solid #111;
+    background:rgba(255,255,255,0.02);
+}
+
+.stats div{
+    text-align:center;
+}
+
+.stats h3{
+    margin:0;
+    font-size:20px;
+}
+
+.stats p{
+    margin:5px 0 0;
+    font-size:12px;
+    color:#888;
+}
+
+/* SECTIONS */
+.section{
+    padding:90px 60px;
+    border-top:1px solid #1a1a1a;
+
+    opacity:0;
+    transform:translateY(40px);
+}
+
+/* CARDS */
+.cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+    flex:1;
+    min-width:240px;
+    max-width:280px;
+    padding:22px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
 }
 
 /* POPUP */
 .popup{
     display:none;
     position:fixed;
-    width:100%;
-    height:100%;
+    inset:0;
     background:rgba(0,0,0,0.85);
     justify-content:center;
     align-items:center;
@@ -101,7 +200,7 @@ body{
     background:#111;
     padding:30px;
     border-radius:12px;
-    width:300px;
+    width:320px;
 }
 
 input{
@@ -111,12 +210,20 @@ input{
 }
 
 .submit{
+    width:100%;
     margin-top:10px;
     padding:10px;
     background:#ff0033;
     border:none;
     color:#fff;
-    width:100%;
+}
+
+/* FOOTER */
+footer{
+    padding:60px;
+    text-align:center;
+    color:#666;
+    border-top:1px solid #1a1a1a;
 }
 </style>
 </head>
@@ -125,77 +232,133 @@ input{
 
 <div class="bg"></div>
 
+<!-- HEADER -->
+<header class="header">
+<div class="logo">BluePeak Markets</div>
+<nav>
+<a href="#how">How It Works</a>
+<a href="#company">Company</a>
+<a href="#risk">Risk</a>
+</nav>
+</header>
+
+<!-- PAYMENT STRIP -->
+<div class="payments">
+<div class="track">
+<div class="pay">Stripe</div>
+<div class="pay">Skrill</div>
+<div class="pay">MasterCard</div>
+<div class="pay">Capitec Pay</div>
+<div class="pay">Visa</div>
+
+<div class="pay">Stripe</div>
+<div class="pay">Skrill</div>
+<div class="pay">MasterCard</div>
+<div class="pay">Capitec Pay</div>
+<div class="pay">Visa</div>
+</div>
+</div>
+
+<!-- HERO -->
 <section class="hero">
+<h1>BluePeak Markets</h1>
+<h2>Institutional Trading Infrastructure</h2>
 
-<h1>BluePeak Markets<br><span>Launching Soon</span></h1>
-
-<div class="badge">🔥 50% OFF Launch Access</div>
-
-<p>Trade firm capital. Earn like a pro.</p>
-
-<!-- COUNTDOWN -->
-<div class="countdown">
-<div class="time"><h2 id="days"></h2><p>Days</p></div>
-<div class="time"><h2 id="hours"></h2><p>Hours</p></div>
-<div class="time"><h2 id="minutes"></h2><p>Minutes</p></div>
-<div class="time"><h2 id="seconds"></h2><p>Seconds</p></div>
-</div>
-
-<!-- LIVE COUNTER -->
-<div class="live">
-🔥 <span id="users">1243</span> traders waiting to get funded
-</div>
+<p>
+Structured trading evaluation programs designed for disciplined traders seeking capital allocation opportunities.
+</p>
 
 <button class="btn" onclick="openPopup()">Get Notified</button>
-<br>
-<button class="btn whatsapp" onclick="joinWhatsApp()">Join WhatsApp</button>
 
+<div class="live">
+<span id="users">1243</span> traders currently in early access queue
+</div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+<div><h3>1243+</h3><p>Traders Waiting</p></div>
+<div><h3>6 Months</h3><p>Launch Phase</p></div>
+<div><h3>Global</h3><p>Access</p></div>
+<div><h3>ECN</h3><p>Model</p></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+<h2>How It Works</h2>
+
+<div class="cards">
+<div class="card">1. Choose Evaluation Program</div>
+<div class="card">2. Complete Trading Rules</div>
+<div class="card">3. Access Capital Allocation</div>
+</div>
+</section>
+
+<!-- COMPANY -->
+<section class="section" id="company">
+<h2>Company Overview</h2>
+
+<div class="cards">
+<div class="card">Founded: South Africa</div>
+<div class="card">Market: Global Traders</div>
+<div class="card">Model: Evaluation System</div>
+<div class="card">Structure: Risk-Controlled</div>
+</div>
+</section>
+
+<!-- RISK -->
+<section class="section" id="risk">
+<h2>Risk Disclosure</h2>
+
+<p style="max-width:800px;color:#777;line-height:1.6;">
+Trading involves risk. BluePeak Markets provides evaluation-based trading programs in a simulated environment and does not guarantee income or financial returns.
+</p>
 </section>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
 <div class="box">
 <h3>Join Launch List</h3>
-<input type="email" placeholder="Enter email">
+<input type="email" placeholder="Email address">
 <button class="submit">Notify Me</button>
-<button onclick="closePopup()" style="margin-top:10px;">Close</button>
+<button onclick="closePopup()" style="margin-top:10px;background:none;border:none;color:#aaa;">Close</button>
 </div>
 </div>
+
+<footer>
+© 2026 BluePeak Markets | Institutional Trading Platform
+</footer>
 
 <script>
-// COUNTDOWN
-var launchDate = new Date();
-launchDate.setMonth(launchDate.getMonth()+6);
-
-function update(){
-    var now = new Date().getTime();
-    var d = launchDate-now;
-
-    document.getElementById("days").innerHTML=Math.floor(d/(1000*60*60*24));
-    document.getElementById("hours").innerHTML=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-    document.getElementById("minutes").innerHTML=Math.floor((d%(1000*60*60))/(1000*60));
-    document.getElementById("seconds").innerHTML=Math.floor((d%(1000*60))/1000);
-}
-setInterval(update,1000);
-
-// LIVE USERS FAKE COUNTER
-setInterval(()=>{
-    let u=document.getElementById("users");
-    u.innerHTML=parseInt(u.innerHTML)+Math.floor(Math.random()*3);
-},3000);
 
 // POPUP
 function openPopup(){
-    document.getElementById("popup").style.display="flex";
+document.getElementById("popup").style.display="flex";
 }
 function closePopup(){
-    document.getElementById("popup").style.display="none";
+document.getElementById("popup").style.display="none";
 }
 
-// WHATSAPP LINK
-function joinWhatsApp(){
-    window.open("https://wa.me/27636136117","_blank");
+// COUNTER (SLOW REALISTIC GROWTH)
+setInterval(()=>{
+let u=document.getElementById("users");
+u.innerHTML=parseInt(u.innerHTML)+1;
+},180000);
+
+// SCROLL REVEAL
+const sections=document.querySelectorAll(".section");
+
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+const offset=sec.offsetTop-600;
+if(window.scrollY>offset){
+sec.style.opacity="1";
+sec.style.transform="translateY(0)";
+sec.style.transition="0.8s ease";
 }
+});
+});
+
 </script>
 
 </body>
