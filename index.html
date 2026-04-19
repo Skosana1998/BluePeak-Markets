@@ -13,6 +13,7 @@ body {
   color: white;
 }
 
+/* HEADER */
 header {
   text-align: center;
   padding: 15px;
@@ -20,14 +21,47 @@ header {
   font-weight: bold;
 }
 
-/* SECTION */
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 25px 15px;
+  background: radial-gradient(circle, #0d1a40, #070b1a);
+}
+
+.hero h1 {
+  font-size: 22px;
+  color: #00c3ff;
+}
+
+.hero p {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* INFO GRID */
+.info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 10px 15px;
+}
+
+.info div {
+  background: #111a33;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #1f2b55;
+}
+
+/* BUILDER */
 .container {
   padding: 12px;
 }
 
 h3 {
   color: #00c3ff;
-  margin: 10px 0;
 }
 
 /* SMALL GRID */
@@ -49,18 +83,14 @@ h3 {
   transition: 0.2s;
 }
 
-/* ACTIVE STATE (IMPORTANT FIX) */
+/* ACTIVE FIX */
 .active {
   background: #003cff !important;
   border: 1px solid #00c3ff;
   transform: scale(1.03);
 }
 
-.card:hover {
-  border-color: #00c3ff;
-}
-
-/* POPULAR TAG */
+/* POPULAR */
 .popular {
   background: gold;
   color: black;
@@ -91,6 +121,7 @@ h3 {
   color: black;
   font-weight: bold;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 /* POPUP */
@@ -133,44 +164,57 @@ input {
 
 <header>BLUEPEAK MARKETS</header>
 
-<div class="container">
+<!-- HOMEPAGE -->
+<div class="hero">
+  <h1>Trade Smarter. Funded Faster.</h1>
+  <p>BluePeak Prop Trading Challenge Platform</p>
 
-<!-- MODEL -->
-<h3>Account Model</h3>
-<div class="grid">
-  <div class="card" onclick="select(this,'model','1 Step')">1 Step</div>
-  <div class="card" onclick="select(this,'model','2 Step')">2 Step</div>
-  <div class="card" onclick="select(this,'model','Instant')">Instant</div>
+  <button class="btn" onclick="scrollToBuilder()">Get Started</button>
+  <p class="small">⚠ Not launched yet — Get notified</p>
 </div>
 
-<!-- PLATFORM -->
+<div class="info">
+  <div>💰 Up to 90% Profit Split</div>
+  <div>⚡ Instant Accounts</div>
+  <div>📉 Low Drawdown Rules</div>
+  <div>🚀 MT4 / MT5 Support</div>
+</div>
+
+<!-- BUILDER -->
+<div class="container">
+
+<h3>Account Model</h3>
+<div class="grid">
+  <div class="card" onclick="select(this,'model','1')">1 Step</div>
+  <div class="card" onclick="select(this,'model','2')">2 Step</div>
+  <div class="card" onclick="select(this,'model','instant')">Instant</div>
+</div>
+
 <h3>Platform</h3>
 <div class="grid">
-  <div class="card" onclick="select(this,'platform','MT4')">MetaTrader 4</div>
+  <div class="card" onclick="select(this,'platform','MT4')">MT4</div>
   <div class="card" onclick="select(this,'platform','MT5')">
-    MetaTrader 5
+    MT5
     <div class="popular">Most Popular</div>
   </div>
 </div>
 
-<!-- CHALLENGES (RESTORED CONTENT) -->
-<h3>Challenge Sizes</h3>
+<h3>Challenge Size</h3>
 <div class="grid">
-  <div class="card" onclick="select(this,'account','5K')">R5,000</div>
-  <div class="card" onclick="select(this,'account','25K')">R25,000</div>
-  <div class="card" onclick="select(this,'account','50K')">R50,000</div>
-  <div class="card" onclick="select(this,'account','100K')">
+  <div class="card" onclick="select(this,'account','5')">R5,000</div>
+  <div class="card" onclick="select(this,'account','25')">R25,000</div>
+  <div class="card" onclick="select(this,'account','50')">R50,000</div>
+  <div class="card" onclick="select(this,'account','100')">
     R100,000
     <div class="popular">Most Popular</div>
   </div>
-  <div class="card" onclick="select(this,'account','200K')">R200,000</div>
-  <div class="card" onclick="select(this,'account','500K')">R500,000</div>
-  <div class="card" onclick="select(this,'account','1M')">R1,000,000</div>
+  <div class="card" onclick="select(this,'account','200')">R200,000</div>
+  <div class="card" onclick="select(this,'account','500')">R500,000</div>
+  <div class="card" onclick="select(this,'account','1000')">R1,000,000</div>
 </div>
 
-<!-- RULES -->
 <div class="rules" id="rulesBox">
-Select options to view rules...
+Select options to see rules...
 </div>
 
 <button class="btn" onclick="finalStep()">Continue</button>
@@ -181,9 +225,9 @@ Select options to view rules...
 <div class="popup" id="popup">
   <div class="popup-box">
     <h3>Coming Soon 🚀</h3>
-    <p>Not launched yet</p>
+    <p>Platform not launched yet</p>
     <p class="small">Get notified when we go live</p>
-    <input type="text" placeholder="Email / WhatsApp">
+    <input placeholder="Email / WhatsApp">
     <button class="btn">Get Notified</button>
     <button class="btn" style="background:red" onclick="closePopup()">Close</button>
   </div>
@@ -191,71 +235,81 @@ Select options to view rules...
 
 <script>
 
-let selected = {
-  model: "",
-  platform: "",
-  account: ""
+let state = {
+  model: null,
+  platform: null,
+  account: null
 };
 
-/* FIXED SELECTION SYSTEM (STAYS HIGHLIGHTED) */
+/* STICKY SELECT FIX */
 function select(el, type, value){
 
-  selected[type] = value;
+  state[type] = value;
 
-  document.querySelectorAll(`[data-type='${type}']`).forEach(e=>{
+  document.querySelectorAll(`[data-${type}]`).forEach(e=>{
     e.classList.remove("active");
   });
 
   el.classList.add("active");
-  el.setAttribute("data-type", type);
+  el.setAttribute(`data-${type}`, value);
 
   updateRules();
 }
 
-/* RULE ENGINE */
+/* RULES */
 function updateRules(){
 
 let r = "";
 
-if(selected.model === "1 Step"){
-r += "1 Step Model<br>Target: 10%<br>Max Daily Loss: 4%<br>Profit Split: up to 80%<br>";
+if(state.model === "1"){
+r += "1 Step Model<br>Target: 10%<br>Max Loss: 4%<br>Profit Split: 80%<br>";
 }
 
-if(selected.model === "2 Step"){
-r += "2 Step Model<br>Phase 1: 10%<br>Phase 2: 4%<brMax Daily Loss: 5%<br>Profit Split: 85-90%<br>";
+if(state.model === "2"){
+r += "2 Step Model<br>Phase 1: 10%<br>Phase 2: 4%<br>Max Loss: 5%<br>Profit Split: 85–90%<br>";
 }
 
-if(selected.model === "Instant"){
+if(state.model === "instant"){
 r += "Instant Account<br>Max Loss: 3%<br>Profit Split: 75%<br>";
 }
 
-if(selected.platform){
-r += "<br>Platform: " + selected.platform;
+if(state.platform){
+r += "<br>Platform: " + state.platform;
 }
 
-if(selected.account){
-r += "<br>Account: " + selected.account;
+if(state.account){
+r += "<br>Account: R" + state.account + ",000";
 }
 
-document.getElementById("rulesBox").innerHTML = r || "Select options to view rules...";
+document.getElementById("rulesBox").innerHTML = r || "Select options to see rules...";
 }
 
-/* FINAL PRICE REVEAL */
+/* FINAL PRICE */
 function finalStep(){
+
+if(!state.model || !state.platform || !state.account){
+alert("Select all options");
+return;
+}
 
 let price = "";
 
-switch(selected.account){
-case "5K": price="R350"; break;
-case "25K": price="R500"; break;
-case "50K": price="R750"; break;
-case "100K": price="R1100"; break;
-case "200K": price="R2000"; break;
-case "500K": price="R5400"; break;
-case "1M": price="R65000"; break;
+switch(state.account){
+case "5": price="R350"; break;
+case "25": price="R500"; break;
+case "50": price="R750"; break;
+case "100": price="R1100"; break;
+case "200": price="R2000"; break;
+case "500": price="R5400"; break;
+case "1000": price="R65000"; break;
 }
 
 document.getElementById("rulesBox").innerHTML += "<br><br><b>Price:</b> " + price;
+}
+
+/* SCROLL */
+function scrollToBuilder(){
+window.scrollTo({top: 400, behavior: "smooth"});
 }
 
 /* POPUP */
