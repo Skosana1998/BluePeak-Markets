@@ -1,48 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>BluePeak Markets</title>
 
 <style>
+
+/* ===================== ROOT ===================== */
+:root{
+--bg:#050814;
+--panel:rgba(13,22,51,0.55);
+--stroke:rgba(255,255,255,0.08);
+--blue:#2D7DFF;
+--cyan:#00E6FF;
+--gold:#FFCC66;
+--text:#EAF1FF;
+--muted:#9FB3D9;
+}
+
+*{box-sizing:border-box;font-family:Arial,sans-serif}
 body{
 margin:0;
-font-family:Arial;
-background:#060A1A;
-color:#EAF1FF;
+background:radial-gradient(circle at top,#0B1430,#050814);
+color:var(--text);
 overflow-x:hidden;
 }
 
-/* HEADER */
+/* ===================== FLOAT BG ORBS ===================== */
+.orb{
+position:fixed;
+width:300px;height:300px;
+background:radial-gradient(circle,#2D7DFF55,transparent 70%);
+filter:blur(40px);
+animation:float 10s infinite ease-in-out;
+z-index:0;
+}
+.orb2{top:20%;left:60%;animation-delay:2s}
+.orb1{top:10%;left:10%}
+.orb3{bottom:10%;left:40%;animation-delay:4s}
+
+@keyframes float{
+0%,100%{transform:translateY(0px)}
+50%{transform:translateY(40px)}
+}
+
+/* ===================== HEADER ===================== */
 header{
-display:flex;
-justify-content:space-between;
-padding:18px 22px;
-align-items:center;
-background:rgba(10,15,40,0.6);
-backdrop-filter:blur(10px);
 position:sticky;
 top:0;
 z-index:10;
+display:flex;
+justify-content:space-between;
+padding:18px 22px;
+backdrop-filter:blur(12px);
+background:rgba(10,15,40,0.4);
+border-bottom:1px solid var(--stroke);
 }
+
 .logo{
-font-size:20px;
-font-weight:bold;
-color:#2D7DFF;
+font-size:22px;
+font-weight:800;
+letter-spacing:2px;
+background:linear-gradient(90deg,var(--blue),var(--cyan),var(--gold));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:moveText 4s linear infinite;
+}
+
+@keyframes moveText{
+0%{background-position:0%}
+100%{background-position:200%}
+}
+
+/* ===================== LAYOUT ===================== */
+.container{
+position:relative;
+z-index:2;
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+.section{
+margin-top:18px;
+padding:16px;
+background:var(--panel);
+border:1px solid var(--stroke);
+border-radius:16px;
+backdrop-filter:blur(15px);
+}
+
+/* ===================== TITLES ===================== */
+.title{
+font-size:12px;
+color:var(--muted);
+margin-bottom:10px;
 letter-spacing:1px;
 }
-.tag{
-font-size:12px;
-padding:5px 10px;
-border:1px solid #2D7DFF;
-border-radius:20px;
-color:#9FB3D9;
+
+/* ===================== BUTTONS ===================== */
+.btn{
+padding:10px 14px;
+border-radius:12px;
+cursor:pointer;
+border:none;
+font-weight:600;
+margin:5px;
+transition:0.25s;
 }
 
-/* GRID */
-.container{padding:20px;max-width:1100px;margin:auto;}
+.primary{
+background:linear-gradient(135deg,var(--blue),var(--cyan));
+color:#fff;
+}
 
+.dark{
+background:rgba(255,255,255,0.04);
+color:var(--text);
+border:1px solid var(--stroke);
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px rgba(45,125,255,0.4);
+}
+
+/* ===================== GRID ===================== */
 .grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -50,32 +134,33 @@ gap:10px;
 }
 
 .card{
-background:#0D1633;
-padding:10px;
-border-radius:12px;
+background:rgba(255,255,255,0.03);
+border:1px solid var(--stroke);
+padding:12px;
+border-radius:14px;
 cursor:pointer;
 text-align:center;
 font-size:12px;
-border:1px solid rgba(255,255,255,0.05);
-transition:0.2s;
+transition:0.25s;
 position:relative;
 }
 
 .card:hover{
-transform:scale(1.04);
-border-color:#2D7DFF;
+transform:translateY(-4px);
+border-color:var(--blue);
 }
 
 .selected{
-border:2px solid #2D7DFF;
-box-shadow:0 0 15px rgba(45,125,255,0.4);
+border:2px solid var(--blue);
+box-shadow:0 0 25px rgba(45,125,255,0.4);
+transform:scale(1.03);
 }
 
 .popular{
 position:absolute;
-top:5px;
-right:5px;
-background:#FFCC66;
+top:6px;
+right:6px;
+background:var(--gold);
 color:#000;
 font-size:9px;
 padding:3px 6px;
@@ -83,50 +168,32 @@ border-radius:10px;
 font-weight:bold;
 }
 
-/* BUTTONS */
-.btn{
-padding:10px 14px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:bold;
+/* ===================== PRICE ===================== */
+.price{
 margin-top:10px;
-}
-.primary{background:#2D7DFF;color:#fff;}
-.dark{background:#121a33;color:#fff;border:1px solid #2D7DFF;}
-
-/* SECTIONS */
-.section{
-margin-top:18px;
-padding:15px;
-background:rgba(255,255,255,0.03);
-border-radius:12px;
+color:#00FFB3;
+font-weight:bold;
+display:none;
 }
 
-.title{
-font-size:13px;
-color:#9FB3D9;
-margin-bottom:10px;
-}
-
-/* MODAL */
+/* ===================== MODAL ===================== */
 .modal{
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.7);
+inset:0;
 display:none;
 align-items:center;
 justify-content:center;
-z-index:100;
+background:rgba(0,0,0,0.6);
+z-index:99;
 }
 
 .modal-box{
-background:#0D1633;
-padding:20px;
-border-radius:12px;
-width:320px;
-border:1px solid #2D7DFF;
+width:340px;
+background:rgba(13,22,51,0.9);
+border:1px solid var(--blue);
+border-radius:14px;
+padding:18px;
+backdrop-filter:blur(10px);
 }
 
 .close{
@@ -135,39 +202,35 @@ cursor:pointer;
 color:#FF4D4D;
 }
 
-/* POPUP */
+/* ===================== POPUP ===================== */
 .popup{
 position:fixed;
 bottom:-200px;
 left:20px;
 right:20px;
-background:#0D1633;
-padding:15px;
-border-radius:12px;
-border:1px solid #2D7DFF;
+background:rgba(13,22,51,0.9);
+border:1px solid var(--blue);
+padding:14px;
+border-radius:14px;
 transition:0.5s;
-z-index:99;
+z-index:100;
 }
 
-/* NOTIFY */
+/* ===================== NOTIFY ===================== */
 .notify{
 position:fixed;
-top:70px;
+top:80px;
 right:20px;
-background:#0D1633;
+background:rgba(13,22,51,0.9);
+border:1px solid var(--blue);
 padding:12px;
-border-radius:10px;
-border:1px solid #2D7DFF;
+border-radius:12px;
 display:none;
 }
 
-/* PRICE REVEAL */
-.price{
-margin-top:10px;
-font-size:14px;
-color:#00E6A7;
-font-weight:bold;
-display:none;
+/* ===================== MOBILE ===================== */
+@media(max-width:800px){
+.grid{grid-template-columns:repeat(2,1fr);}
 }
 
 </style>
@@ -175,16 +238,20 @@ display:none;
 
 <body>
 
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
 <header>
 <div class="logo">BLUEPEAK MARKETS</div>
-<div class="tag">Premium Trading Hub</div>
+<div style="font-size:12px;color:#9FB3D9">Ultra Premium Trading Hub</div>
 </header>
 
 <div class="container">
 
 <!-- MODE -->
 <div class="section">
-<div class="title">Select Model Type</div>
+<div class="title">MODEL TYPE</div>
 <button class="btn dark" onclick="selectMode('1step')">1 STEP</button>
 <button class="btn dark" onclick="selectMode('2step')">2 STEP</button>
 <button class="btn dark" onclick="selectMode('instant')">INSTANT</button>
@@ -192,20 +259,21 @@ display:none;
 
 <!-- PLATFORM -->
 <div class="section">
-<div class="title">Platform</div>
-<button class="btn dark" onclick="selectPlatform('MT4')">MetaTrader 4</button>
-<button class="btn dark" onclick="selectPlatform('MT5')">MetaTrader 5 <span style="color:#FFCC66;">Most Popular</span></button>
+<div class="title">PLATFORM</div>
+<button class="btn dark" onclick="selectPlatform('MT4')">MT4</button>
+<button class="btn dark" onclick="selectPlatform('MT5')">MT5 <span style="color:var(--gold)">Most Popular</span></button>
 </div>
 
 <!-- ACCOUNTS -->
 <div class="section">
-<div class="title">Account Sizes (ZAR)</div>
+<div class="title">ACCOUNT SIZES (ZAR)</div>
 
 <div class="grid">
 
 <div class="card" onclick="selectAccount(this,'5k')">5K</div>
 <div class="card" onclick="selectAccount(this,'25k')">25K</div>
 <div class="card" onclick="selectAccount(this,'50k')">50K</div>
+
 <div class="card" onclick="selectAccount(this,'100k')">
 100K <div class="popular">POPULAR</div>
 </div>
@@ -218,97 +286,77 @@ display:none;
 
 <div id="price" class="price"></div>
 
-<button class="btn primary" onclick="showRules()">View Rules</button>
-<button class="btn dark" onclick="notifyMe()">Get Notified (Not Launched Yet)</button>
+<button class="btn primary" onclick="showRules()">VIEW RULES</button>
+<button class="btn dark" onclick="notify()">GET NOTIFIED</button>
 
 </div>
 
 </div>
 
-<!-- RULE MODAL -->
+<!-- MODAL -->
 <div class="modal" id="modal">
 <div class="modal-box">
 <span class="close" onclick="closeModal()">X</span>
-<h3>Account Rules</h3>
+<h3>RULES</h3>
 <div id="rules"></div>
 </div>
 </div>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
-🔥 BUY 1 GET FREE 50K CHALLENGE (COMING SOON)  
-<button class="btn primary" onclick="closePopup()">OK</button>
+🔥 BUY 1 GET FREE 50K CHALLENGE (COMING SOON)
 </div>
 
 <!-- NOTIFY -->
-<div class="notify" id="notify">
-✔ You will be notified when BluePeak launches
-</div>
+<div class="notify" id="notify">✔ You’ll be notified at launch</div>
 
 <script>
 
-let mode = "";
-let platform = "";
-let account = "";
+let mode="",platform="",account="";
 
 function selectMode(m){
-mode = m;
+mode=m;
 highlight(event.target);
 }
 
 function selectPlatform(p){
-platform = p;
+platform=p;
 highlight(event.target);
 }
 
 function selectAccount(el,a){
-account = a;
+account=a;
 
 document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
 el.classList.add('selected');
 
-/* fake pricing reveal AFTER selection */
 document.getElementById("price").style.display="block";
-document.getElementById("price").innerText="Selected Account: "+a.toUpperCase();
+document.getElementById("price").innerText="Selected: "+a.toUpperCase();
 }
 
-/* highlight buttons */
 function highlight(el){
-el.style.boxShadow="0 0 15px #2D7DFF";
+el.style.boxShadow="0 0 20px #2D7DFF";
 setTimeout(()=>el.style.boxShadow="none",400);
 }
 
-/* RULES */
 function showRules(){
-if(!account) return alert("Select account first");
+if(!account)return alert("Select account first");
 
-let rules = "";
+let r="";
 
 if(mode==="instant"){
-rules = `
-Max Daily Loss: 3%<br>
-Leverage: 1:500<br>
-Profit Split: 75%<br>
-Daily Payouts Enabled`;
+r=`Max DD 3%<br>Profit Split 75%<br>Leverage 1:500`;
 }
 
 if(mode==="1step"){
-rules = `
-Phase 1 Target: 10%<br>
-Max Daily Loss: 4%<br>
-Leverage: 1:500<br>
-Profit Split: 80%`;
+r=`Target 10%<br>DD 4%<br>Profit Split 80%`;
 }
 
 if(mode==="2step"){
-rules = `
-Phase 1: 10%<br>
-Phase 2: 4%<br>
-Max Daily Loss: 5%<br>
-Profit Split: 85–90%`;
+r=`Phase 1:10%<br>Phase 2:4%<br>DD 5%<br>Profit Split 85-90%`;
 }
 
-document.getElementById("rules").innerHTML=rules;
+document.getElementById("rules").innerHTML=r;
 document.getElementById("modal").style.display="flex";
 }
 
@@ -316,22 +364,14 @@ function closeModal(){
 document.getElementById("modal").style.display="none";
 }
 
-/* NOTIFY */
-function notifyMe(){
+function notify(){
 document.getElementById("notify").style.display="block";
-setTimeout(()=>{
-document.getElementById("notify").style.display="none";
-},3000);
+setTimeout(()=>document.getElementById("notify").style.display="none",3000);
 }
 
-/* POPUP after 3 seconds */
 setTimeout(()=>{
 document.getElementById("popup").style.bottom="20px";
 },3000);
-
-function closePopup(){
-document.getElementById("popup").style.bottom="-200px";
-}
 
 </script>
 
