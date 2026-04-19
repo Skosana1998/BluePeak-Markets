@@ -2,160 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>BluePeak Markets</title>
+<title>BluePeak Markets Advanced</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
-  margin: 0;
+  margin:0;
   font-family: Arial;
-  background: #070b1a;
-  color: white;
+  background:#070b1a;
+  color:#fff;
 }
 
 /* HEADER */
 header {
-  text-align: center;
-  padding: 15px;
-  background: linear-gradient(90deg, #004cff, #00c3ff);
-  font-weight: bold;
+  text-align:center;
+  padding:14px;
+  background:linear-gradient(90deg,#004cff,#00c3ff);
+  font-weight:bold;
+}
+
+/* PROGRESS */
+.progress {
+  display:flex;
+  justify-content:space-around;
+  padding:10px;
+  font-size:11px;
+}
+
+.step {
+  opacity:0.4;
+}
+
+.step.active {
+  opacity:1;
+  color:#00c3ff;
+}
+
+/* PAGE */
+.container {
+  padding:15px;
 }
 
 /* HERO */
 .hero {
-  text-align: center;
-  padding: 25px 15px;
-  background: radial-gradient(circle, #0d1a40, #070b1a);
+  text-align:center;
+  padding:20px;
 }
 
 .hero h1 {
-  font-size: 22px;
-  color: #00c3ff;
+  font-size:20px;
+  color:#00c3ff;
 }
 
-.hero p {
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-/* INFO GRID */
-.info {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  padding: 10px 15px;
-}
-
-.info div {
-  background: #111a33;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  text-align: center;
-  border: 1px solid #1f2b55;
-}
-
-/* BUILDER */
-.container {
-  padding: 12px;
-}
-
-h3 {
-  color: #00c3ff;
-}
-
-/* SMALL GRID */
+/* GRID */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
 }
 
 /* CARD */
 .card {
-  background: #111a33;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 13px;
-  cursor: pointer;
-  border: 1px solid #1f2b55;
-  transition: 0.2s;
+  background:#111a33;
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+  cursor:pointer;
+  border:1px solid #1f2b55;
+  font-size:13px;
+  transition:0.2s;
 }
 
-/* ACTIVE FIX */
+.card:hover {
+  border-color:#00c3ff;
+}
+
 .active {
-  background: #003cff !important;
-  border: 1px solid #00c3ff;
-  transform: scale(1.03);
+  background:#003cff !important;
+  border:1px solid #00c3ff;
+  transform:scale(1.03);
 }
 
-/* POPULAR */
-.popular {
-  background: gold;
-  color: black;
-  font-size: 10px;
-  padding: 2px 5px;
-  border-radius: 5px;
-  margin-top: 5px;
-  display: inline-block;
+/* TAG */
+.tag {
+  background:gold;
+  color:black;
+  font-size:10px;
+  padding:2px 5px;
+  border-radius:5px;
+  margin-top:5px;
+  display:inline-block;
 }
 
 /* RULE BOX */
 .rules {
-  background: #0d1630;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-  font-size: 12px;
-  line-height: 1.5;
+  background:#0d1630;
+  padding:10px;
+  border-radius:10px;
+  margin-top:10px;
+  font-size:12px;
+  line-height:1.5;
 }
 
-/* BUTTON */
+/* BUTTONS */
 .btn {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: none;
-  background: #00c3ff;
-  color: black;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  background:#00c3ff;
+  color:black;
+  font-weight:bold;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.btn.secondary {
+  background:#1f2b55;
+  color:white;
+}
+
+/* HIDE PAGES */
+.page {
+  display:none;
+}
+
+.page.active {
+  display:block;
 }
 
 /* POPUP */
 .popup {
-  display: none;
-  position: fixed;
+  display:none;
+  position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background: rgba(0,0,0,0.8);
-  align-items: center;
-  justify-content: center;
+  background:rgba(0,0,0,0.85);
+  align-items:center;
+  justify-content:center;
 }
 
 .popup-box {
-  background: #111a33;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  text-align: center;
-}
-
-input {
-  width: 90%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  border: none;
-}
-
-.small {
-  font-size: 11px;
-  opacity: 0.7;
+  background:#111a33;
+  padding:20px;
+  border-radius:10px;
+  width:80%;
+  text-align:center;
 }
 </style>
 </head>
@@ -164,162 +158,165 @@ input {
 
 <header>BLUEPEAK MARKETS</header>
 
-<!-- HOMEPAGE -->
-<div class="hero">
-  <h1>Trade Smarter. Funded Faster.</h1>
-  <p>BluePeak Prop Trading Challenge Platform</p>
-
-  <button class="btn" onclick="scrollToBuilder()">Get Started</button>
-  <p class="small">⚠ Not launched yet — Get notified</p>
+<!-- PROGRESS -->
+<div class="progress">
+  <div class="step active" id="s1">1. Model</div>
+  <div class="step" id="s2">2. Setup</div>
+  <div class="step" id="s3">3. Review</div>
 </div>
 
-<div class="info">
-  <div>💰 Up to 90% Profit Split</div>
-  <div>⚡ Instant Accounts</div>
-  <div>📉 Low Drawdown Rules</div>
-  <div>🚀 MT4 / MT5 Support</div>
-</div>
-
-<!-- BUILDER -->
 <div class="container">
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+
+<div class="hero">
+<h1>Trade Smarter. Get Funded Faster.</h1>
+<p>Build your challenge account</p>
+</div>
 
 <h3>Account Model</h3>
 <div class="grid">
-  <div class="card" onclick="select(this,'model','1')">1 Step</div>
-  <div class="card" onclick="select(this,'model','2')">2 Step</div>
-  <div class="card" onclick="select(this,'model','instant')">Instant</div>
+  <div class="card" onclick="select('model','1 Step',this)">1 Step</div>
+  <div class="card" onclick="select('model','2 Step',this)">2 Step</div>
+  <div class="card" onclick="select('model','Instant',this)">Instant</div>
 </div>
+
+<button class="btn" onclick="next(2)">Next</button>
+
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
 
 <h3>Platform</h3>
 <div class="grid">
-  <div class="card" onclick="select(this,'platform','MT4')">MT4</div>
-  <div class="card" onclick="select(this,'platform','MT5')">
-    MT5
-    <div class="popular">Most Popular</div>
+  <div class="card" onclick="select('platform','MT4',this)">MT4</div>
+  <div class="card" onclick="select('platform','MT5',this)">
+    MT5 <div class="tag">Most Popular</div>
   </div>
 </div>
 
 <h3>Challenge Size</h3>
 <div class="grid">
-  <div class="card" onclick="select(this,'account','5')">R5,000</div>
-  <div class="card" onclick="select(this,'account','25')">R25,000</div>
-  <div class="card" onclick="select(this,'account','50')">R50,000</div>
-  <div class="card" onclick="select(this,'account','100')">
-    R100,000
-    <div class="popular">Most Popular</div>
-  </div>
-  <div class="card" onclick="select(this,'account','200')">R200,000</div>
-  <div class="card" onclick="select(this,'account','500')">R500,000</div>
-  <div class="card" onclick="select(this,'account','1000')">R1,000,000</div>
+  <div class="card" onclick="select('account','5',this)">R5,000</div>
+  <div class="card" onclick="select('account','25',this)">R25,000</div>
+  <div class="card" onclick="select('account','50',this)">R50,000</div>
+  <div class="card" onclick="select('account','100',this)">R100,000 <div class="tag">Popular</div></div>
+  <div class="card" onclick="select('account','200',this)">R200,000</div>
+  <div class="card" onclick="select('account','500',this)">R500,000</div>
+  <div class="card" onclick="select('account','1000',this)">R1M</div>
 </div>
 
-<div class="rules" id="rulesBox">
+<div class="rules" id="rules">
 Select options to see rules...
 </div>
 
-<button class="btn" onclick="finalStep()">Continue</button>
+<button class="btn" onclick="next(3)">Review</button>
+<button class="btn secondary" onclick="back(1)">Back</button>
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+
+<h3>Final Review</h3>
+
+<div class="rules" id="reviewBox"></div>
+
+<button class="btn" onclick="confirm()">Confirm Selection</button>
+<button class="btn secondary" onclick="back(2)">Back</button>
+
+</div>
 
 </div>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
-  <div class="popup-box">
-    <h3>Coming Soon 🚀</h3>
-    <p>Platform not launched yet</p>
-    <p class="small">Get notified when we go live</p>
-    <input placeholder="Email / WhatsApp">
-    <button class="btn">Get Notified</button>
-    <button class="btn" style="background:red" onclick="closePopup()">Close</button>
-  </div>
+<div class="popup-box">
+<h3>Coming Soon 🚀</h3>
+<p>BluePeak Markets is not launched yet</p>
+<button class="btn">Get Notified</button>
+</div>
 </div>
 
 <script>
 
 let state = {
-  model: null,
-  platform: null,
-  account: null
+  model:null,
+  platform:null,
+  account:null
 };
 
-/* STICKY SELECT FIX */
-function select(el, type, value){
+/* ACTIVE SELECT SYSTEM */
+function select(type,value,el){
 
-  state[type] = value;
+state[type]=value;
 
-  document.querySelectorAll(`[data-${type}]`).forEach(e=>{
-    e.classList.remove("active");
-  });
+document.querySelectorAll(`[data-${type}]`).forEach(e=>{
+e.classList.remove("active");
+});
 
-  el.classList.add("active");
-  el.setAttribute(`data-${type}`, value);
+el.classList.add("active");
+el.setAttribute(`data-${type}`,value);
 
-  updateRules();
+updateRules();
 }
 
-/* RULES */
+/* RULE ENGINE */
 function updateRules(){
 
-let r = "";
+let r="";
 
-if(state.model === "1"){
-r += "1 Step Model<br>Target: 10%<br>Max Loss: 4%<br>Profit Split: 80%<br>";
+if(state.model==="1 Step"){
+r+="1 Step Model<br>Target 10%<br>Max Loss 4%<br>Profit Split 80%<br>";
 }
 
-if(state.model === "2"){
-r += "2 Step Model<br>Phase 1: 10%<br>Phase 2: 4%<br>Max Loss: 5%<br>Profit Split: 85–90%<br>";
+if(state.model==="2 Step"){
+r+="2 Step Model<br>Phase 1 10%<br>Phase 2 4%<br>Max Loss 5%<br>Profit 85-90%<br>";
 }
 
-if(state.model === "instant"){
-r += "Instant Account<br>Max Loss: 3%<br>Profit Split: 75%<br>";
+if(state.model==="Instant"){
+r+="Instant Account<br>Max Loss 3%<br>Profit 75%<br>";
 }
 
 if(state.platform){
-r += "<br>Platform: " + state.platform;
+r+="<br>Platform: "+state.platform;
 }
 
 if(state.account){
-r += "<br>Account: R" + state.account + ",000";
+r+="<br>Account: R"+state.account+",000";
 }
 
-document.getElementById("rulesBox").innerHTML = r || "Select options to see rules...";
+document.getElementById("rules").innerHTML=r;
 }
 
-/* FINAL PRICE */
-function finalStep(){
+/* NAVIGATION */
+function next(n){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById("page"+n).classList.add("active");
 
-if(!state.model || !state.platform || !state.account){
-alert("Select all options");
-return;
+document.querySelectorAll(".step").forEach(s=>s.classList.remove("active"));
+document.getElementById("s"+n).classList.add("active");
+
+if(n===3){
+document.getElementById("reviewBox").innerHTML=document.getElementById("rules").innerHTML;
+}
 }
 
-let price = "";
-
-switch(state.account){
-case "5": price="R350"; break;
-case "25": price="R500"; break;
-case "50": price="R750"; break;
-case "100": price="R1100"; break;
-case "200": price="R2000"; break;
-case "500": price="R5400"; break;
-case "1000": price="R65000"; break;
+function back(n){
+next(n);
 }
 
-document.getElementById("rulesBox").innerHTML += "<br><br><b>Price:</b> " + price;
+/* CONFIRM */
+function confirm(){
+document.getElementById("popup").style.display="flex";
 }
 
-/* SCROLL */
-function scrollToBuilder(){
-window.scrollTo({top: 400, behavior: "smooth"});
-}
-
-/* POPUP */
+/* AUTO POPUP */
 setTimeout(()=>{
 document.getElementById("popup").style.display="flex";
 },3000);
-
-function closePopup(){
-document.getElementById("popup").style.display="none";
-}
 
 </script>
 
