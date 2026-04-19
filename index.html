@@ -2,266 +2,309 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>BluePeak Markets</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BluePeak Markets | Challenge Builder</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#050714;
-  --card:rgba(255,255,255,0.04);
-  --stroke:rgba(255,255,255,0.08);
-  --blue:#3b82f6;
-  --gold:#f5c542;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #070b1a;
+  color: #fff;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter}
-
-body{
-  background:radial-gradient(circle at top,#0a1030,#050714);
-  color:#fff;
+/* HEADER */
+header {
+  text-align: center;
+  padding: 15px;
+  background: linear-gradient(90deg, #004cff, #00c3ff);
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.container{
-  width:min(1050px,92%);
-  margin:auto;
-  padding:40px 0;
+/* GRID */
+.container {
+  padding: 15px;
 }
 
-h1{
-  font-family:Orbitron;
-  text-align:center;
-  margin-bottom:8px;
+h3 {
+  margin: 10px 0;
+  color: #00c3ff;
 }
 
-.sub{
-  text-align:center;
-  color:#a9b4d0;
-  margin-bottom:25px;
+/* SMALL CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
 
-.badge{
-  display:block;
-  width:max-content;
-  margin:auto;
-  padding:6px 12px;
-  border-radius:999px;
-  background:rgba(59,130,246,0.15);
-  color:var(--blue);
-  font-size:12px;
-  margin-bottom:25px;
+.card {
+  background: #111a33;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #1f2b55;
+  font-size: 13px;
+  transition: 0.2s;
 }
 
-/* SMALLER ACCOUNT GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:10px;
+.card:hover {
+  transform: scale(1.03);
+  border-color: #00c3ff;
 }
 
-.card{
-  background:var(--card);
-  border:1px solid var(--stroke);
-  border-radius:12px;
-  padding:10px;
-  cursor:pointer;
-  transition:0.2s ease;
-  text-align:center;
-  min-height:70px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.selected {
+  background: #003cff;
 }
 
-.card:hover{
-  transform:translateY(-2px);
-  border-color:var(--blue);
+/* TAG */
+.popular {
+  background: gold;
+  color: black;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 5px;
 }
 
-.selected{
-  border:2px solid var(--blue);
-  box-shadow:0 0 12px rgba(59,130,246,0.25);
-}
-
-.card h3{
-  font-size:12px;
-  font-weight:700;
-}
-
-/* SELECTORS */
-.row{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:18px;
-}
-
-select{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  background:#0b1028;
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.1);
-}
-
-/* RULE PANEL */
-.panel{
-  margin-top:18px;
-  padding:18px;
-  border-radius:14px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  line-height:1.7;
-  font-size:14px;
-  min-height:160px;
+/* RULE BOX */
+.rules {
+  margin-top: 10px;
+  background: #0d1630;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 /* BUTTON */
-.btn{
-  display:inline-block;
-  margin-top:18px;
-  padding:12px 16px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#3b82f6,#1d4ed8);
-  color:#fff;
-  text-decoration:none;
-  font-weight:700;
-  text-align:center;
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  background: #00c3ff;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-box {
+  background: #111a33;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.small {
+  font-size: 11px;
+  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
+<header>BLUEPEAK MARKETS</header>
+
 <div class="container">
 
-<h1>BluePeak Markets</h1>
-<div class="sub">Peak Pro Standards • Challenge Builder System</div>
-<div class="badge">Select Account → Model → Platform</div>
-
-<!-- ACCOUNTS -->
-<h3 style="margin-bottom:10px;">Select Account Size (ZAR)</h3>
-
-<div class="grid" id="accounts">
-
-<div class="card" onclick="selectAccount(5000,event)">
-<h3>R5K</h3>
+<!-- STEP TYPE -->
+<h3>Model Type</h3>
+<div class="grid">
+  <div class="card" onclick="selectModel('1 Step')">1 Step</div>
+  <div class="card" onclick="selectModel('2 Step')">2 Step</div>
+  <div class="card" onclick="selectModel('Instant')">Instant</div>
 </div>
 
-<div class="card" onclick="selectAccount(25000,event)">
-<h3>R25K</h3>
+<!-- PLATFORM -->
+<h3>Platform</h3>
+<div class="grid">
+  <div class="card" onclick="selectPlatform('MT4')">MetaTrader 4</div>
+  <div class="card" onclick="selectPlatform('MT5')">
+    MetaTrader 5
+    <div class="popular">Most Popular</div>
+  </div>
 </div>
 
-<div class="card" onclick="selectAccount(50000,event)">
-<h3>R50K</h3>
-</div>
+<!-- ACCOUNT SIZE -->
+<h3>Account Size</h3>
+<div class="grid">
 
-<div class="card" onclick="selectAccount(100000,event)">
-<h3>R100K</h3>
-</div>
+  <div class="card" onclick="selectAccount('5K')">R5,000</div>
 
-<div class="card" onclick="selectAccount(200000,event)">
-<h3>R200K</h3>
-</div>
+  <div class="card" onclick="selectAccount('25K')">R25,000</div>
 
-<div class="card" onclick="selectAccount(500000,event)">
-<h3>R500K</h3>
-</div>
+  <div class="card" onclick="selectAccount('50K')">R50,000</div>
 
-<div class="card" onclick="selectAccount(1000000,event)">
-<h3>R1M</h3>
-</div>
+  <div class="card" onclick="selectAccount('100K')">
+    R100,000
+    <div class="popular">Most Popular</div>
+  </div>
 
-</div>
+  <div class="card" onclick="selectAccount('200K')">R200,000</div>
 
-<!-- SELECTORS -->
-<div class="row">
+  <div class="card" onclick="selectAccount('500K')">R500,000</div>
 
-<select id="model" onchange="updateRules()">
-<option value="1step">1 Step Model</option>
-<option value="2step">2 Step Model</option>
-<option value="instant">Instant Model</option>
-</select>
-
-<select id="platform">
-<option>MetaTrader 4</option>
-<option>MetaTrader 5</option>
-</select>
-
-<select>
-<option>Peak Pro Standards</option>
-</select>
+  <div class="card" onclick="selectAccount('1M')">R1,000,000</div>
 
 </div>
 
-<!-- RULE PANEL -->
-<div class="panel" id="rules">
-Select an account size to see challenge rules...
+<!-- RULES -->
+<div class="rules" id="rulesBox">
+Select options to view rules...
 </div>
 
-<a class="btn" href="#">Get Notified (Not Launched Yet)</a>
+<button class="btn" onclick="finalStep()">Continue</button>
 
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h3>🚀 Coming Soon</h3>
+    <p>This platform is not launched yet.</p>
+
+    <p class="small">Get notified when we go live</p>
+
+    <input type="text" placeholder="Enter Email / WhatsApp">
+    <button class="btn">Get Notified</button>
+
+    <button class="btn" style="background:red;margin-top:10px;" onclick="closePopup()">
+      Close
+    </button>
+  </div>
 </div>
 
 <script>
 
-let selectedAccount = 5000;
+let model = "";
+let platform = "";
+let account = "";
 
-function selectAccount(size,event){
-selectedAccount = size;
+setTimeout(() => {
+  document.getElementById("popup").style.display = "flex";
+}, 3000);
 
-document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
-event.currentTarget.classList.add('selected');
-
-updateRules();
+/* SELECTION */
+function selectModel(v){
+  model = v;
+  updateRules();
 }
 
+function selectPlatform(v){
+  platform = v;
+  updateRules();
+}
+
+function selectAccount(v){
+  account = v;
+  updateRules();
+}
+
+/* RULE ENGINE */
 function updateRules(){
 
-let model = document.getElementById("model").value;
+let rules = "";
 
-let text = "";
-
-if(model === "1step"){
-text = `
-<b>1 STEP MODEL</b><br><br>
+if(model === "1 Step"){
+rules = `
+<b>1 Step Model</b><br>
 Phase 1 Target: 10%<br>
 Max Daily Loss: 4%<br>
 Leverage: 1:500<br>
-Profit Split: Up to 75%<br>
-Daily Payouts: Yes<br><br>
-<b>Account:</b> R${selectedAccount}
+Profit Split: up to 80%<br>
+Daily Payouts: Yes
 `;
 }
 
-if(model === "2step"){
-text = `
-<b>2 STEP MODEL</b><br><br>
+if(model === "2 Step"){
+rules = `
+<b>2 Step Model</b><br>
 Phase 1 Target: 10%<br>
 Phase 2 Target: 4%<br>
 Max Daily Loss: 5%<br>
 Leverage: 1:500<br>
-Profit Split: Up to 85%<br>
-Daily Payouts: Yes<br><br>
-<b>Account:</b> R${selectedAccount}
+Profit Split: 85% - 90%<br>
+Daily Payouts: Yes
 `;
 }
 
-if(model === "instant"){
-text = `
-<b>INSTANT ACCOUNT</b><br><br>
+if(model === "Instant"){
+rules = `
+<b>Instant Account</b><br>
 Max Daily Loss: 3%<br>
 Leverage: 1:500<br>
 Profit Split: 75%<br>
-Daily Payouts: Yes<br>
-Instant Funding Active<br><br>
-<b>Account:</b> R${selectedAccount}
+Daily Payouts: Yes
 `;
 }
 
-document.getElementById("rules").innerHTML = text;
+if(platform){
+rules += `<br><br><b>Platform:</b> ${platform}`;
+}
+
+if(account){
+rules += `<br><b>Account:</b> ${account}`;
+}
+
+document.getElementById("rulesBox").innerHTML = rules;
+
+}
+
+/* FINAL STEP (PRICE REVEAL) */
+function finalStep(){
+
+if(!model || !platform || !account){
+alert("Select all options first");
+return;
+}
+
+/* hidden pricing logic */
+let price = "";
+
+if(account === "5K") price = "R350";
+if(account === "25K") price = "R500";
+if(account === "50K") price = "R750";
+if(account === "100K") price = "R1100";
+if(account === "200K") price = "R2000";
+if(account === "500K") price = "R5400";
+if(account === "1M") price = "R65000";
+
+document.getElementById("rulesBox").innerHTML += `
+<br><br><b>FINAL PRICE:</b> ${price}
+`;
+
+}
+
+function closePopup(){
+document.getElementById("popup").style.display = "none";
 }
 
 </script>
