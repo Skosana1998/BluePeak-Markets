@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BluePeak Markets | Prop Firm</title>
+<title>BluePeak Markets | Challenge Builder</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
@@ -12,22 +12,19 @@
   --bg:#050714;
   --card:rgba(255,255,255,0.04);
   --stroke:rgba(255,255,255,0.08);
-  --text:#fff;
-  --muted:#a9b4d0;
   --blue:#3b82f6;
-  --blue2:#1d4ed8;
   --gold:#f5c542;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter}
 
 body{
   background:radial-gradient(circle at top,#0a1030,#050714);
-  color:var(--text);
+  color:#fff;
 }
 
 .container{
-  width:min(1100px,92%);
+  width:min(1050px,92%);
   margin:auto;
   padding:40px 0;
 }
@@ -35,63 +32,61 @@ body{
 h1{
   font-family:Orbitron;
   text-align:center;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .sub{
   text-align:center;
-  color:var(--muted);
-  margin-bottom:30px;
+  color:#a9b4d0;
+  margin-bottom:25px;
 }
 
 .badge{
-  display:inline-block;
+  display:block;
+  width:max-content;
+  margin:auto;
   padding:6px 12px;
   border-radius:999px;
   background:rgba(59,130,246,0.15);
   color:var(--blue);
   font-size:12px;
-  margin:0 auto 20px;
-  display:block;
-  width:max-content;
+  margin-bottom:25px;
 }
 
-/* GRID FIXED */
+/* SMALLER ACCOUNT GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
 }
 
 .card{
   background:var(--card);
   border:1px solid var(--stroke);
-  border-radius:14px;
-  padding:12px;
+  border-radius:12px;
+  padding:10px;
   cursor:pointer;
-  transition:0.25s ease;
-  min-height:85px;
+  transition:0.2s ease;
+  text-align:center;
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .card:hover{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
   border-color:var(--blue);
 }
 
 .selected{
   border:2px solid var(--blue);
-  box-shadow:0 0 15px rgba(59,130,246,0.25);
+  box-shadow:0 0 12px rgba(59,130,246,0.25);
 }
 
 .card h3{
-  font-size:13px;
-  margin-bottom:6px;
-}
-
-.price{
-  color:var(--gold);
-  font-weight:800;
-  font-size:13px;
+  font-size:12px;
+  font-weight:700;
 }
 
 /* SELECTORS */
@@ -99,7 +94,7 @@ h1{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
-  margin-top:20px;
+  margin-top:18px;
 }
 
 select{
@@ -113,13 +108,14 @@ select{
 
 /* RULE PANEL */
 .panel{
-  margin-top:20px;
+  margin-top:18px;
   padding:18px;
   border-radius:14px;
   background:rgba(255,255,255,0.04);
   border:1px solid rgba(255,255,255,0.08);
   line-height:1.7;
   font-size:14px;
+  min-height:160px;
 }
 
 /* BUTTON */
@@ -128,10 +124,11 @@ select{
   margin-top:18px;
   padding:12px 16px;
   border-radius:12px;
-  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  background:linear-gradient(135deg,#3b82f6,#1d4ed8);
   color:#fff;
   text-decoration:none;
   font-weight:700;
+  text-align:center;
 }
 </style>
 </head>
@@ -141,46 +138,40 @@ select{
 <div class="container">
 
 <h1>BluePeak Markets</h1>
-<div class="sub">Peak Pro Standards • Prop Firm Challenge System</div>
-<div class="badge">ZAR Accounts • MT4 / MT5 • Instant Funding Available</div>
+<div class="sub">Peak Pro Standards • Challenge Builder System</div>
+<div class="badge">Select Account → Model → Platform</div>
 
 <!-- ACCOUNTS -->
-<h3>Select Account Size (ZAR)</h3>
+<h3 style="margin-bottom:10px;">Select Account Size (ZAR)</h3>
+
 <div class="grid" id="accounts">
 
-<div class="card" onclick="selectAccount(5000,350,event)">
+<div class="card" onclick="selectAccount(5000,event)">
 <h3>R5K</h3>
-<div class="price">R350</div>
 </div>
 
-<div class="card" onclick="selectAccount(25000,500,event)">
+<div class="card" onclick="selectAccount(25000,event)">
 <h3>R25K</h3>
-<div class="price">R500</div>
 </div>
 
-<div class="card" onclick="selectAccount(50000,750,event)">
+<div class="card" onclick="selectAccount(50000,event)">
 <h3>R50K</h3>
-<div class="price">R750</div>
 </div>
 
-<div class="card" onclick="selectAccount(100000,1100,event)">
+<div class="card" onclick="selectAccount(100000,event)">
 <h3>R100K</h3>
-<div class="price">R1100</div>
 </div>
 
-<div class="card" onclick="selectAccount(200000,2000,event)">
+<div class="card" onclick="selectAccount(200000,event)">
 <h3>R200K</h3>
-<div class="price">R2000</div>
 </div>
 
-<div class="card" onclick="selectAccount(500000,5400,event)">
+<div class="card" onclick="selectAccount(500000,event)">
 <h3>R500K</h3>
-<div class="price">R5400</div>
 </div>
 
-<div class="card" onclick="selectAccount(1000000,65000,event)">
+<div class="card" onclick="selectAccount(1000000,event)">
 <h3>R1M</h3>
-<div class="price">R65K</div>
 </div>
 
 </div>
@@ -205,9 +196,9 @@ select{
 
 </div>
 
-<!-- RULES -->
+<!-- RULE PANEL -->
 <div class="panel" id="rules">
-Select an account to view trading rules...
+Select an account size to see challenge rules...
 </div>
 
 <a class="btn" href="#">Get Notified (Not Launched Yet)</a>
@@ -216,10 +207,10 @@ Select an account to view trading rules...
 
 <script>
 
-let selected = 5000;
+let selectedAccount = 5000;
 
-function selectAccount(size,price,event){
-selected = size;
+function selectAccount(size,event){
+selectedAccount = size;
 
 document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
 event.currentTarget.classList.add('selected');
@@ -240,8 +231,8 @@ Phase 1 Target: 10%<br>
 Max Daily Loss: 4%<br>
 Leverage: 1:500<br>
 Profit Split: Up to 75%<br>
-Daily Payouts: Yes<br>
-Account Size: R${selected}
+Daily Payouts: Yes<br><br>
+<b>Account:</b> R${selectedAccount}
 `;
 }
 
@@ -253,8 +244,8 @@ Phase 2 Target: 4%<br>
 Max Daily Loss: 5%<br>
 Leverage: 1:500<br>
 Profit Split: Up to 85%<br>
-Daily Payouts: Yes<br>
-Account Size: R${selected}
+Daily Payouts: Yes<br><br>
+<b>Account:</b> R${selectedAccount}
 `;
 }
 
@@ -265,8 +256,8 @@ Max Daily Loss: 3%<br>
 Leverage: 1:500<br>
 Profit Split: 75%<br>
 Daily Payouts: Yes<br>
-Instant Funding Active<br>
-Account Size: R${selected}
+Instant Funding Active<br><br>
+<b>Account:</b> R${selectedAccount}
 `;
 }
 
