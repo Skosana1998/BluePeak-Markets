@@ -3,138 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BluePeak Markets | Premium Prop Firm</title>
+<title>BluePeak Markets | Account Selector</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#050714;
-  --card:rgba(255,255,255,0.05);
-  --stroke:rgba(255,255,255,0.08);
-  --text:#ffffff;
-  --muted:#a9b4d0;
-  --blue:#3b82f6;
-  --blue2:#1d4ed8;
-  --gold:#f5c542;
-  --green:#2ef7a3;
-}
-
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}
 body{
-  background:radial-gradient(circle at top,#0a1030,#050714);
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-.container{width:min(1200px,92%);margin:auto}
-
-/* HEADER */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
-}
-.logo{
-  font-family:Orbitron;
-  font-weight:900;
-  color:var(--blue);
-  letter-spacing:2px;
-}
-nav a{
-  color:var(--muted);
-  margin:0 12px;
-  text-decoration:none;
-  font-size:14px;
-}
-nav a:hover{color:#fff}
-.btn{
-  padding:12px 18px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  margin:0;
+  font-family:Inter;
+  background:#050714;
   color:#fff;
-  font-weight:700;
-  text-decoration:none;
 }
 
-/* HERO */
-.hero{
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:40px;
-  padding:60px 0;
-}
+.container{width:min(1100px,92%);margin:auto;padding:40px 0}
+
 h1{
   font-family:Orbitron;
-  font-size:52px;
-  line-height:1.1;
-}
-.highlight{
-  color:var(--blue);
-}
-p{color:var(--muted);line-height:1.7;margin-top:14px}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--stroke);
-  border-radius:20px;
-  padding:20px;
+  text-align:center;
+  margin-bottom:30px;
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:15px;
 }
 
-/* PRICING */
-.price{
-  font-size:28px;
-  font-weight:900;
-  color:var(--gold);
-}
-
-/* POPUP */
-.popup{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:320px;
-  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 0 25px rgba(59,130,246,0.5);
-  display:none;
-  z-index:999;
-}
-.popup h3{font-size:16px;margin-bottom:8px}
-.popup button{
-  margin-top:10px;
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:12px;
-  font-weight:800;
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  padding:16px;
   cursor:pointer;
+  transition:0.3s;
 }
 
-/* TAGS */
-.tag{
+.card:hover{
+  transform:scale(1.03);
+  border-color:#3b82f6;
+}
+
+.selected{
+  border:2px solid #3b82f6;
+  box-shadow:0 0 20px rgba(59,130,246,0.4);
+}
+
+.price{
+  color:#f5c542;
+  font-weight:800;
+  font-size:18px;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:15px;
+  margin-top:20px;
+}
+
+select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  background:#0b1028;
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.panel{
+  margin-top:25px;
+  padding:20px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  line-height:1.7;
+}
+
+.badge{
   display:inline-block;
   padding:6px 10px;
   border-radius:999px;
   background:rgba(59,130,246,0.15);
-  color:var(--blue);
+  color:#3b82f6;
   font-size:12px;
   margin-bottom:10px;
-}
-
-@media(max-width:900px){
-.hero{grid-template-columns:1fr}
-.grid{grid-template-columns:1fr}
-nav{display:none}
 }
 </style>
 </head>
@@ -143,119 +95,138 @@ nav{display:none}
 
 <div class="container">
 
-<header>
-  <div class="logo">BLUEPEAK MARKETS</div>
-  <nav>
-    <a href="#accounts">Accounts</a>
-    <a href="#rules">Rules</a>
-    <a href="#how">How It Works</a>
-    <a href="#faq">FAQ</a>
-  </nav>
-  <a class="btn" href="#">Get Notified</a>
-</header>
+<h1>BluePeak Markets Account Builder</h1>
 
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <div class="tag">PREMIUM PROP FIRM • NOT LAUNCHED YET</div>
+<div class="badge">Peak Pro Standards • Prop Firm Selector</div>
 
-    <h1>
-      Trade The <span class="highlight">BluePeak Challenge</span><br>
-      Like A Pro
-    </h1>
+<!-- ACCOUNT TYPES -->
+<h3>Select Account Size (ZAR)</h3>
+<div class="grid" id="accounts">
 
-    <p>
-      Access funded accounts from $5K up to $1M.
-      Designed for serious traders. Instant accounts available with profit splits up to 75%.
-    </p>
-
-    <p style="margin-top:18px;color:#fff;">
-      ✔ One Step Accounts: <b>80% Profit Split</b><br>
-      ✔ Two Step Accounts: <b>85% – 90% Profit Split</b><br>
-      ✔ Instant Accounts: <b>Up to 75% Profit Split</b>
-    </p>
-
-    <div style="margin-top:20px">
-      <a class="btn" href="#">Get Notified (Not Launched)</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Account Levels</h3>
-    <p>$5K • $25K • $50K • $200K • $500K • $1M</p>
-
-    <hr style="border:1px solid rgba(255,255,255,0.1);margin:14px 0">
-
-    <p><b>Instant Accounts:</b> Up to 75% split</p>
-    <p><b>One Step:</b> 80% split</p>
-    <p><b>Two Step:</b> 85% – 90% split</p>
-  </div>
-</section>
-
-<!-- ACCOUNTS -->
-<section id="accounts">
-<h2>Account Challenges</h2>
-<div class="grid" style="margin-top:20px">
-
-<div class="card">
-<h3>$5K Challenge</h3>
-<p>Entry level funded challenge</p>
-<div class="price">$49</div>
+<div class="card" onclick="selectAccount(5000,350)">
+<h3>R5,000 Challenge</h3>
+<div class="price">R350</div>
 </div>
 
-<div class="card">
-<h3>$50K Challenge</h3>
-<p>🔥 Includes FREE bonus promo</p>
-<div class="price">$299</div>
+<div class="card" onclick="selectAccount(25000,500)">
+<h3>R25,000 Challenge</h3>
+<div class="price">R500</div>
 </div>
 
-<div class="card">
-<h3>$1M Challenge</h3>
-<p>Elite trader level account</p>
-<div class="price">$999</div>
+<div class="card" onclick="selectAccount(50000,750)">
+<h3>R50,000 Challenge</h3>
+<div class="price">R750</div>
+</div>
+
+<div class="card" onclick="selectAccount(100000,1100)">
+<h3>R100,000 Challenge</h3>
+<div class="price">R1100</div>
+</div>
+
+<div class="card" onclick="selectAccount(200000,2000)">
+<h3>R200,000 Challenge</h3>
+<div class="price">R2000</div>
+</div>
+
+<div class="card" onclick="selectAccount(500000,5400)">
+<h3>R500,000 Challenge</h3>
+<div class="price">R5400</div>
+</div>
+
+<div class="card" onclick="selectAccount(1000000,65000)">
+<h3>R1,000,000 Challenge</h3>
+<div class="price">R65000</div>
 </div>
 
 </div>
-</section>
 
-<!-- RULES -->
-<section id="rules" style="margin-top:60px">
-<h2>Profit Structure</h2>
-<div class="grid" style="margin-top:20px">
+<!-- SELECTORS -->
+<div class="row">
 
-<div class="card">
-<h3>Instant Accounts</h3>
-<p>Up to 75% profit split with direct access</p>
-</div>
+<select id="model" onchange="updateRules()">
+<option value="1step">1 Step Model</option>
+<option value="2step">2 Step Model</option>
+<option value="instant">Instant Model</option>
+</select>
 
-<div class="card">
-<h3>One Step</h3>
-<p>80% profit split with simplified evaluation</p>
-</div>
+<select id="platform">
+<option>MetaTrader 4</option>
+<option>MetaTrader 5</option>
+</select>
 
-<div class="card">
-<h3>Two Step</h3>
-<p>85% – 90% profit split for advanced traders</p>
-</div>
-
-</div>
-</section>
+<select>
+<option>Peak Pro Standards</option>
+</select>
 
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <h3>🔥 SPECIAL OFFER</h3>
-  <p>Buy ANY challenge and get FREE $50K challenge access for launch promo!</p>
-  <button onclick="document.getElementById('popup').style.display='none'">
-    Claim Offer
-  </button>
+<!-- RULE PANEL -->
+<div class="panel" id="rules">
+Select an account to view rules...
+</div>
+
 </div>
 
 <script>
-setTimeout(()=>{
-  document.getElementById("popup").style.display="block";
-},3000);
+
+let selectedAccount = 5000;
+
+function selectAccount(size,price){
+
+selectedAccount = size;
+
+document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
+event.target.closest('.card').classList.add('selected');
+
+updateRules(price);
+}
+
+function updateRules(price){
+
+let model = document.getElementById("model").value;
+
+let text = "";
+
+if(model === "1step"){
+text = `
+<b>1 STEP MODEL</b><br><br>
+Phase 1 Target: 10%<br>
+Max Daily Loss: 4%<br>
+Leverage: 1:500<br>
+Profit Split: Up to 75%<br>
+Daily Payouts: Yes<br>
+Account Size: R${selectedAccount}
+`;
+}
+
+if(model === "2step"){
+text = `
+<b>2 STEP MODEL</b><br><br>
+Phase 1 Target: 10%<br>
+Phase 2 Target: 4%<br>
+Max Daily Loss: 5%<br>
+Leverage: 1:500<br>
+Profit Split: Up to 85%<br>
+Daily Payouts: Yes<br>
+Account Size: R${selectedAccount}
+`;
+}
+
+if(model === "instant"){
+text = `
+<b>INSTANT ACCOUNT</b><br><br>
+Max Daily Loss: 3%<br>
+Leverage: 1:500<br>
+Profit Split: 75%<br>
+Daily Payouts: Yes<br>
+Instant Funding Activated<br>
+Account Size: R${selectedAccount}
+`;
+}
+
+document.getElementById("rules").innerHTML = text;
+}
+
 </script>
 
 </body>
