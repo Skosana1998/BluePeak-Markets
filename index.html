@@ -1,130 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BluePeak Markets</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
+<title>BluePeak Markets Ultra</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
+/* ================= GLOBAL ================= */
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-margin:0;
-font-family:Poppins;
+font-family:Poppins, sans-serif;
+background:#050816;
 color:#fff;
-background:linear-gradient(-45deg,#060b17,#0e1c3a,#091226,#060b17);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
+overflow-x:hidden;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
+h1,h2,h3{font-weight:700}
+p{color:#9aa4c7}
 
-/* NAV */
+/* ================= NAV ================= */
 nav{
-position:sticky;
+position:fixed;
 top:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 padding:20px 60px;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.1);
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(12px);
+z-index:999;
 }
+nav h1{color:#2b7cff}
+nav ul{display:flex;gap:25px;list-style:none}
+nav ul li{cursor:pointer}
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
+padding-top:140px;
 text-align:center;
-padding:100px 20px;
+padding-bottom:100px;
+background:radial-gradient(circle at top,#0e1c3a,#050816);
 }
 .hero h1{
-font-size:48px;
-}
-.hero p{
-color:#aaa;
-}
-
-/* BUILDER */
-.builder{
+font-size:52px;
 max-width:900px;
 margin:auto;
+}
+.hero p{margin-top:20px}
+.hero button{
+margin-top:30px;
+padding:14px 40px;
+border:none;
+border-radius:8px;
+background:#2b7cff;
+color:#fff;
+cursor:pointer;
+}
+
+/* ================= STATS ================= */
+.stats{
+display:flex;
+justify-content:center;
+gap:80px;
+padding:60px 0;
+}
+.stat{text-align:center}
+.stat h2{color:#2b7cff}
+
+/* ================= BUILDER ================= */
+.builder{
+max-width:1100px;
+margin:auto;
+background:rgba(255,255,255,0.04);
 padding:40px;
-background:rgba(255,255,255,0.05);
-border-radius:15px;
-backdrop-filter:blur(15px);
+border-radius:16px;
+backdrop-filter:blur(10px);
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(4,1fr);
 gap:10px;
 margin:15px 0;
 }
 
 .box{
-padding:10px;
+padding:12px;
+background:#0d1428;
+border:1px solid #1e2a45;
 border-radius:8px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
-font-size:13px;
 text-align:center;
+font-size:13px;
 transition:0.2s;
 }
-.box:hover{
-border-color:#2b7cff;
-}
+
 .box.active{
 background:#2b7cff;
 }
 
-/* PRICE */
 .price{
 text-align:center;
-font-size:30px;
-margin-top:15px;
+font-size:34px;
+margin-top:20px;
 color:#2b7cff;
 }
 
-/* LIVE FEED */
+/* ================= CARDS ================= */
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+padding:60px;
+}
+.card{
+background:#0d1428;
+padding:30px;
+border-radius:12px;
+border:1px solid #1e2a45;
+}
+
+/* ================= FEED ================= */
 .feed{
 position:fixed;
-left:20px;
 bottom:20px;
-background:rgba(0,0,0,0.6);
+left:20px;
+background:#0d1428;
 padding:15px;
 border-radius:10px;
 font-size:12px;
 }
 
-/* COUNTDOWN */
-.timer{
-text-align:center;
-color:#2b7cff;
-margin-top:10px;
-}
-
-/* BUTTON */
-.btn{
-background:#2b7cff;
-padding:12px 25px;
-border:none;
-border-radius:8px;
-color:#fff;
-cursor:pointer;
-}
-
-/* POPUP */
+/* ================= POPUP ================= */
 .popup{
 position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-background:#0f172a;
-padding:30px;
+background:#0d1428;
+padding:40px;
 border-radius:12px;
 display:none;
 z-index:1000;
@@ -133,135 +145,91 @@ z-index:1000;
 position:fixed;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.8);
 display:none;
 }
-</style>
-</head>
 
-<body>
-
-<nav>
-<h2>BluePeak</h2>
-<div>Funded Trading Platform</div>
-</nav>
-
-<section class="hero">
-<h1>Scale From $5,000 to $1,000,000</h1>
-<p>Institutional Level Funding • Real Payouts • No Limits</p>
-</section>
-
-<div class="builder">
-
-<h3>Select Account Size</h3>
+/* ================= FOOTER ================= */
+footer{
+padding:40px;
+text-align:center;
+border-top:1px solid #1e2a45;
+margin-top:60px;
+}
+</style></head><body><nav>
+<h1>BluePeak</h1>
+<ul>
+<li>Home</li>
+<li>Challenges</li>
+<li>Payouts</li>
+<li>FAQ</li>
+</ul>
+</nav><section class="hero">
+<h1>Trade Institutional Capital Up To $1,000,000</h1>
+<p>Built for serious traders. No limits. Real payouts.</p>
+<button>Start Challenge</button>
+</section><section class="stats">
+<div class="stat"><h2>$1M</h2><p>Funding</p></div>
+<div class="stat"><h2>90%</h2><p>Split</p></div>
+<div class="stat"><h2>Daily</h2><p>Payouts</p></div>
+</section><section class="builder">
+<h2>Select Account Size</h2>
 <div class="grid" id="sizes">
 <div class="box" data-price="350">5K</div>
 <div class="box" data-price="500">25K</div>
 <div class="box" data-price="750">50K</div>
-<div class="box active" data-price="1100">100K MOST POPULAR</div>
+<div class="box active" data-price="1100">100K</div>
 <div class="box" data-price="2000">200K</div>
 <div class="box" data-price="5400">500K</div>
-</div>
-
-<h3>Model</h3>
-<div class="grid" id="model">
+<div class="box" data-price="6500">1M</div>
+</div><h2>Model</h2>
+<div class="grid">
 <div class="box">Instant</div>
 <div class="box">1 Step</div>
-<div class="box active">2 Step MOST POPULAR</div>
-</div>
-
-<h3>Platform</h3>
-<div class="grid" id="platform">
+<div class="box active">2 Step</div>
+</div><h2>Platform</h2>
+<div class="grid">
 <div class="box">MT4</div>
-<div class="box active">MT5 MOST POPULAR</div>
-</div>
-
-<div style="text-align:center;">
-<input id="code" placeholder="Discount Code">
-<br><br>
-<button class="btn" onclick="applyCode()">Apply</button>
-</div>
-
-<div class="price" id="price">R1100</div>
-
-<div class="timer" id="timer"></div>
-
-<div style="text-align:center;">
-<button class="btn">Proceed</button>
-</div>
-
-</div>
-
-<!-- LIVE FEED -->
-<div class="feed" id="feed">Trader from UK just got funded</div>
-
-<!-- POPUP -->
-<div class="overlay" id="overlay"></div>
+<div class="box active">MT5</div>
+</div><div class="price" id="price">R1100</div>
+</section><section class="cards">
+<div class="card"><h3>High Scaling</h3><p>Grow accounts rapidly</p></div>
+<div class="card"><h3>Fast Payouts</h3><p>Daily withdrawals</p></div>
+<div class="card"><h3>Global Traders</h3><p>Trusted worldwide</p></div>
+</section><div class="feed" id="feed">Trader from SA just got funded</div><div class="overlay" id="overlay"></div>
 <div class="popup" id="popup">
 <h2>Buy 1 Get Free 50K</h2>
-<p>Limited promotion</p>
-<button class="btn" onclick="closePopup()">Claim</button>
-</div>
-
-<script>
+<button onclick="closePopup()">Claim</button>
+</div><footer>
+BluePeak Markets 2026
+</footer><script>
 
 // SELECT
-document.querySelectorAll('.grid').forEach(grid=>{
-grid.querySelectorAll('.box').forEach(box=>{
-box.onclick=()=>{
-grid.querySelectorAll('.box').forEach(b=>b.classList.remove('active'));
-box.classList.add('active');
-updatePrice();
+let boxes=document.querySelectorAll('#sizes .box');
+boxes.forEach(b=>{
+b.onclick=()=>{
+boxes.forEach(x=>x.classList.remove('active'));
+b.classList.add('active');
+document.getElementById('price').innerText="R"+b.dataset.price;
 }
 });
-});
-
-let price=1100,discount=0;
-
-function updatePrice(){
-let base=document.querySelector('#sizes .active').dataset.price;
-let final=base-(base*discount);
-document.getElementById("price").innerText="R"+Math.round(final);
-}
-
-// DISCOUNT
-function applyCode(){
-let c=document.getElementById("code").value;
-if(c==="BLUE20"){discount=0.2;}
-else{discount=0;}
-updatePrice();
-}
 
 // FEED
-let msgs=[
-"Trader from Germany passed 100K",
-"Trader from SA withdrew profits",
-"Trader from UK got funded",
-"Trader from UAE scaled account"
-];
+let msgs=["Trader from UK passed","Trader from UAE funded","Trader from SA withdrew","Trader from US scaling"];
 setInterval(()=>{
-document.getElementById("feed").innerText=msgs[Math.floor(Math.random()*msgs.length)];
+feed.innerText=msgs[Math.floor(Math.random()*msgs.length)];
 },3000);
-
-// TIMER
-let time=600;
-setInterval(()=>{
-time--;
-document.getElementById("timer").innerText="Offer ends in "+time+"s";
-},1000);
 
 // POPUP
 setTimeout(()=>{
-overlay.style.display="block";
-popup.style.display="block";
+overlay.style.display='block';
+popup.style.display='block';
 },3000);
 
 function closePopup(){
-overlay.style.display="none";
-popup.style.display="none";
+overlay.style.display='none';
+popup.style.display='none';
 }
 
-</script>
-
-</body>
+</script></body>
 </html>
