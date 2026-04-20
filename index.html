@@ -2,234 +2,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BluePeak Markets Ultra</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
-/* ================= GLOBAL ================= */
+<title>BluePeak Markets | Ultra Platform</title><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Poppins, sans-serif;
-background:#050816;
-color:#fff;
-overflow-x:hidden;
+  font-family:'Poppins',sans-serif;
+  background:#05070d;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-h1,h2,h3{font-weight:700}
-p{color:#9aa4c7}
-
-/* ================= NAV ================= */
+/* NAV */
 nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:20px 60px;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(12px);
-z-index:999;
+  position:fixed;
+  top:0;width:100%;
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:space-between;
+  padding:15px 40px;
+  z-index:1000;
 }
-nav h1{color:#2b7cff}
-nav ul{display:flex;gap:25px;list-style:none}
-nav ul li{cursor:pointer}
+nav h1{font-family:'Orbitron';color:#00aaff}
+nav button{
+  background:#00aaff;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+}
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{
-padding-top:140px;
-text-align:center;
-padding-bottom:100px;
-background:radial-gradient(circle at top,#0e1c3a,#050816);
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  background:radial-gradient(circle at top,#0b1b2f,#000);
 }
-.hero h1{
-font-size:52px;
-max-width:900px;
-margin:auto;
+.hero h2{
+  font-size:55px;
+  font-family:'Orbitron';
 }
-.hero p{margin-top:20px}
-.hero button{
-margin-top:30px;
-padding:14px 40px;
-border:none;
-border-radius:8px;
-background:#2b7cff;
-color:#fff;
-cursor:pointer;
+.hero p{margin-top:15px;color:#aaa}
+
+/* SCROLL TEXT */
+.ticker{
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+  background:#00aaff;
+  color:#000;
+  padding:10px;
+}
+.ticker span{
+  display:inline-block;
+  animation:scroll 15s linear infinite;
+}
+@keyframes scroll{
+  from{transform:translateX(100%)}
+  to{transform:translateX(-100%)}
 }
 
-/* ================= STATS ================= */
-.stats{
-display:flex;
-justify-content:center;
-gap:80px;
-padding:60px 0;
-}
-.stat{text-align:center}
-.stat h2{color:#2b7cff}
-
-/* ================= BUILDER ================= */
+/* BUILDER */
 .builder{
-max-width:1100px;
-margin:auto;
-background:rgba(255,255,255,0.04);
-padding:40px;
-border-radius:16px;
-backdrop-filter:blur(10px);
+  padding:100px 40px;
+}
+.section-title{
+  font-size:28px;
+  margin-bottom:20px;
+  font-family:'Orbitron';
+}
+
+.options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.option{
+  padding:10px 14px;
+  border:1px solid #00aaff;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+}
+.option.active{
+  background:#00aaff;
+  color:#000;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin:15px 0;
-}
-
-.box{
-padding:12px;
-background:#0d1428;
-border:1px solid #1e2a45;
-border-radius:8px;
-cursor:pointer;
-text-align:center;
-font-size:13px;
-transition:0.2s;
-}
-
-.box.active{
-background:#2b7cff;
-}
-
-.price{
-text-align:center;
-font-size:34px;
-margin-top:20px;
-color:#2b7cff;
-}
-
-/* ================= CARDS ================= */
-.cards{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-padding:60px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
 }
 .card{
-background:#0d1428;
-padding:30px;
-border-radius:12px;
-border:1px solid #1e2a45;
+  padding:15px;
+  border:1px solid #00aaff33;
+  border-radius:10px;
+  cursor:pointer;
+  text-align:center;
+  font-size:13px;
+}
+.card.active{
+  border-color:#00aaff;
+  background:#001a2a;
 }
 
-/* ================= FEED ================= */
-.feed{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#0d1428;
-padding:15px;
-border-radius:10px;
-font-size:12px;
+.badge{
+  font-size:10px;
+  background:#00aaff;
+  color:#000;
+  padding:2px 6px;
+  border-radius:6px;
+  margin-left:5px;
 }
 
-/* ================= POPUP ================= */
+/* RULES PANEL */
+.rules{
+  margin-top:30px;
+  padding:20px;
+  background:#0a0f1c;
+  border-radius:12px;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:40px;
+}
+th,td{
+  padding:12px;
+  border-bottom:1px solid #222;
+  text-align:left;
+}
+
+/* POPUP */
 .popup{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#0d1428;
-padding:40px;
-border-radius:12px;
-display:none;
-z-index:1000;
-}
-.overlay{
-position:fixed;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#00aaff;
+  color:#000;
+  padding:15px;
+  border-radius:10px;
+  display:none;
 }
 
-/* ================= FOOTER ================= */
-footer{
-padding:40px;
-text-align:center;
-border-top:1px solid #1e2a45;
-margin-top:60px;
+/* FLOAT BAR */
+.float-bar{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#000;
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  border-top:1px solid #00aaff;
 }
+
+.float-bar button{
+  background:#00aaff;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+}
+
 </style></head><body><nav>
-<h1>BluePeak</h1>
-<ul>
-<li>Home</li>
-<li>Challenges</li>
-<li>Payouts</li>
-<li>FAQ</li>
-</ul>
-</nav><section class="hero">
-<h1>Trade Institutional Capital Up To $1,000,000</h1>
-<p>Built for serious traders. No limits. Real payouts.</p>
+<h1>BluePeak Markets</h1>
+<button>Get Notified</button>
+</nav><div class="hero">
+<h2>Trade Like a Funded Pro</h2>
+<p>Up to 90% Profit Split | Daily Payouts | Instant Funding</p>
+</div><div class="ticker">
+<span>BUY 1 GET FREE 50K CHALLENGE | UP TO 90% SPLIT | DAILY PAYOUTS | LEVERAGE 1:500</span>
+</div><section class="builder"><div class="section-title">Choose Model</div>
+<div class="options" id="model">
+<div class="option active">1 Step</div>
+<div class="option">2 Step <span class="badge">Popular</span></div>
+<div class="option">Instant</div>
+</div><div class="section-title">Account Size</div>
+<div class="grid" id="size">
+<div class="card">5K</div>
+<div class="card">25K</div>
+<div class="card">50K</div>
+<div class="card active">100K <span class="badge">Popular</span></div>
+<div class="card">200K</div>
+<div class="card">500K</div>
+<div class="card">1M</div>
+</div><div class="section-title">Platform</div>
+<div class="options" id="platform">
+<div class="option">MT4</div>
+<div class="option active">MT5 <span class="badge">Popular</span></div>
+</div><div class="rules" id="rulesBox">
+<h3>Account Rules</h3>
+<p>Select options to view rules</p>
+</div></section><section class="builder">
+<div class="section-title">Leaderboard</div>
+<table>
+<tr><th>Trader</th><th>Profit</th></tr>
+<tr><td>Trader001</td><td>$12,400</td></tr>
+<tr><td>Trader002</td><td>$9,200</td></tr>
+<tr><td>Trader003</td><td>$7,800</td></tr>
+</table>
+</section><div class="popup" id="popup">
+BUY 1 GET FREE 50K CHALLENGE
+</div><div class="float-bar">
+<div id="price">Total: R0</div>
 <button>Start Challenge</button>
-</section><section class="stats">
-<div class="stat"><h2>$1M</h2><p>Funding</p></div>
-<div class="stat"><h2>90%</h2><p>Split</p></div>
-<div class="stat"><h2>Daily</h2><p>Payouts</p></div>
-</section><section class="builder">
-<h2>Select Account Size</h2>
-<div class="grid" id="sizes">
-<div class="box" data-price="350">5K</div>
-<div class="box" data-price="500">25K</div>
-<div class="box" data-price="750">50K</div>
-<div class="box active" data-price="1100">100K</div>
-<div class="box" data-price="2000">200K</div>
-<div class="box" data-price="5400">500K</div>
-<div class="box" data-price="6500">1M</div>
-</div><h2>Model</h2>
-<div class="grid">
-<div class="box">Instant</div>
-<div class="box">1 Step</div>
-<div class="box active">2 Step</div>
-</div><h2>Platform</h2>
-<div class="grid">
-<div class="box">MT4</div>
-<div class="box active">MT5</div>
-</div><div class="price" id="price">R1100</div>
-</section><section class="cards">
-<div class="card"><h3>High Scaling</h3><p>Grow accounts rapidly</p></div>
-<div class="card"><h3>Fast Payouts</h3><p>Daily withdrawals</p></div>
-<div class="card"><h3>Global Traders</h3><p>Trusted worldwide</p></div>
-</section><div class="feed" id="feed">Trader from SA just got funded</div><div class="overlay" id="overlay"></div>
-<div class="popup" id="popup">
-<h2>Buy 1 Get Free 50K</h2>
-<button onclick="closePopup()">Claim</button>
-</div><footer>
-BluePeak Markets 2026
-</footer><script>
+</div><script>
 
-// SELECT
-let boxes=document.querySelectorAll('#sizes .box');
-boxes.forEach(b=>{
-b.onclick=()=>{
-boxes.forEach(x=>x.classList.remove('active'));
-b.classList.add('active');
-document.getElementById('price').innerText="R"+b.dataset.price;
+// highlight system
+function activate(group){
+  group.querySelectorAll('.option, .card').forEach(el=>{
+    el.onclick=()=>{
+      group.querySelectorAll('.active').forEach(a=>a.classList.remove('active'));
+      el.classList.add('active');
+      updateRules();
+      updatePrice();
+    }
+  })
 }
-});
 
-// FEED
-let msgs=["Trader from UK passed","Trader from UAE funded","Trader from SA withdrew","Trader from US scaling"];
-setInterval(()=>{
-feed.innerText=msgs[Math.floor(Math.random()*msgs.length)];
-},3000);
+activate(document.getElementById('model'));
+activate(document.getElementById('size'));
+activate(document.getElementById('platform'));
+
+// RULES
+function updateRules(){
+  let model=document.querySelector('#model .active').innerText;
+  let box=document.getElementById('rulesBox');
+
+  if(model.includes('1')){
+    box.innerHTML=`
+    <h3>1 Step Rules</h3>
+    <p>Target: 10%</p>
+    <p>Max Daily Loss: 4%</p>
+    <p>Leverage: 1:500</p>
+    <p>Daily Payouts</p>
+    <p>Profit Split: 80%</p>`;
+  }
+  else if(model.includes('2')){
+    box.innerHTML=`
+    <h3>2 Step Rules</h3>
+    <p>Phase 1: 10%</p>
+    <p>Phase 2: 4%</p>
+    <p>Max Daily Loss: 5%</p>
+    <p>Leverage: 1:500</p>
+    <p>Profit Split: 85-90%</p>`;
+  }
+  else{
+    box.innerHTML=`
+    <h3>Instant</h3>
+    <p>Max Daily Loss: 3%</p>
+    <p>Leverage: 1:500</p>
+    <p>Profit Split: 75%</p>`;
+  }
+}
+
+// PRICE
+function updatePrice(){
+  let size=document.querySelector('#size .active').innerText;
+  let priceMap={
+    "5K":350,
+    "25K":500,
+    "50K":750,
+    "100K":1100,
+    "200K":2000,
+    "500K":5400,
+    "1M":6500
+  };
+  document.getElementById('price').innerText="Total: R"+priceMap[size];
+}
 
 // POPUP
 setTimeout(()=>{
-overlay.style.display='block';
-popup.style.display='block';
+  document.getElementById('popup').style.display='block';
 },3000);
-
-function closePopup(){
-overlay.style.display='none';
-popup.style.display='none';
-}
 
 </script></body>
 </html>
