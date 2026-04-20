@@ -1,236 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BluePeak Markets</title>
 
 <style>
 
-/* ===================== ROOT ===================== */
-:root{
---bg:#050814;
---panel:rgba(13,22,51,0.55);
---stroke:rgba(255,255,255,0.08);
---blue:#2D7DFF;
---cyan:#00E6FF;
---gold:#FFCC66;
---text:#EAF1FF;
---muted:#9FB3D9;
-}
-
-*{box-sizing:border-box;font-family:Arial,sans-serif}
+/* ===== GLOBAL ===== */
 body{
 margin:0;
-background:radial-gradient(circle at top,#0B1430,#050814);
-color:var(--text);
+font-family:Arial;
+background:#050814;
+color:#EAF1FF;
 overflow-x:hidden;
 }
 
-/* ===================== FLOAT BG ORBS ===================== */
-.orb{
-position:fixed;
-width:300px;height:300px;
-background:radial-gradient(circle,#2D7DFF55,transparent 70%);
-filter:blur(40px);
-animation:float 10s infinite ease-in-out;
-z-index:0;
-}
-.orb2{top:20%;left:60%;animation-delay:2s}
-.orb1{top:10%;left:10%}
-.orb3{bottom:10%;left:40%;animation-delay:4s}
+h1,h2,h3{margin:0}
 
-@keyframes float{
-0%,100%{transform:translateY(0px)}
-50%{transform:translateY(40px)}
-}
-
-/* ===================== HEADER ===================== */
-header{
-position:sticky;
-top:0;
-z-index:10;
-display:flex;
-justify-content:space-between;
-padding:18px 22px;
-backdrop-filter:blur(12px);
-background:rgba(10,15,40,0.4);
-border-bottom:1px solid var(--stroke);
-}
-
-.logo{
-font-size:22px;
-font-weight:800;
-letter-spacing:2px;
-background:linear-gradient(90deg,var(--blue),var(--cyan),var(--gold));
+/* ===== GRADIENT TEXT ===== */
+.gradient{
+background:linear-gradient(90deg,#2D7DFF,#00E6FF,#FFCC66);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:moveText 4s linear infinite;
+animation:move 4s linear infinite;
 }
-
-@keyframes moveText{
+@keyframes move{
 0%{background-position:0%}
 100%{background-position:200%}
 }
 
-/* ===================== LAYOUT ===================== */
-.container{
-position:relative;
-z-index:2;
-max-width:1100px;
-margin:auto;
+/* ===== HEADER ===== */
+header{
+display:flex;
+justify-content:space-between;
 padding:20px;
+position:sticky;
+top:0;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
 }
 
-.section{
-margin-top:18px;
-padding:16px;
-background:var(--panel);
-border:1px solid var(--stroke);
-border-radius:16px;
-backdrop-filter:blur(15px);
+.logo{
+font-weight:bold;
+font-size:20px;
 }
 
-/* ===================== TITLES ===================== */
-.title{
-font-size:12px;
-color:var(--muted);
-margin-bottom:10px;
-letter-spacing:1px;
+/* ===== HERO ===== */
+.hero{
+text-align:center;
+padding:80px 20px;
 }
 
-/* ===================== BUTTONS ===================== */
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+color:#9FB3D9;
+margin-top:10px;
+}
+
 .btn{
-padding:10px 14px;
-border-radius:12px;
-cursor:pointer;
+padding:12px 20px;
 border:none;
-font-weight:600;
-margin:5px;
-transition:0.25s;
+border-radius:10px;
+margin:10px;
+cursor:pointer;
+font-weight:bold;
 }
 
 .primary{
-background:linear-gradient(135deg,var(--blue),var(--cyan));
-color:#fff;
+background:#2D7DFF;
+color:white;
 }
 
 .dark{
-background:rgba(255,255,255,0.04);
-color:var(--text);
-border:1px solid var(--stroke);
+background:#111;
+color:white;
+border:1px solid #2D7DFF;
 }
 
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 15px rgba(45,125,255,0.4);
+/* ===== SECTION ===== */
+.section{
+padding:40px 20px;
+max-width:1100px;
+margin:auto;
 }
 
-/* ===================== GRID ===================== */
+/* ===== CARDS ===== */
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.card{
+background:#0D1633;
+padding:20px;
+border-radius:12px;
+text-align:center;
+}
+
+/* ===== HOW ===== */
+.steps{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+text-align:center;
+}
+
+/* ===== ACCOUNT GRID ===== */
 .grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:10px;
 }
 
-.card{
-background:rgba(255,255,255,0.03);
-border:1px solid var(--stroke);
-padding:12px;
-border-radius:14px;
-cursor:pointer;
+.acc{
+background:#0D1633;
+padding:10px;
 text-align:center;
-font-size:12px;
-transition:0.25s;
-position:relative;
-}
-
-.card:hover{
-transform:translateY(-4px);
-border-color:var(--blue);
-}
-
-.selected{
-border:2px solid var(--blue);
-box-shadow:0 0 25px rgba(45,125,255,0.4);
-transform:scale(1.03);
-}
-
-.popular{
-position:absolute;
-top:6px;
-right:6px;
-background:var(--gold);
-color:#000;
-font-size:9px;
-padding:3px 6px;
 border-radius:10px;
-font-weight:bold;
-}
-
-/* ===================== PRICE ===================== */
-.price{
-margin-top:10px;
-color:#00FFB3;
-font-weight:bold;
-display:none;
-}
-
-/* ===================== MODAL ===================== */
-.modal{
-position:fixed;
-inset:0;
-display:none;
-align-items:center;
-justify-content:center;
-background:rgba(0,0,0,0.6);
-z-index:99;
-}
-
-.modal-box{
-width:340px;
-background:rgba(13,22,51,0.9);
-border:1px solid var(--blue);
-border-radius:14px;
-padding:18px;
-backdrop-filter:blur(10px);
-}
-
-.close{
-float:right;
 cursor:pointer;
-color:#FF4D4D;
 }
 
-/* ===================== POPUP ===================== */
-.popup{
-position:fixed;
-bottom:-200px;
-left:20px;
-right:20px;
-background:rgba(13,22,51,0.9);
-border:1px solid var(--blue);
-padding:14px;
-border-radius:14px;
-transition:0.5s;
-z-index:100;
+/* ===== FAQ ===== */
+.faq{
+margin-top:20px;
+}
+.faq div{
+margin-bottom:10px;
 }
 
-/* ===================== NOTIFY ===================== */
-.notify{
-position:fixed;
-top:80px;
-right:20px;
-background:rgba(13,22,51,0.9);
-border:1px solid var(--blue);
-padding:12px;
-border-radius:12px;
-display:none;
+/* ===== FOOTER ===== */
+footer{
+text-align:center;
+padding:30px;
+color:#9FB3D9;
 }
 
-/* ===================== MOBILE ===================== */
 @media(max-width:800px){
-.grid{grid-template-columns:repeat(2,1fr);}
+.cards,.steps,.grid{grid-template-columns:repeat(2,1fr);}
 }
 
 </style>
@@ -238,142 +149,99 @@ display:none;
 
 <body>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
-
 <header>
-<div class="logo">BLUEPEAK MARKETS</div>
-<div style="font-size:12px;color:#9FB3D9">Ultra Premium Trading Hub</div>
+<div class="logo gradient">BLUEPEAK MARKETS</div>
+<div>Trade Smarter</div>
 </header>
 
-<div class="container">
+<!-- HERO -->
+<section class="hero">
+<h1 class="gradient">Get Funded Up To $1,000,000</h1>
+<p>Trade Forex, Indices & Gold with up to 90% profit split. Instant & Evaluation Accounts Available.</p>
 
-<!-- MODE -->
-<div class="section">
-<div class="title">MODEL TYPE</div>
-<button class="btn dark" onclick="selectMode('1step')">1 STEP</button>
-<button class="btn dark" onclick="selectMode('2step')">2 STEP</button>
-<button class="btn dark" onclick="selectMode('instant')">INSTANT</button>
+<button class="btn primary">Start Challenge</button>
+<button class="btn dark">Get Funded</button>
+</section>
+
+<!-- BENEFITS -->
+<section class="section">
+<h2 class="gradient">Why BluePeak?</h2>
+
+<div class="cards">
+<div class="card">💰 Up to 90% Profit Split</div>
+<div class="card">⚡ Instant Funding Available</div>
+<div class="card">📅 Daily Payouts</div>
 </div>
+</section>
 
-<!-- PLATFORM -->
-<div class="section">
-<div class="title">PLATFORM</div>
-<button class="btn dark" onclick="selectPlatform('MT4')">MT4</button>
-<button class="btn dark" onclick="selectPlatform('MT5')">MT5 <span style="color:var(--gold)">Most Popular</span></button>
+<!-- HOW IT WORKS -->
+<section class="section">
+<h2 class="gradient">How It Works</h2>
+
+<div class="steps">
+<div>1️⃣ Choose Challenge</div>
+<div>2️⃣ Pass Evaluation</div>
+<div>3️⃣ Get Funded</div>
+<div>4️⃣ Withdraw Profits</div>
 </div>
+</section>
 
-<!-- ACCOUNTS -->
-<div class="section">
-<div class="title">ACCOUNT SIZES (ZAR)</div>
+<!-- ACCOUNT SECTION -->
+<section class="section">
+<h2 class="gradient">Choose Your Account</h2>
 
 <div class="grid">
-
-<div class="card" onclick="selectAccount(this,'5k')">5K</div>
-<div class="card" onclick="selectAccount(this,'25k')">25K</div>
-<div class="card" onclick="selectAccount(this,'50k')">50K</div>
-
-<div class="card" onclick="selectAccount(this,'100k')">
-100K <div class="popular">POPULAR</div>
+<div class="acc">5K</div>
+<div class="acc">25K</div>
+<div class="acc">50K</div>
+<div class="acc">100K ⭐</div>
+<div class="acc">200K</div>
+<div class="acc">500K</div>
+<div class="acc">1M</div>
 </div>
 
-<div class="card" onclick="selectAccount(this,'200k')">200K</div>
-<div class="card" onclick="selectAccount(this,'500k')">500K</div>
-<div class="card" onclick="selectAccount(this,'1m')">1M</div>
+<button class="btn primary">Continue</button>
+</section>
 
+<!-- OFFER -->
+<section class="section" style="text-align:center;">
+<h2 class="gradient">🔥 Buy 1 Get Free 50K Challenge</h2>
+<p>Limited launch offer — don’t miss out.</p>
+<button class="btn primary">Claim Offer</button>
+</section>
+
+<!-- TRUST -->
+<section class="section">
+<h2 class="gradient">Trusted by Traders</h2>
+
+<div class="cards">
+<div class="card">✔ 10,000+ Traders</div>
+<div class="card">✔ Millions Paid Out</div>
+<div class="card">✔ Global Community</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+<h2 class="gradient">FAQ</h2>
+
+<div class="faq">
+<div><b>How do payouts work?</b><br>Daily withdrawals available.</div>
+<div><b>What happens if I fail?</b><br>You can retry anytime.</div>
+<div><b>Is this legit?</b><br>Yes, BluePeak is a trading evaluation firm.</div>
 </div>
 
-<div id="price" class="price"></div>
+</section>
 
-<button class="btn primary" onclick="showRules()">VIEW RULES</button>
-<button class="btn dark" onclick="notify()">GET NOTIFIED</button>
+<!-- CTA -->
+<section class="section" style="text-align:center;">
+<h2 class="gradient">Ready to Get Funded?</h2>
+<button class="btn primary">Start Now</button>
+</section>
 
-</div>
-
-</div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-<div class="modal-box">
-<span class="close" onclick="closeModal()">X</span>
-<h3>RULES</h3>
-<div id="rules"></div>
-</div>
-</div>
-
-<!-- POPUP -->
-<div class="popup" id="popup">
-🔥 BUY 1 GET FREE 50K CHALLENGE (COMING SOON)
-</div>
-
-<!-- NOTIFY -->
-<div class="notify" id="notify">✔ You’ll be notified at launch</div>
-
-<script>
-
-let mode="",platform="",account="";
-
-function selectMode(m){
-mode=m;
-highlight(event.target);
-}
-
-function selectPlatform(p){
-platform=p;
-highlight(event.target);
-}
-
-function selectAccount(el,a){
-account=a;
-
-document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
-el.classList.add('selected');
-
-document.getElementById("price").style.display="block";
-document.getElementById("price").innerText="Selected: "+a.toUpperCase();
-}
-
-function highlight(el){
-el.style.boxShadow="0 0 20px #2D7DFF";
-setTimeout(()=>el.style.boxShadow="none",400);
-}
-
-function showRules(){
-if(!account)return alert("Select account first");
-
-let r="";
-
-if(mode==="instant"){
-r=`Max DD 3%<br>Profit Split 75%<br>Leverage 1:500`;
-}
-
-if(mode==="1step"){
-r=`Target 10%<br>DD 4%<br>Profit Split 80%`;
-}
-
-if(mode==="2step"){
-r=`Phase 1:10%<br>Phase 2:4%<br>DD 5%<br>Profit Split 85-90%`;
-}
-
-document.getElementById("rules").innerHTML=r;
-document.getElementById("modal").style.display="flex";
-}
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-
-function notify(){
-document.getElementById("notify").style.display="block";
-setTimeout(()=>document.getElementById("notify").style.display="none",3000);
-}
-
-setTimeout(()=>{
-document.getElementById("popup").style.bottom="20px";
-},3000);
-
-</script>
+<footer>
+© 2026 BluePeak Markets. All Rights Reserved.
+</footer>
 
 </body>
-</html>
+  </html>
