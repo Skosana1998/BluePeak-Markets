@@ -11,72 +11,110 @@
 body{
 margin:0;
 font-family:Poppins;
-background:#060b17;
 color:#fff;
+background:linear-gradient(-45deg,#060b17,#0e1c3a,#091226,#060b17);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
 }
 
-/* TOP BANNER */
-.banner{
-background:#2b7cff;
-text-align:center;
-padding:10px;
-font-weight:600;
-animation:flash 1.5s infinite alternate;
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
-@keyframes flash{
-from{opacity:0.6;}
-to{opacity:1;}
+
+/* NAV */
+nav{
+position:sticky;
+top:0;
+display:flex;
+justify-content:space-between;
+padding:20px 60px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 /* HERO */
 .hero{
 text-align:center;
 padding:100px 20px;
-background:radial-gradient(circle,#0e1c3a,#060b17);
 }
 .hero h1{
-font-size:42px;
+font-size:48px;
 }
-.hero p{color:#aaa;}
-
-.btn{
-background:#2b7cff;
-padding:14px 30px;
-border:none;
-border-radius:8px;
-color:#fff;
-cursor:pointer;
-margin-top:20px;
+.hero p{
+color:#aaa;
 }
 
-/* GRID */
+/* BUILDER */
+.builder{
+max-width:900px;
+margin:auto;
+padding:40px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+backdrop-filter:blur(15px);
+}
+
 .grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:15px;
-max-width:800px;
-margin:40px auto;
+gap:10px;
+margin:15px 0;
 }
+
 .box{
-padding:12px;
-background:#0f172a;
-border:1px solid #1e2a45;
+padding:10px;
 border-radius:8px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
-font-size:14px;
+font-size:13px;
 text-align:center;
+transition:0.2s;
+}
+.box:hover{
+border-color:#2b7cff;
 }
 .box.active{
-border-color:#2b7cff;
-background:#162447;
+background:#2b7cff;
 }
 
 /* PRICE */
 .price{
 text-align:center;
-font-size:28px;
-margin-top:20px;
+font-size:30px;
+margin-top:15px;
 color:#2b7cff;
+}
+
+/* LIVE FEED */
+.feed{
+position:fixed;
+left:20px;
+bottom:20px;
+background:rgba(0,0,0,0.6);
+padding:15px;
+border-radius:10px;
+font-size:12px;
+}
+
+/* COUNTDOWN */
+.timer{
+text-align:center;
+color:#2b7cff;
+margin-top:10px;
+}
+
+/* BUTTON */
+.btn{
+background:#2b7cff;
+padding:12px 25px;
+border:none;
+border-radius:8px;
+color:#fff;
+cursor:pointer;
 }
 
 /* POPUP */
@@ -90,7 +128,6 @@ padding:30px;
 border-radius:12px;
 display:none;
 z-index:1000;
-text-align:center;
 }
 .overlay{
 position:fixed;
@@ -99,88 +136,76 @@ height:100%;
 background:rgba(0,0,0,0.7);
 display:none;
 }
-
-/* FLOAT BUTTON */
-.float{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#2b7cff;
-padding:15px;
-border-radius:50%;
-cursor:pointer;
-}
-
-input{
-padding:10px;
-border-radius:6px;
-border:none;
-margin-top:10px;
-width:200px;
-}
 </style>
 </head>
 
 <body>
 
-<div class="banner">
-LIMITED OFFER: BUY 1 CHALLENGE GET FREE 50K ACCOUNT
-</div>
+<nav>
+<h2>BluePeak</h2>
+<div>Funded Trading Platform</div>
+</nav>
 
 <section class="hero">
-<h1>Trade Funded Accounts Up To $1,000,000</h1>
-<p>Instant Funding • Fast Payouts • Up to 90% Profit Split</p>
-<button class="btn">Start Now</button>
+<h1>Scale From $5,000 to $1,000,000</h1>
+<p>Institutional Level Funding • Real Payouts • No Limits</p>
 </section>
 
-<h2 style="text-align:center;">Build Your Account</h2>
+<div class="builder">
 
+<h3>Select Account Size</h3>
 <div class="grid" id="sizes">
 <div class="box" data-price="350">5K</div>
 <div class="box" data-price="500">25K</div>
 <div class="box" data-price="750">50K</div>
-<div class="box active" data-price="1100">100K ⭐</div>
+<div class="box active" data-price="1100">100K MOST POPULAR</div>
 <div class="box" data-price="2000">200K</div>
 <div class="box" data-price="5400">500K</div>
 </div>
 
+<h3>Model</h3>
 <div class="grid" id="model">
-<div class="box active">Instant</div>
-<div class="box">1-Step</div>
-<div class="box">2-Step ⭐</div>
+<div class="box">Instant</div>
+<div class="box">1 Step</div>
+<div class="box active">2 Step MOST POPULAR</div>
 </div>
 
+<h3>Platform</h3>
 <div class="grid" id="platform">
 <div class="box">MT4</div>
-<div class="box active">MT5 ⭐</div>
+<div class="box active">MT5 MOST POPULAR</div>
 </div>
 
 <div style="text-align:center;">
 <input id="code" placeholder="Discount Code">
-<br>
-<button class="btn" onclick="applyCode()">Apply Code</button>
+<br><br>
+<button class="btn" onclick="applyCode()">Apply</button>
 </div>
 
 <div class="price" id="price">R1100</div>
 
+<div class="timer" id="timer"></div>
+
 <div style="text-align:center;">
-<button class="btn">Proceed to Checkout</button>
+<button class="btn">Proceed</button>
 </div>
+
+</div>
+
+<!-- LIVE FEED -->
+<div class="feed" id="feed">Trader from UK just got funded</div>
 
 <!-- POPUP -->
 <div class="overlay" id="overlay"></div>
-
 <div class="popup" id="popup">
-<h2>Free 50K Challenge</h2>
-<p>Buy any challenge today and receive a FREE 50K account.</p>
-<button class="btn" onclick="closePopup()">Claim Now</button>
+<h2>Buy 1 Get Free 50K</h2>
+<p>Limited promotion</p>
+<button class="btn" onclick="closePopup()">Claim</button>
 </div>
-
-<div class="float" onclick="openPopup()">%</div>
 
 <script>
 
-// SELECT BOXES
+// SELECT
 document.querySelectorAll('.grid').forEach(grid=>{
 grid.querySelectorAll('.box').forEach(box=>{
 box.onclick=()=>{
@@ -191,49 +216,49 @@ updatePrice();
 });
 });
 
-let basePrice=1100;
-let discount=0;
+let price=1100,discount=0;
 
 function updatePrice(){
-let selected=document.querySelector('#sizes .active');
-basePrice=selected.dataset.price;
-let final=basePrice-(basePrice*discount);
+let base=document.querySelector('#sizes .active').dataset.price;
+let final=base-(base*discount);
 document.getElementById("price").innerText="R"+Math.round(final);
 }
 
+// DISCOUNT
 function applyCode(){
-let code=document.getElementById("code").value;
-
-if(code==="BLUE20"){
-discount=0.2;
-}
-else if(code==="PEAK10"){
-discount=0.1;
-}
-else{
-discount=0;
-alert("Invalid Code");
-}
+let c=document.getElementById("code").value;
+if(c==="BLUE20"){discount=0.2;}
+else{discount=0;}
 updatePrice();
 }
 
-// POPUP AUTO
+// FEED
+let msgs=[
+"Trader from Germany passed 100K",
+"Trader from SA withdrew profits",
+"Trader from UK got funded",
+"Trader from UAE scaled account"
+];
+setInterval(()=>{
+document.getElementById("feed").innerText=msgs[Math.floor(Math.random()*msgs.length)];
+},3000);
+
+// TIMER
+let time=600;
+setInterval(()=>{
+time--;
+document.getElementById("timer").innerText="Offer ends in "+time+"s";
+},1000);
+
+// POPUP
 setTimeout(()=>{
-document.getElementById("popup").style.display="block";
-document.getElementById("overlay").style.display="block";
+overlay.style.display="block";
+popup.style.display="block";
 },3000);
 
 function closePopup(){
-document.getElementById("popup").style.display="none";
-document.getElementById("overlay").style.display="none";
-}
-
-function openPopup(){
-closePopup();
-setTimeout(()=>{
-document.getElementById("popup").style.display="block";
-document.getElementById("overlay").style.display="block";
-},100);
+overlay.style.display="none";
+popup.style.display="none";
 }
 
 </script>
