@@ -8,95 +8,215 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#050505;color:#fff;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  background:#050505;
+  color:#ffffff;
+}
 
 /* NAV */
 header{
-display:flex;justify-content:space-between;align-items:center;
-padding:25px 60px;border-bottom:1px solid rgba(255,0,0,0.15);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 60px;
+  border-bottom:1px solid rgba(255,0,0,0.15);
 }
 
 .logo{
-font-family:'Orbitron';font-size:22px;font-weight:800;color:#ff1a1a;
+  font-family:'Orbitron';
+  font-size:20px;
+  font-weight:800;
+  color:#ff1a1a;
+  letter-spacing:1px;
 }
 
 nav a{
-margin-left:30px;color:#aaa;text-decoration:none;transition:.3s;
+  margin-left:25px;
+  text-decoration:none;
+  color:#aaa;
+  font-size:14px;
+  transition:0.3s;
 }
-nav a:hover{color:#fff}
+
+nav a:hover{
+  color:#ff1a1a;
+}
 
 /* HERO */
 .hero{
-height:90vh;
-display:flex;flex-direction:column;justify-content:center;align-items:center;
-text-align:center;
-background:radial-gradient(circle at top, rgba(255,0,0,0.25), transparent);
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 20px;
+  background:radial-gradient(circle at top, rgba(255,0,0,0.25), transparent);
 }
 
 .hero h1{
-font-size:58px;font-family:'Orbitron';margin-bottom:20px;
+  font-family:'Orbitron';
+  font-size:54px;
+  max-width:900px;
+  margin-bottom:20px;
 }
 
 .hero p{
-max-width:700px;color:#aaa;margin-bottom:30px;
+  color:#aaa;
+  max-width:700px;
+  line-height:1.6;
+  margin-bottom:30px;
 }
 
 .btn{
-padding:15px 35px;background:#ff1a1a;border:none;color:#fff;
-cursor:pointer;font-weight:600;transition:.3s;
+  padding:14px 32px;
+  background:#ff1a1a;
+  border:none;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
 }
-.btn:hover{background:#cc0000}
+
+.btn:hover{
+  background:#b30000;
+}
 
 /* STATS */
 .stats{
-display:flex;justify-content:center;gap:60px;padding:60px;
-border-top:1px solid rgba(255,0,0,0.1);
-border-bottom:1px solid rgba(255,0,0,0.1);
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  padding:60px;
+  border-top:1px solid rgba(255,0,0,0.1);
+  border-bottom:1px solid rgba(255,0,0,0.1);
+  text-align:center;
 }
-.stat{text-align:center;}
-.stat h2{color:#ff1a1a;margin-bottom:10px}
+
+.stat h2{
+  color:#ff1a1a;
+  font-size:28px;
+}
+
+.stat p{
+  color:#888;
+  margin-top:8px;
+}
 
 /* SECTION */
-.section{padding:100px 60px;text-align:center;}
-.section h2{margin-bottom:40px;font-size:32px;}
+.section{
+  padding:80px 60px;
+}
 
+.section h2{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:50px;
+  font-family:'Orbitron';
+}
+
+/* GRID CARDS */
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
 }
 
 .card{
-background:#0d0d0d;padding:30px;border-radius:10px;
-border:1px solid rgba(255,0,0,0.1);transition:.3s;
+  background:#0d0d0d;
+  border:1px solid rgba(255,0,0,0.1);
+  padding:25px;
+  border-radius:10px;
+  transition:0.3s;
 }
+
 .card:hover{
-border-color:#ff1a1a;
-transform:translateY(-5px);
+  border-color:#ff1a1a;
+  transform:translateY(-5px);
+}
+
+.card h3{
+  margin-bottom:10px;
+  color:#fff;
+}
+
+.card p{
+  color:#aaa;
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* ACCOUNTS */
+.accounts{
+  text-align:center;
+}
+
+.account-grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+}
+
+.account{
+  padding:18px 25px;
+  border:1px solid rgba(255,0,0,0.2);
+  background:#0d0d0d;
+  min-width:120px;
 }
 
 /* TABLE */
 .table{
-width:100%;border-collapse:collapse;margin-top:30px;
+  width:100%;
+  border-collapse:collapse;
+  margin-top:30px;
 }
-.table th,.table td{
-border:1px solid rgba(255,0,0,0.2);
-padding:15px;text-align:center;
+
+.table th,
+.table td{
+  border:1px solid rgba(255,0,0,0.2);
+  padding:15px;
+  text-align:center;
 }
-.table th{background:#111;color:#ff1a1a}
+
+.table th{
+  background:#111;
+  color:#ff1a1a;
+}
 
 /* CTA */
 .cta{
-background:linear-gradient(to right,#ff1a1a,#800000);
-padding:80px;text-align:center;
+  padding:90px 20px;
+  text-align:center;
+  background:linear-gradient(to right,#ff1a1a,#5a0000);
 }
-.cta h2{margin-bottom:20px;font-size:34px}
+
+.cta h2{
+  font-size:34px;
+  margin-bottom:15px;
+  font-family:'Orbitron';
+}
+
+.cta p{
+  color:#fff;
+  opacity:0.8;
+  margin-bottom:25px;
+}
 
 /* FOOTER */
 footer{
-padding:40px;text-align:center;color:#777;
-border-top:1px solid rgba(255,0,0,0.2);
+  text-align:center;
+  padding:40px;
+  color:#777;
+  border-top:1px solid rgba(255,0,0,0.15);
+  font-size:13px;
 }
 </style>
 </head>
@@ -104,95 +224,110 @@ border-top:1px solid rgba(255,0,0,0.2);
 <body>
 
 <header>
-<div class="logo">BLUE PEAK MARKETS</div>
-<nav>
-<a href="#">Home</a>
-<a href="#">Challenges</a>
-<a href="#">Accounts</a>
-<a href="#">Payouts</a>
-</nav>
+  <div class="logo">BLUE PEAK MARKETS</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Challenges</a>
+    <a href="#">Accounts</a>
+    <a href="#">Payouts</a>
+  </nav>
 </header>
 
 <section class="hero">
-<h1>FUEL YOUR TRADING. GET FUNDED.</h1>
-<p>Access capital. Trade with discipline. Scale into high-value funded accounts with no time limits.</p>
-<button class="btn">Start Challenge</button>
+  <h1>TRADE WITH CAPITAL. SCALE WITHOUT LIMITS.</h1>
+  <p>
+    Blue Peak Markets gives disciplined traders access to funded accounts through a structured evaluation system.
+    No hype. No shortcuts. Only performance.
+  </p>
+  <button class="btn">Start Challenge</button>
 </section>
 
 <section class="stats">
-<div class="stat"><h2>100+</h2><p>Countries</p></div>
-<div class="stat"><h2>1000+</h2><p>Monthly Trades</p></div>
-<div class="stat"><h2>$1M+</h2><p>Payouts</p></div>
-<div class="stat"><h2>7h</h2><p>Avg Payout Time</p></div>
+  <div class="stat">
+    <h2>100+</h2>
+    <p>Countries</p>
+  </div>
+  <div class="stat">
+    <h2>1000+</h2>
+    <p>Monthly Trades</p>
+  </div>
+  <div class="stat">
+    <h2>R10M+</h2>
+    <p>Simulated Capital</p>
+  </div>
+  <div class="stat">
+    <h2>14 Days</h2>
+    <p>First Payout Cycle</p>
+  </div>
 </section>
 
 <section class="section">
-<h2>Funding Model</h2>
-<div class="grid">
-<div class="card"><h3>Up to 90% Profit Split</h3></div>
-<div class="card"><h3>No Time Limits</h3></div>
-<div class="card"><h3>Scaling to R5,000,000+</h3></div>
-<div class="card"><h3>Refundable Fees</h3></div>
-</div>
+  <h2>Funding Model</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Profit Split</h3>
+      <p>Start at 70% and scale up to 90% based on consistent performance.</p>
+    </div>
+    <div class="card">
+      <h3>Scaling Plan</h3>
+      <p>Grow your account up to R1,000,000+ through performance evaluation.</p>
+    </div>
+    <div class="card">
+      <h3>No Time Pressure</h3>
+      <p>Trade at your own pace with no artificial deadlines.</p>
+    </div>
+    <div class="card">
+      <h3>Risk Control</h3>
+      <p>Structured drawdown rules designed to protect capital and discipline traders.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section accounts">
+  <h2>ZAR ACCOUNT SIZES</h2>
+  <div class="account-grid">
+    <div class="account">R5,000</div>
+    <div class="account">R10,000</div>
+    <div class="account">R25,000</div>
+    <div class="account">R50,000</div>
+    <div class="account">R100,000</div>
+    <div class="account">R200,000</div>
+  </div>
 </section>
 
 <section class="section">
-<h2>1 Step Challenge</h2>
-
-<table class="table">
-<tr>
-<th>Rule</th>
-<th>Details</th>
-</tr>
-<tr><td>Profit Target</td><td>12%</td></tr>
-<tr><td>Min Trading Days</td><td>4</td></tr>
-<tr><td>Max Daily Loss</td><td>3%</td></tr>
-<tr><td>Max Drawdown</td><td>8%</td></tr>
-<tr><td>Leverage</td><td>1:30</td></tr>
-<tr><td>Weekend Holding</td><td>Allowed</td></tr>
-</table>
-
+  <h2>1-Step Challenge</h2>
+  <table class="table">
+    <tr><th>Rule</th><th>Value</th></tr>
+    <tr><td>Profit Target</td><td>10%</td></tr>
+    <tr><td>Daily Loss</td><td>4%</td></tr>
+    <tr><td>Max Loss</td><td>8%</td></tr>
+    <tr><td>Min Trading Days</td><td>4</td></tr>
+    <tr><td>Leverage</td><td>1:50</td></tr>
+  </table>
 </section>
 
 <section class="section">
-<h2>2 Step Challenge</h2>
-
-<table class="table">
-<tr>
-<th>Phase</th>
-<th>Target</th>
-</tr>
-<tr><td>Phase 1</td><td>8%</td></tr>
-<tr><td>Phase 2</td><td>5%</td></tr>
-<tr><td>Daily Drawdown</td><td>4%</td></tr>
-<tr><td>Total Drawdown</td><td>12%</td></tr>
-<tr><td>Min Days</td><td>3 per phase</td></tr>
-<tr><td>Leverage</td><td>1:30</td></tr>
-</table>
-
-</section>
-
-<section class="section">
-<h2>Account Sizes</h2>
-<div class="grid">
-<div class="card">R5,000</div>
-<div class="card">R10,000</div>
-<div class="card">R25,000</div>
-<div class="card">R50,000</div>
-<div class="card">R100,000</div>
-<div class="card">R200,000</div>
-</div>
+  <h2>2-Step Challenge</h2>
+  <table class="table">
+    <tr><th>Phase</th><th>Target</th></tr>
+    <tr><td>Phase 1</td><td>8%</td></tr>
+    <tr><td>Phase 2</td><td>5%</td></tr>
+    <tr><td>Daily Drawdown</td><td>5%</td></tr>
+    <tr><td>Total Drawdown</td><td>10%</td></tr>
+    <tr><td>Min Days</td><td>3 per phase</td></tr>
+  </table>
 </section>
 
 <section class="cta">
-<h2>Start Your Challenge Today</h2>
-<p>Pass the evaluation. Get funded. Scale your capital.</p>
-<button class="btn">Get Started</button>
+  <h2>Start Your Challenge Today</h2>
+  <p>Prove your consistency. Get funded. Scale your capital.</p>
+  <button class="btn">Begin Now</button>
 </section>
 
 <footer>
-Blue Peak Markets. Built for serious traders.
+  Blue Peak Markets. For disciplined traders only.
 </footer>
 
 </body>
-</html>
+  </html>
