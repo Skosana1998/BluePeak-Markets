@@ -3,254 +3,240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BluePeak Markets | Funded Trading</title>
+<title>BluePeak Markets</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin:0;
-  font-family: 'Poppins', sans-serif;
-  background:#0b0f1a;
-  color:#fff;
+body{
+margin:0;
+font-family:Poppins;
+background:#060b17;
+color:#fff;
 }
 
-/* NAVBAR */
-nav {
-  display:flex;
-  justify-content:space-between;
-  padding:20px 60px;
-  background:#0b0f1a;
-  border-bottom:1px solid #1a2333;
+/* TOP BANNER */
+.banner{
+background:#2b7cff;
+text-align:center;
+padding:10px;
+font-weight:600;
+animation:flash 1.5s infinite alternate;
 }
-nav h1 {color:#2b7cff;}
-nav a {
-  color:#ccc;
-  margin-left:25px;
-  text-decoration:none;
+@keyframes flash{
+from{opacity:0.6;}
+to{opacity:1;}
 }
-nav a:hover {color:#2b7cff;}
 
 /* HERO */
-.hero {
-  text-align:center;
-  padding:100px 20px;
-  background:linear-gradient(to right,#0b0f1a,#0e1c3a);
+.hero{
+text-align:center;
+padding:100px 20px;
+background:radial-gradient(circle,#0e1c3a,#060b17);
 }
-.hero h2 {
-  font-size:42px;
-  max-width:800px;
-  margin:auto;
+.hero h1{
+font-size:42px;
 }
-.hero p {
-  margin-top:20px;
-  color:#aaa;
-}
-.btn {
-  margin-top:30px;
-  padding:14px 35px;
-  background:#2b7cff;
-  border:none;
-  border-radius:8px;
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
+.hero p{color:#aaa;}
+
+.btn{
+background:#2b7cff;
+padding:14px 30px;
+border:none;
+border-radius:8px;
+color:#fff;
+cursor:pointer;
+margin-top:20px;
 }
 
-/* STATS */
-.stats {
-  display:flex;
-  justify-content:center;
-  gap:60px;
-  padding:60px 20px;
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+max-width:800px;
+margin:40px auto;
 }
-.stat {
-  text-align:center;
+.box{
+padding:12px;
+background:#0f172a;
+border:1px solid #1e2a45;
+border-radius:8px;
+cursor:pointer;
+font-size:14px;
+text-align:center;
 }
-.stat h3 {color:#2b7cff;font-size:28px;}
-.stat p {color:#aaa;}
-
-/* CHALLENGES */
-.section {
-  padding:80px 40px;
-  text-align:center;
-}
-.cards {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-  margin-top:40px;
-}
-.card {
-  background:#11182a;
-  padding:30px;
-  border-radius:12px;
-  border:1px solid #1f2b45;
-  transition:0.3s;
-}
-.card:hover {
-  transform:translateY(-5px);
-  border-color:#2b7cff;
-}
-.card h4 {color:#2b7cff;}
-.card p {color:#aaa;}
-
-/* PROCESS */
-.process {
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  flex-wrap:wrap;
-  margin-top:40px;
-}
-.step {
-  max-width:250px;
-}
-.step h4 {color:#2b7cff;}
-
-/* FAQ */
-.faq {
-  max-width:800px;
-  margin:auto;
-  text-align:left;
-}
-.faq h4 {
-  margin-top:20px;
-  color:#2b7cff;
+.box.active{
+border-color:#2b7cff;
+background:#162447;
 }
 
-/* FOOTER */
-footer {
-  padding:40px;
-  text-align:center;
-  border-top:1px solid #1a2333;
-  color:#777;
+/* PRICE */
+.price{
+text-align:center;
+font-size:28px;
+margin-top:20px;
+color:#2b7cff;
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#0f172a;
+padding:30px;
+border-radius:12px;
+display:none;
+z-index:1000;
+text-align:center;
+}
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+}
+
+/* FLOAT BUTTON */
+.float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#2b7cff;
+padding:15px;
+border-radius:50%;
+cursor:pointer;
+}
+
+input{
+padding:10px;
+border-radius:6px;
+border:none;
+margin-top:10px;
+width:200px;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <h1>BluePeak Markets</h1>
-  <div>
-    <a href="#">Home</a>
-    <a href="#">Challenges</a>
-    <a href="#">FAQ</a>
-    <a href="#">Login</a>
-  </div>
-</nav>
+<div class="banner">
+LIMITED OFFER: BUY 1 CHALLENGE GET FREE 50K ACCOUNT
+</div>
 
 <section class="hero">
-  <h2>Get Funded. Trade Without Limits. Scale Your Capital.</h2>
-  <p>BluePeak Markets gives traders access to up to $1,000,000 in funded capital with industry-leading profit splits and fast payouts.</p>
-  <button class="btn">Start Challenge</button>
+<h1>Trade Funded Accounts Up To $1,000,000</h1>
+<p>Instant Funding • Fast Payouts • Up to 90% Profit Split</p>
+<button class="btn">Start Now</button>
 </section>
 
-<section class="stats">
-  <div class="stat">
-    <h3>$1M</h3>
-    <p>Max Funding</p>
-  </div>
-  <div class="stat">
-    <h3>90%</h3>
-    <p>Profit Split</p>
-  </div>
-  <div class="stat">
-    <h3>Daily</h3>
-    <p>Payouts</p>
-  </div>
-</section>
+<h2 style="text-align:center;">Build Your Account</h2>
 
-<section class="section">
-  <h2>Choose Your Challenge</h2>
+<div class="grid" id="sizes">
+<div class="box" data-price="350">5K</div>
+<div class="box" data-price="500">25K</div>
+<div class="box" data-price="750">50K</div>
+<div class="box active" data-price="1100">100K ⭐</div>
+<div class="box" data-price="2000">200K</div>
+<div class="box" data-price="5400">500K</div>
+</div>
 
-  <div class="cards">
-    <div class="card">
-      <h4>Instant Funding</h4>
-      <p>Start trading immediately with no evaluation.</p>
-      <p>Up to 75% profit split</p>
-    </div>
+<div class="grid" id="model">
+<div class="box active">Instant</div>
+<div class="box">1-Step</div>
+<div class="box">2-Step ⭐</div>
+</div>
 
-    <div class="card">
-      <h4>1-Step Challenge</h4>
-      <p>Single phase evaluation.</p>
-      <p>Up to 80% profit split</p>
-    </div>
+<div class="grid" id="platform">
+<div class="box">MT4</div>
+<div class="box active">MT5 ⭐</div>
+</div>
 
-    <div class="card">
-      <h4>2-Step Challenge</h4>
-      <p>Advanced traders pathway.</p>
-      <p>Up to 90% profit split</p>
-    </div>
-  </div>
-</section>
+<div style="text-align:center;">
+<input id="code" placeholder="Discount Code">
+<br>
+<button class="btn" onclick="applyCode()">Apply Code</button>
+</div>
 
-<section class="section">
-  <h2>How It Works</h2>
+<div class="price" id="price">R1100</div>
 
-  <div class="process">
-    <div class="step">
-      <h4>1. Choose Account</h4>
-      <p>Select your preferred challenge and account size.</p>
-    </div>
+<div style="text-align:center;">
+<button class="btn">Proceed to Checkout</button>
+</div>
 
-    <div class="step">
-      <h4>2. Pass Evaluation</h4>
-      <p>Trade and meet the required targets.</p>
-    </div>
+<!-- POPUP -->
+<div class="overlay" id="overlay"></div>
 
-    <div class="step">
-      <h4>3. Get Funded</h4>
-      <p>Receive a funded account and scale capital.</p>
-    </div>
+<div class="popup" id="popup">
+<h2>Free 50K Challenge</h2>
+<p>Buy any challenge today and receive a FREE 50K account.</p>
+<button class="btn" onclick="closePopup()">Claim Now</button>
+</div>
 
-    <div class="step">
-      <h4>4. Withdraw Profits</h4>
-      <p>Enjoy fast and reliable payouts.</p>
-    </div>
-  </div>
-</section>
+<div class="float" onclick="openPopup()">%</div>
 
-<section class="section">
-  <h2>Why BluePeak Markets</h2>
+<script>
 
-  <div class="cards">
-    <div class="card">
-      <h4>High Profit Splits</h4>
-      <p>Earn up to 90% on your trades.</p>
-    </div>
+// SELECT BOXES
+document.querySelectorAll('.grid').forEach(grid=>{
+grid.querySelectorAll('.box').forEach(box=>{
+box.onclick=()=>{
+grid.querySelectorAll('.box').forEach(b=>b.classList.remove('active'));
+box.classList.add('active');
+updatePrice();
+}
+});
+});
 
-    <div class="card">
-      <h4>Fast Payouts</h4>
-      <p>Withdraw profits daily.</p>
-    </div>
+let basePrice=1100;
+let discount=0;
 
-    <div class="card">
-      <h4>Flexible Models</h4>
-      <p>Instant, 1-step and 2-step options.</p>
-    </div>
-  </div>
-</section>
+function updatePrice(){
+let selected=document.querySelector('#sizes .active');
+basePrice=selected.dataset.price;
+let final=basePrice-(basePrice*discount);
+document.getElementById("price").innerText="R"+Math.round(final);
+}
 
-<section class="section">
-  <h2>Frequently Asked Questions</h2>
+function applyCode(){
+let code=document.getElementById("code").value;
 
-  <div class="faq">
-    <h4>How long does evaluation take?</h4>
-    <p>No time limits. Trade at your own pace.</p>
+if(code==="BLUE20"){
+discount=0.2;
+}
+else if(code==="PEAK10"){
+discount=0.1;
+}
+else{
+discount=0;
+alert("Invalid Code");
+}
+updatePrice();
+}
 
-    <h4>What platforms are supported?</h4>
-    <p>MetaTrader 4 and MetaTrader 5.</p>
+// POPUP AUTO
+setTimeout(()=>{
+document.getElementById("popup").style.display="block";
+document.getElementById("overlay").style.display="block";
+},3000);
 
-    <h4>When can I withdraw profits?</h4>
-    <p>Daily payouts available depending on model.</p>
-  </div>
-</section>
+function closePopup(){
+document.getElementById("popup").style.display="none";
+document.getElementById("overlay").style.display="none";
+}
 
-<footer>
-  © 2026 BluePeak Markets. All rights reserved.
-</footer>
+function openPopup(){
+closePopup();
+setTimeout(()=>{
+document.getElementById("popup").style.display="block";
+document.getElementById("overlay").style.display="block";
+},100);
+}
+
+</script>
 
 </body>
 </html>
